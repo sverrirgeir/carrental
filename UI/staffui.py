@@ -1,10 +1,12 @@
 from UI.OrderUI import OrderUI
 from UI.CarsUI import CarsUI
+from UI.CustomerServiceUI import CustomerServiceUI
 
 class StaffUI:
     def __init__(self):
         self.__order_ui = OrderUI()
         self.__cars_ui = CarsUI()
+        self.__customer_service_ui = CustomerServiceUI()
 
     def main_menu(self):
         """Prints out the main menu and returns a input sentence asking for a choice"""
@@ -26,7 +28,7 @@ class StaffUI:
             self.__order_ui.print_order_menu()
 
         elif choice == '2':
-            pass
+            self.__customer_service_ui.print_clients_menu()
 
         elif choice == '3':
             self.__cars_ui.print_car_menu()
