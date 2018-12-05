@@ -1,4 +1,5 @@
 from services.CarService import CarService
+#from UI.StaffUI import StaffUI
 
 class CarsUI:
     def __init__(self):
@@ -16,15 +17,17 @@ class CarsUI:
         print("")
         print("\t{:<30}\n\t{:<10}\n\t{:<10}\n\t{:<10}\n\t{:<10}".format(choice1, choice2, choice3, choice4, choice5,))
         print("")
+
         choice = input("\tValmöguleiki: ")
 
-        if choice == 1:
+        if choice == '1':
             pass
-        elif choice == 2:
+        elif choice == '2':
             pass
-        elif choice == 3:
+        elif choice == '3':
             pass
-        elif choice == 4:
+        elif choice == '4':
             pass
-        elif choice == 5:
+        elif choice == '5':
+            #self.StaffUI.main_menu()
             pass
