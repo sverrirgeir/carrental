@@ -16,4 +16,15 @@ class CarsUI:
         print("")
         print("\t{:<30}\n\t{:<10}\n\t{:<10}\n\t{:<10}\n\t{:<10}".format(choice1, choice2, choice3, choice4, choice5,))
         print("")
-        return input("\tValmöguleiki: ")
+        choice = input("\tValmöguleiki: ")
+
+        if choice == 1:
+            pass
+        elif choice == 2:
+            pass
+        elif choice == 3:
+            pass
+        elif choice == 4:
+            pass
+        elif choice == 5:
+            pass
