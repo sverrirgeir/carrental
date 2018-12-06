@@ -12,6 +12,6 @@ class CustomerRepo:
                     name = line_list[0]
                     passport = line_list[1]
                     kredit = line_list[2]
-                    return "\t{:<18}\t{:>18}".format(name, passport)
+                    return name, passport, kredit
 
                                              

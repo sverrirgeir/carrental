@@ -100,11 +100,11 @@ class StaffUI():
         
         line = "-"*43
         passport = input("\n\tVegabréfsnúmer: ").upper()
-        customer = self.__customer.find_customer(passport)
+        customer, passport, kredit = self.__customer.find_customer(passport)
         print("")
         print("\t{:<18}\t{:>18}".format("Nafn", "Vegabréfsnúmer"))
         print("\t" + line)
-        print(customer)
+        print("{} {} {}".format(customer, passport, kredit))
 
         print("\n\t{:<30}\n\t{:<10}\n\t{:<10}\n\t{:<10}".format(choice1, choice2, choice3, choice4))
         choice = input("\n\tValmöguleiki: ")
@@ -178,22 +178,8 @@ class StaffUI():
 
                     print("{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}".format(car_model.capitalize(), car_year, car_plate, car_miles, car_color.capitalize(), car_fuel_type, car_status, car_catagory))
                    
-                    
-<<<<<<< HEAD
-        elif choice == '2':
-            pass
-        elif choice == '3':
-            pass
-        elif choice == '4':
-            pass
-        elif choice == '5':
-            self.main_menu()
-        else:
-            print("\nVitlaust val, vinsamlegast veldu aftur!")
-            self.print_car_menu()        
+                          
         
-=======
->>>>>>> f59c676728a2981669733b4f94ebf2829552f6be
     def print_price_list(self):
         insurance = "Aukatrygging 30.000 kr."
         choice1 = "Smábílar"
@@ -241,8 +227,10 @@ class StaffUI():
         choice = input("\n\tValmöguleiki: ")
         
         if choice == "1":
-            idnumber = input("Settu inn vegabréfsnúmer")
-            self.__ordercar.order_price()
+            passport = input("\n\tVegabréfsnúmer: ").upper()
+            customer, passport, kredit = self.__customer.find_customer(passport)
+            fullprice = self.__ordercar.order_price()
+            print("\n\t\tHeildarverð:", fullprice)
         elif choice == "2":
             pass
         elif choice == "3":
