@@ -1,12 +1,15 @@
 from services.CarService import CarService
 from services.Order import Order
 from services.CustomerService import CustomerService
+from services.OrderCar import OrderCar
 
 class StaffUI():
     def __init__(self):
         self.__cars = CarService()
         self.__order = Order()
         self.__customer = CustomerService()
+        self.__ordercar = OrderCar()
+        
         
     def main_menu(self):
         """Prints out the main menu and returns a input sentence asking for a choice"""
@@ -159,6 +162,7 @@ class StaffUI():
                         car_status = "Tekinn"
 
                     print("{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}".format(car_model.capitalize(), car_year, car_plate, car_miles, car_color.capitalize(), car_fuel_type, car_status, car_catagory))
+                   
                     
         elif choice == '2':
             pass
@@ -170,7 +174,7 @@ class StaffUI():
             self.main_menu()
         else:
             print("\nVitlaust val, vinsamlegast veldu aftur!")
-            self.print_car_menu()
+            self.print_car_menu()        
         
     def print_price_list(self):
         insurance = "Aukatrygging 30.000 kr."
@@ -219,7 +223,8 @@ class StaffUI():
         choice = input("\n\tValmöguleiki: ")
         
         if choice == "1":
-            pass
+            idnumber = input("Settu inn vegabréfsnúmer")
+            self.__ordercar.order_price()
         elif choice == "2":
             pass
         elif choice == "3":
