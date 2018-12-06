@@ -78,8 +78,7 @@ class StaffUI():
         choice = input("\n\tValmöguleiki: ")
 
         if choice == '1':
-            passport = input("\n\tVegabréfsnúmer: ")
-            self.__customer.find_customer(passport)
+            self.search_customer()
         elif choice == '2':
             pass
         elif choice == '3':
@@ -87,6 +86,35 @@ class StaffUI():
         else:
             print("\nVitlaust val, vinsamlegast veldu aftur!")
             self.print_clients_menu()
+
+    def search_customer(self):
+        #prentar út fundið viðskiptavin
+        choice1 = "1. Skoða pantanir"
+        choice2 = "2. Breyta upplýsingum"
+        choice3 = "3. Afskrá viðskiptavin"
+        choice4 = "4. Til baka"
+        
+        line = "-"*43
+        passport = input("\n\tVegabréfsnúmer: ")
+        customer = self.__customer.find_customer(passport)
+        print("")
+        print("\t{:<18}\t{:>18}".format("Nafn", "Vegabréfsnúmer"))
+        print("\t" + line)
+        print(customer)
+
+        print("\n\t{:<30}\n\t{:<10}\n\t{:<10}\n\t{:<10}".format(choice1, choice2, choice3, choice4))
+        choice = input("\n\tValmöguleiki: ")
+
+        if choice == '1':
+            pass
+        elif choice == '2':
+            pass
+        elif choice == '3':
+            pass
+        elif choice == '4':
+            self.print_clients_menu()
+
+
 
     def print_car_menu(self):
         """Prints out the cars menu and returns a input sentence asking for a choice"""
