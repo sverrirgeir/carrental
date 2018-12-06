@@ -133,7 +133,22 @@ class StaffUI():
         choice = input("\n\tValmöguleiki: ")
 
         if choice == '1':
-            with open("./data/cars.txt", "r") as car_string:
+            self.list_of_cars()
+        elif choice == '2':
+            pass
+        elif choice == '3':
+            pass
+        elif choice == '4':
+            pass
+        elif choice == '5':
+            self.main_menu()
+        else:
+            print("\nVitlaust val, vinsamlegast veldu aftur!")
+            self.print_car_menu()
+
+    def list_of_cars(self):
+        #ath þarf að færa open í repo
+        with open("./data/cars.txt", "r") as car_string:
                 print("\n{:>4}{:>15}{:>8}{:>9}{:>7}{:>10}{:>6}{:>9}".format("Tegund", "Árgerð", "Númer", "Keyrsla", "Litur", "Eldsneyti", "Staða", "Flokkur"))
                 print("-"*73)
                 for line in car_string:
@@ -164,6 +179,7 @@ class StaffUI():
                     print("{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}".format(car_model.capitalize(), car_year, car_plate, car_miles, car_color.capitalize(), car_fuel_type, car_status, car_catagory))
                    
                     
+<<<<<<< HEAD
         elif choice == '2':
             pass
         elif choice == '3':
@@ -176,6 +192,8 @@ class StaffUI():
             print("\nVitlaust val, vinsamlegast veldu aftur!")
             self.print_car_menu()        
         
+=======
+>>>>>>> f59c676728a2981669733b4f94ebf2829552f6be
     def print_price_list(self):
         insurance = "Aukatrygging 30.000 kr."
         choice1 = "Smábílar"
