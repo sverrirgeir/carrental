@@ -1,10 +1,12 @@
 from services.CarService import CarService
 from services.Order import Order
+from services.CustomerService import CustomerService
 
 class StaffUI():
     def __init__(self):
         self.__cars = CarService()
         self.__order = Order()
+        self.__customer = CustomerService()
         
     def main_menu(self):
         """Prints out the main menu and returns a input sentence asking for a choice"""
@@ -84,7 +86,8 @@ class StaffUI():
         choice = input("\tValmöguleiki: ")
 
         if choice == '1':
-            pass
+            passport = input("\n\tVegabréfsnúmer: ")
+            self.__customer.find_customer(passport)
         elif choice == '2':
             pass
         elif choice == '3':
