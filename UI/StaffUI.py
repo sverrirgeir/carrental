@@ -89,13 +89,14 @@ class StaffUI():
 
     def search_customer(self):
         #prentar út fundið viðskiptavin
+        #ATHATHATH virkar ekki ef slegið er inn vitlaust fyrst og svo rétt skil ekki alveg
         choice1 = "1. Skoða pantanir"
         choice2 = "2. Breyta upplýsingum"
         choice3 = "3. Afskrá viðskiptavin"
         choice4 = "4. Til baka"
         
         line = "-"*43
-        passport = input("\n\tVegabréfsnúmer: ")
+        passport = input("\n\tVegabréfsnúmer: ").upper()
         customer = self.__customer.find_customer(passport)
         print("")
         print("\t{:<18}\t{:>18}".format("Nafn", "Vegabréfsnúmer"))

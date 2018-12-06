@@ -13,4 +13,10 @@ class CustomerService:
 
     def valid_number(self, passport):
         """checks if the passport number is valid"""
-        return True
+        if len(passport) == 8:
+            return True
+        else:
+            print("\tNot a valid number!")
+            self.passport = input("\tInput again: ").strip().upper()
+            self.find_customer(self.passport)
+            return
