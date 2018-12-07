@@ -2,11 +2,12 @@ from services.CarService import CarService
 from services.Order import Order
 from services.CustomerService import CustomerService
 from services.OrderCar import OrderCar
+from Models.Order import Order
+from Models.Customer import Customer
 
 class StaffUI():
     def __init__(self):
         self.__cars = CarService()
-        self.__order = Order()
         self.__customer = CustomerService()
         self.__ordercar = OrderCar()
         
@@ -84,7 +85,7 @@ class StaffUI():
         if choice == '1':
             self.search_customer()
         elif choice == "2":
-            pass
+            self.add_new_customer()
         elif choice == '3':
             pass
         elif choice == '4':
@@ -92,6 +93,28 @@ class StaffUI():
         else:
             print("\nVitlaust val, vinsamlegast veldu aftur!")
             self.print_clients_menu()
+    
+    def add_new_customer(self):
+        first_name = input("\tFornafn: ")
+        middle_name = input("\tmillinafn(ef á við annars ekkert): ")
+        last_name = input("\tEftirnafm: ")
+        passport = input("\tVegabréfsnúmer: ").upper()
+        kredit = input("\tKreditkortanúmer(engin bandstrik): ")
+        new_customer = Customer(first_name, last_name, passport, kredit, middle_name)
+        customer = self.__customer.add_customer(new_customer)
+        if customer == 1:
+            print("\n\tEkki rétt Vegabréfsnúmer\n")
+            self.add_new_customer()
+            return
+        elif customer == 2:
+            print("\n\tEkki rétt kreditkortanúmer\n")
+            self.add_new_customer()
+            return
+        elif customer == 3:
+            print("\n\tViðskiptavinur hefur verið skráður!\n")
+            self.main_menu()
+
+
 
     def search_customer(self):
         #prentar út fundið viðskiptavin
@@ -195,6 +218,7 @@ class StaffUI():
             self.print_price_list()
 
     def print_order_car_menu(self):
+        """Prentar út pöntunarskjá fyrir pöntun"""
         choice1 = "1. Núverandi Viðskiptavinir"
         choice2 = "2. Nýr Viðskiptavinur"
         choice3 = "3. Til baka"
@@ -206,10 +230,22 @@ class StaffUI():
         
         if choice == "1":
             passport = input("\n\tVegabréfsnúmer: ").upper()
+            #sækir find customer fallið og skila gildum sem notuð eru til að geyma gögn
             customer, passport, kredit = self.__customer.find_customer(passport)
-            fullprice,today,someday = self.__ordercar.order_price()
-            print("\n\t\tHeildarverð:", fullprice)
-            skrifa = self.__ordercar.write_car_order(passport, today, someday, fullprice)
+
+            if customer == 0:
+                print("\n\tEngin viðskiptavinur er skráður á þetta númer!!")
+                self.print_order_car_menu()
+                return
+            if customer == 1:
+                print("\n\tEkki rétt skráð inn! \n\tVegabréfsnúmer á að vera 8 letur á lengd")
+                self.print_order_car_menu()
+                return
+            fullprice,today,someday,carchoice = self.__ordercar.order_price()
+            print("\n\t\tHeildarverð: {:,}".format(fullprice))
+            new_order = Order(passport, today, someday, fullprice, carchoice)
+            self.__ordercar.get_car_order(new_order)
+
         elif choice == "2":
             pass
         elif choice == "3":

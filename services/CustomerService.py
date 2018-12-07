@@ -11,12 +11,27 @@ class CustomerService:
         else:
             return 1, 1, 1
             
-
-
     def valid_number(self, passport):
         """checks if the passport number is valid"""
         if len(passport) == 8:
             return True
         else:
             return False
+
+    def valid_kredit_number(self, kredit):
+        """checks if the kredit card number is valid"""
+        if len(kredit) == 16:
+            return True
+        else:
+            return False
+    
+    def add_customer(self, new_customer):
+        if self.valid_kredit_number(new_customer.get_kredit()):
+            if self.valid_number(new_customer.get_passport()):
+                self.__customer.write_new_customer(new_customer)
+                return 3
+            else:
+                return 1
+        else:
+            return 2
             
