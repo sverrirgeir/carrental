@@ -8,6 +8,8 @@ class CustomerService:
         """sends a valid passport number into customerrepo to find the customer"""
         if self.valid_number(passport):
             return self.__customer.find_customer(passport)
+        else:
+            return 1, 1, 1
             
 
 
@@ -16,7 +18,5 @@ class CustomerService:
         if len(passport) == 8:
             return True
         else:
-            print("\tNot a valid number!")
-            self.passport = input("\tInput again: ").strip().upper()
-            self.find_customer(self.passport)
-            return
+            return False
+            

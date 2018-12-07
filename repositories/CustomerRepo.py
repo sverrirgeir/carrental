@@ -1,5 +1,6 @@
 from Models.Customer import Customer
 
+
 class CustomerRepo:
     def __init__(self):
         self.__customer = ""
@@ -21,6 +22,6 @@ class CustomerRepo:
                 else:
                     not_found = 0
             if not_found == 0:
-                return "Not found", "Not found", "Not found"
+                return 0, 0, 0 
 
                                              

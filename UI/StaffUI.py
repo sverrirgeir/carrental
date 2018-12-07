@@ -104,6 +104,14 @@ class StaffUI():
         line = "-"*80
         passport = input("\n\tVegabréfsnúmer: ").upper()
         customer, passport, kredit = self.__customer.find_customer(passport)
+        if customer == 0:
+            print("\n\tEngin viðskiptavinur er skráður á þetta númer!!")
+            self.print_clients_menu()
+        if customer == 1:
+            print("\n\tEkki rétt skráð inn! \n\tVegabréfsnúmer á að vera 8 letur á lengd")
+            self.print_clients_menu()
+
+
         print("")
         print("\t{:<27}{:^27}{:^27}".format("Nafn", "Vegabréfsnúmer", "Kreditkortanúmer"))
         print("\t" + line)
