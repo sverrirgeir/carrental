@@ -9,15 +9,18 @@ class OrderCar:
     self.__write_order = OrderRepo()
 
   def date_time_return(self):
+    '''Fallið tekur inn input DD/MM/YYYY og skilar síðan út í mismunandi breytum'''
     day, month, year = input("\n\tAfhendingardagur(DD/MM/YYYY): ").split("/")
     day = int(day)
     month = int(month)
     year = int(year)
+    '''Hérna formata ég yfir í datetime formið til að geta borið saman föllin'''
     today = datetime.date(year, month, day)
     ret_day, ret_month, ret_year = input("\tSkiladagur(DD/MM/YYYY): ").split("/")
     ret_day = int(ret_day)
     ret_month = int(ret_month)
     ret_year = int(ret_year)
+    '''Við tökum baða dagana núna og berum þá saman til að geta séð hver mismunur dagana er mikill til að reikna út verð'''
     someday = datetime.date(ret_year, ret_month, ret_day) 
     return today,someday
 
