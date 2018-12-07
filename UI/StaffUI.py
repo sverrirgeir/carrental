@@ -194,6 +194,7 @@ class StaffUI():
             self.print_price_list()
 
     def print_order_car_menu(self):
+        """Prentar út pöntunarskjá fyrir pöntun"""
         choice1 = "1. Núverandi Viðskiptavinir"
         choice2 = "2. Nýr Viðskiptavinur"
         choice3 = "3. Til baka"
@@ -205,10 +206,21 @@ class StaffUI():
         
         if choice == "1":
             passport = input("\n\tVegabréfsnúmer: ").upper()
+            #sækir find customer fallið og skila gildum sem notuð eru til að geyma gögn
             customer, passport, kredit = self.__customer.find_customer(passport)
+
+            if customer == 0:
+                print("\n\tEngin viðskiptavinur er skráður á þetta númer!!")
+                self.print_order_car_menu()
+                return
+            if customer == 1:
+                print("\n\tEkki rétt skráð inn! \n\tVegabréfsnúmer á að vera 8 letur á lengd")
+                self.print_order_car_menu()
+                return
             fullprice,today,someday = self.__ordercar.order_price()
             print("\n\t\tHeildarverð:", fullprice)
-            skrifa = self.__ordercar.write_car_order(passport, today, someday, fullprice)
+            self.__ordercar.write_car_order(passport, today, someday, fullprice)
+
         elif choice == "2":
             pass
         elif choice == "3":

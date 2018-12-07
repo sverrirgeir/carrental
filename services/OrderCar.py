@@ -47,14 +47,14 @@ class OrderCar:
   
   def write_car_order(self,passport,today,someday,fullprice):
     passport = str(passport)
-    today = str(passport)
+    today = str(today)
     someday = str(someday)
-    fullprice = str(someday)
+    fullprice = str(fullprice)
+    order_string = passport + "," + today + "," + someday + "," + fullprice
+    
     with open("./data/orders.txt", "w") as customerfile:
-      customerfile.write(passport) 
-      customerfile.write(today) 
-      customerfile.write(someday) 
-      customerfile.write(fullprice) 
+      customerfile.write(order_string)
+    
 
 
     #def store_data(self, passport, fullprice, date1, date2)
