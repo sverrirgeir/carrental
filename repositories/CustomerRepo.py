@@ -24,4 +24,11 @@ class CustomerRepo:
             if not_found == 0:
                 return 0, 0, 0 
 
+    def write_new_customer(self, new_customer):
+        """Writes to customer.txt the data for a new customer"""
+        customer_string = new_customer.get_write()
+        with open("./data/customer.txt", "a") as customerfile:
+            customerfile.write(customer_string)
+            customerfile.write("\n")
+            return 3
                                              
