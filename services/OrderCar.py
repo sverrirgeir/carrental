@@ -1,19 +1,20 @@
 import datetime
+from Models.Order import Order
+from repositories.OrderRepo import OrderRepo
 #clasinn Order car tekur inn afhendingardag, skiladag spyr notneda hvort hann vilji 
 # aukatryggingu, reiknar svo út heildarverð og skilar því
 class OrderCar:
   def __init__(self):
     self.__cars = ""
+    self.__write_order = OrderRepo()
 
   def date_time_return(self):
-    print("\tAfhendingardagur:")
-    day, month, year = input("\tDD/MM/YYYY\n\t").split("/")
+    day, month, year = input("\n\tAfhendingardagur(DD/MM/YYYY): ").split("/")
     day = int(day)
     month = int(month)
     year = int(year)
     today = datetime.date(year, month, day)
-    print("\tSkiladagur: ")
-    retday, retmonth, retyear = input("\tDD/MM/YYYY\n\t").split("/")
+    retday, retmonth, retyear = input("\tSkiladagur(DD/MM/YYYY): ").split("/")
     retday = int(retday)
     retmonth = int(retmonth)
     retyear = int(retyear)
@@ -24,8 +25,8 @@ class OrderCar:
     today,someday = self.date_time_return()
     diff = someday - today  
     days = diff.days
-    print("\tVeldu tegund: \n\t1. Smábíll \n\t2. Fólksbíll \n\t3. jeppi \n\t4. Húsbíll " )
-    carchoice = int(input("\tVal: "))
+    print("\n\tVeldu tegund: \n\n\t\t1. Smábíll \n\t\t2. Fólksbíll \n\t\t3. jeppi \n\t\t4. Húsbíll " )
+    carchoice = int(input("\n\t\tVal: "))
     price = 0
     if carchoice == 1:
       price = days * 10000
@@ -43,17 +44,10 @@ class OrderCar:
       fullprice = price + 30000
     else:
       fullprice = price
-    return fullprice,today,someday
+    return fullprice,today,someday,carchoice
   
-  def write_car_order(self,passport,today,someday,fullprice):
-    passport = str(passport)
-    today = str(today)
-    someday = str(someday)
-    fullprice = str(fullprice)
-    order_string = passport + "," + today + "," + someday + "," + fullprice
-    
-    with open("./data/orders.txt", "w") as customerfile:
-      customerfile.write(order_string)
+  def get_car_order(self, order):
+    return self.__write_order.write_car_order(order)
     
 
 

@@ -1,9 +1,10 @@
 class Order:
-    def __init__(self, passport, day1, day2, amount):
+    def __init__(self, passport, day1, day2, amount, carchoice):
         self.passport = passport 
         self.pick_up_day = day1
         self.return_day = day2
         self.amount = amount
+        self.type = carchoice
 
     def __str__ (self):
         return "{} {} {} {}".format( self.passport, self.pick_up_day, self.return_day, self.amount)
@@ -19,5 +20,11 @@ class Order:
     
     def get_amount(self):
         return self.amount
+    
+    def get_type(self):
+        return self.type
+
+    def get_write(self):
+        return "{},{},{},{},{}".format(self.passport, self.pick_up_day, self.return_day, self.amount, self.type)
     
 
