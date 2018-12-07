@@ -18,7 +18,12 @@ class CarRepo:
                     car_color = car_list[4]
                     car_fuel_type = car_list[5]
                     car_catagory = car_list[6]
-                    car_status = car_list[7]
+                    car_status = car_list[7].strip()
+
+                    if car_status == "True":
+                        car_status = "Laus"
+                    elif car_status == "False":
+                        car_status = "Tekinn"
 
                     if car_catagory == '1':
                         car_catagory = "Smábíll"
@@ -29,13 +34,9 @@ class CarRepo:
                     else:
                         car_catagory = "Húsbíll"
 
-                    if car_status:
-                        car_status = "Laus"
-                    else:
-                        car_status = "Tekinn"
-
                     print("{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}".format(car_model.capitalize(), car_year, car_plate, car_miles, car_color.capitalize(), car_fuel_type, car_status, car_catagory))
+    #                 return car_model, car_year, car_plate, car_miles, car_color, car_fuel_type, car_catagory, car_status
 
-                return
-
-                    #return car_model, car_year, car_plate, car_miles, car_color, car_fuel_type, car_catagory, car_status
+    # def print_all_cars(self):
+    #     self.list_of_cars()
+    #     print("{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}".format(car_model.capitalize(), car_year, car_plate, car_miles, car_color.capitalize(), car_fuel_type, car_status, car_catagory))
