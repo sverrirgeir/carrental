@@ -73,18 +73,21 @@ class StaffUI():
     
     def print_clients_menu(self):
         choice1 = "1. Fletta upp Viðskiptavin"
-        choice2 = "2. Listi af Viðskiptavinum"
-        choice3 = "3. Til baka"
+        choice2 = "2. Skrá nýjan viðskiptavin"
+        choice3 = "3. Listi af Viðskiptavinum"
+        choice4 = "4. Til baka"
   
         print("\n\t{:^10}".format("Viðskiptavinir"))
-        print("\n\t{:<30}\n\t{:<10}\n\t{:<10}".format(choice1, choice2, choice3,))
+        print("\n\t{:<30}\n\t{:<10}\n\t{:<10}\n\t{:<10}".format(choice1, choice2, choice3,choice4))
         choice = input("\n\tValmöguleiki: ")
 
         if choice == '1':
             self.search_customer()
-        elif choice == '2':
+        elif choice == "2":
             pass
         elif choice == '3':
+            pass
+        elif choice == '4':
             self.main_menu()
         else:
             print("\nVitlaust val, vinsamlegast veldu aftur!")
@@ -98,13 +101,13 @@ class StaffUI():
         choice3 = "3. Afskrá viðskiptavin"
         choice4 = "4. Til baka"
         
-        line = "-"*43
+        line = "-"*80
         passport = input("\n\tVegabréfsnúmer: ").upper()
         customer, passport, kredit = self.__customer.find_customer(passport)
         print("")
-        print("\t{:<18}\t{:>18}".format("Nafn", "Vegabréfsnúmer"))
+        print("\t{:<27}{:^27}{:^27}".format("Nafn", "Vegabréfsnúmer", "Kreditkortanúmer"))
         print("\t" + line)
-        print("{} {} {}".format(customer, passport, kredit))
+        print("\t{:<27} {:^27} {:^27}".format(customer, passport, kredit))
 
         print("\n\t{:<30}\n\t{:<10}\n\t{:<10}\n\t{:<10}".format(choice1, choice2, choice3, choice4))
         choice = input("\n\tValmöguleiki: ")
@@ -196,6 +199,9 @@ class StaffUI():
             passport = input("\n\tVegabréfsnúmer: ").upper()
             customer, passport, kredit = self.__customer.find_customer(passport)
             fullprice = self.__ordercar.order_price()
+            print("\n\t\tHeildarverð:", fullprice)
+
+            
             print("\n\t\tHeildarverð:", fullprice)
         elif choice == "2":
             pass
