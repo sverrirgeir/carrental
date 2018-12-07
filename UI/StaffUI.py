@@ -206,11 +206,9 @@ class StaffUI():
         if choice == "1":
             passport = input("\n\tVegabréfsnúmer: ").upper()
             customer, passport, kredit = self.__customer.find_customer(passport)
-            fullprice = self.__ordercar.order_price()
+            fullprice,today,someday = self.__ordercar.order_price()
             print("\n\t\tHeildarverð:", fullprice)
-
-            
-            print("\n\t\tHeildarverð:", fullprice)
+            skrifa = self.__ordercar.write_car_order(passport, today, someday, fullprice)
         elif choice == "2":
             pass
         elif choice == "3":

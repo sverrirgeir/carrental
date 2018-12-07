@@ -43,7 +43,19 @@ class OrderCar:
       fullprice = price + 30000
     else:
       fullprice = price
-    return fullprice
+    return fullprice,today,someday
+  
+  def write_car_order(self,passport,today,someday,fullprice):
+    passport = str(passport)
+    today = str(passport)
+    someday = str(someday)
+    fullprice = str(someday)
+    with open("./data/orders.txt", "w") as customerfile:
+      customerfile.write(passport) 
+      customerfile.write(today) 
+      customerfile.write(someday) 
+      customerfile.write(fullprice) 
+
 
     #def store_data(self, passport, fullprice, date1, date2)
 
