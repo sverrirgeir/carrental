@@ -43,7 +43,8 @@ class OrderCar:
       print("Ekkert valið")  
       self.order_price()
     insurance = input("\tAukatryggingu?(y/n): ")
-    if insurance == "y":
+    ''' hér breyti ég inputinu í lower til að engin misskilningur verði á'''
+    if insurance.lower() == "y":
       fullprice = price + 30000
     else:
       fullprice = price
