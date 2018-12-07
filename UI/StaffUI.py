@@ -95,7 +95,6 @@ class StaffUI():
 
     def search_customer(self):
         #prentar út fundið viðskiptavin
-        #ATHATHATH virkar ekki ef slegið er inn vitlaust fyrst og svo rétt skil ekki alveg
         choice1 = "1. Skoða pantanir"
         choice2 = "2. Breyta upplýsingum"
         choice3 = "3. Afskrá viðskiptavin"
@@ -107,10 +106,11 @@ class StaffUI():
         if customer == 0:
             print("\n\tEngin viðskiptavinur er skráður á þetta númer!!")
             self.print_clients_menu()
+            return
         if customer == 1:
             print("\n\tEkki rétt skráð inn! \n\tVegabréfsnúmer á að vera 8 letur á lengd")
             self.print_clients_menu()
-
+            return
 
         print("")
         print("\t{:<27}{:^27}{:^27}".format("Nafn", "Vegabréfsnúmer", "Kreditkortanúmer"))
@@ -194,6 +194,7 @@ class StaffUI():
             self.print_price_list()
 
     def print_order_car_menu(self):
+        """Prentar út pöntunarskjá fyrir pöntun"""
         choice1 = "1. Núverandi Viðskiptavinir"
         choice2 = "2. Nýr Viðskiptavinur"
         choice3 = "3. Til baka"
@@ -205,12 +206,21 @@ class StaffUI():
         
         if choice == "1":
             passport = input("\n\tVegabréfsnúmer: ").upper()
+            #sækir find customer fallið og skila gildum sem notuð eru til að geyma gögn
             customer, passport, kredit = self.__customer.find_customer(passport)
-            fullprice = self.__ordercar.order_price()
-            print("\n\t\tHeildarverð:", fullprice)
 
-            
+            if customer == 0:
+                print("\n\tEngin viðskiptavinur er skráður á þetta númer!!")
+                self.print_order_car_menu()
+                return
+            if customer == 1:
+                print("\n\tEkki rétt skráð inn! \n\tVegabréfsnúmer á að vera 8 letur á lengd")
+                self.print_order_car_menu()
+                return
+            fullprice,today,someday = self.__ordercar.order_price()
             print("\n\t\tHeildarverð:", fullprice)
+            self.__ordercar.write_car_order(passport, today, someday, fullprice)
+
         elif choice == "2":
             pass
         elif choice == "3":
