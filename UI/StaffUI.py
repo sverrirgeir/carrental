@@ -231,6 +231,9 @@ class StaffUI():
             customer, passport, kredit = self.__customer.find_customer(passport)
             fullprice = self.__ordercar.order_price()
             print("\n\t\tHeildarverð:", fullprice)
+
+            
+            print("\n\t\tHeildarverð:", fullprice)
         elif choice == "2":
             pass
         elif choice == "3":

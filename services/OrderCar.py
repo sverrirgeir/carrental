@@ -16,12 +16,13 @@ class OrderCar:
     retday = int(retday)
     retmonth = int(retmonth)
     retyear = int(retyear)
-    someday = datetime.date(retyear, retmonth, retday)
-    diff = someday - today    
-    return diff.days
+    someday = datetime.date(retyear, retmonth, retday)  
+    return today,someday
 
   def order_price(self):
-    days = self.date_time_return()
+    today,someday = self.date_time_return()
+    diff = someday - today  
+    days = diff.days
     print("\tVeldu tegund: \n\t1. Smábíll \n\t2. Fólksbíll \n\t3. jeppi \n\t4. Húsbíll " )
     carchoice = int(input("\tVal: "))
     price = 0
@@ -42,6 +43,9 @@ class OrderCar:
     else:
       fullprice = price
     return fullprice
+
+    #def store_data(self, passport, fullprice, date1, date2)
+
 
     #þurfum að gera þetta fall á morgun sem geymir gögn
     #def store_order_data(self):
