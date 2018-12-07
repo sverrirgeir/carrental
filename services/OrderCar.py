@@ -7,13 +7,13 @@ class OrderCar:
 
   def date_time_return(self):
     print("\tAfhendingardagur:")
-    day, month, year = input("DD/MM/YYYY\n").split("/")
+    day, month, year = input("\tDD/MM/YYYY\n\t").split("/")
     day = int(day)
     month = int(month)
     year = int(year)
     today = datetime.date(year, month, day)
     print("\tSkiladagur: ")
-    retday, retmonth, retyear = input("DD/MM/YYYY\n").split("/")
+    retday, retmonth, retyear = input("\tDD/MM/YYYY\n\t").split("/")
     retday = int(retday)
     retmonth = int(retmonth)
     retyear = int(retyear)
