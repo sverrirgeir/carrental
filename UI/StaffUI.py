@@ -95,7 +95,6 @@ class StaffUI():
 
     def search_customer(self):
         #prentar út fundið viðskiptavin
-        #ATHATHATH virkar ekki ef slegið er inn vitlaust fyrst og svo rétt skil ekki alveg
         choice1 = "1. Skoða pantanir"
         choice2 = "2. Breyta upplýsingum"
         choice3 = "3. Afskrá viðskiptavin"
@@ -107,10 +106,11 @@ class StaffUI():
         if customer == 0:
             print("\n\tEngin viðskiptavinur er skráður á þetta númer!!")
             self.print_clients_menu()
+            return
         if customer == 1:
             print("\n\tEkki rétt skráð inn! \n\tVegabréfsnúmer á að vera 8 letur á lengd")
             self.print_clients_menu()
-
+            return
 
         print("")
         print("\t{:<27}{:^27}{:^27}".format("Nafn", "Vegabréfsnúmer", "Kreditkortanúmer"))
