@@ -1,21 +1,29 @@
 import datetime
-
+#clasinn Order car tekur inn afhendingardag, skiladag spyr notneda hvort hann vilji 
+# aukatryggingu, reiknar svo út heildarverð og skilar því
 class OrderCar:
   def __init__(self):
     self.__cars = ""
 
   def date_time_return(self):
-    today = datetime.date.today()
-    print("\tSkiladagur:")
-    year = int(input("\tÁr: "))
-    month = int(input("\tMánuður: "))
-    day = int(input("\tDagur: "))
-    someday = datetime.date(year, month, day)
-    diff = someday - today    
-    return diff.days
+    print("\tAfhendingardagur:")
+    day, month, year = input("DD/MM/YYYY\n").split("/")
+    day = int(day)
+    month = int(month)
+    year = int(year)
+    today = datetime.date(year, month, day)
+    print("\tSkiladagur: ")
+    retday, retmonth, retyear = input("DD/MM/YYYY\n").split("/")
+    retday = int(retday)
+    retmonth = int(retmonth)
+    retyear = int(retyear)
+    someday = datetime.date(retyear, retmonth, retday)  
+    return today,someday
 
   def order_price(self):
-    days = self.date_time_return()
+    today,someday = self.date_time_return()
+    diff = someday - today  
+    days = diff.days
     print("\tVeldu tegund: \n\t1. Smábíll \n\t2. Fólksbíll \n\t3. jeppi \n\t4. Húsbíll " )
     carchoice = int(input("\tVal: "))
     price = 0
@@ -36,6 +44,9 @@ class OrderCar:
     else:
       fullprice = price
     return fullprice
+
+    #def store_data(self, passport, fullprice, date1, date2)
+
 
     #þurfum að gera þetta fall á morgun sem geymir gögn
     #def store_order_data(self):
