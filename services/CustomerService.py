@@ -21,7 +21,8 @@ class CustomerService:
     def valid_kredit_number(self, kredit):
         """checks if the kredit card number is valid"""
         if len(kredit) == 16:
-            return True
+            if type(kredit) = int:
+                return True
         else:
             return False
     
