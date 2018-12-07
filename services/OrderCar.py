@@ -14,11 +14,11 @@ class OrderCar:
     month = int(month)
     year = int(year)
     today = datetime.date(year, month, day)
-    retday, retmonth, retyear = input("\tSkiladagur(DD/MM/YYYY): ").split("/")
-    retday = int(retday)
-    retmonth = int(retmonth)
-    retyear = int(retyear)
-    someday = datetime.date(retyear, retmonth, retday)  
+    ret_day, ret_month, ret_year = input("\tSkiladagur(DD/MM/YYYY): ").split("/")
+    ret_day = int(ret_day)
+    ret_month = int(ret_month)
+    ret_year = int(ret_year)
+    someday = datetime.date(ret_year, ret_month, ret_day) 
     return today,someday
 
   def order_price(self):
