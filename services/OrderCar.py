@@ -1,5 +1,6 @@
 import datetime
-
+#clasinn Order car tekur inn afhendingardag, skiladag spyr notneda hvort hann vilji 
+# aukatryggingu, reiknar svo út heildarverð og skilar því
 class OrderCar:
   def __init__(self):
     self.__cars = ""
