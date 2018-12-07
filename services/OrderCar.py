@@ -5,12 +5,18 @@ class OrderCar:
     self.__cars = ""
 
   def date_time_return(self):
-    today = datetime.date.today()
-    print("\tSkiladagur:")
-    year = int(input("\tÁr: "))
-    month = int(input("\tMánuður: "))
-    day = int(input("\tDagur: "))
-    someday = datetime.date(year, month, day)
+    print("\tAfhendingardagur:")
+    day, month, year = input("DD/MM/YYYY\n").split("/")
+    day = int(day)
+    month = int(month)
+    year = int(year)
+    today = datetime.date(year, month, day)
+    print("\tSkiladagur: ")
+    retday, retmonth, retyear = input("DD/MM/YYYY\n").split("/")
+    retday = int(retday)
+    retmonth = int(retmonth)
+    retyear = int(retyear)
+    someday = datetime.date(retyear, retmonth, retday)
     diff = someday - today    
     return diff.days
 
