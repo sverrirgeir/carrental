@@ -51,8 +51,8 @@ class StaffUI():
         
         choice1 = "1. Skrá nýja pöntun"
         choice2 = "2. Leita af pöntun"
-        choice3 ="3. Pöntunarlisti"
-        choice4 ="4. Til baka"
+        choice3 = "3. Pöntunarlisti"
+        choice4 = "4. Til baka"
 
         print("\n\t{:^10}".format("Pantanir"))
         print("\n\t{:<30}\n\t{:<10}\n\t{:<10}\n\t{:<10}".format(choice1, choice2, choice3, choice4))
@@ -73,18 +73,21 @@ class StaffUI():
     
     def print_clients_menu(self):
         choice1 = "1. Fletta upp Viðskiptavin"
-        choice2 = "2. Listi af Viðskiptavinum"
-        choice3 = "3. Til baka"
+        choice2 = "2. Skrá nýjan viðskiptavin"
+        choice3 = "3. Listi af Viðskiptavinum"
+        choice4 = "4. Til baka"
   
         print("\n\t{:^10}".format("Viðskiptavinir"))
-        print("\n\t{:<30}\n\t{:<10}\n\t{:<10}".format(choice1, choice2, choice3,))
+        print("\n\t{:<30}\n\t{:<10}\n\t{:<10}\n\t{:<10}".format(choice1, choice2, choice3,choice4))
         choice = input("\n\tValmöguleiki: ")
 
         if choice == '1':
             self.search_customer()
-        elif choice == '2':
+        elif choice == "2":
             pass
         elif choice == '3':
+            pass
+        elif choice == '4':
             self.main_menu()
         else:
             print("\nVitlaust val, vinsamlegast veldu aftur!")
@@ -98,13 +101,21 @@ class StaffUI():
         choice3 = "3. Afskrá viðskiptavin"
         choice4 = "4. Til baka"
         
-        line = "-"*43
+        line = "-"*80
         passport = input("\n\tVegabréfsnúmer: ").upper()
         customer, passport, kredit = self.__customer.find_customer(passport)
+        if customer == 0:
+            print("\n\tEngin viðskiptavinur er skráður á þetta númer!!")
+            self.print_clients_menu()
+        if customer == 1:
+            print("\n\tEkki rétt skráð inn! \n\tVegabréfsnúmer á að vera 8 letur á lengd")
+            self.print_clients_menu()
+
+
         print("")
-        print("\t{:<18}\t{:>18}".format("Nafn", "Vegabréfsnúmer"))
+        print("\t{:<27}{:^27}{:^27}".format("Nafn", "Vegabréfsnúmer", "Kreditkortanúmer"))
         print("\t" + line)
-        print("{} {} {}".format(customer, passport, kredit))
+        print("\t{:<27} {:^27} {:^27}".format(customer, passport, kredit))
 
         print("\n\t{:<30}\n\t{:<10}\n\t{:<10}\n\t{:<10}".format(choice1, choice2, choice3, choice4))
         choice = input("\n\tValmöguleiki: ")
@@ -133,7 +144,7 @@ class StaffUI():
         choice = input("\n\tValmöguleiki: ")
 
         if choice == '1':
-            self.list_of_cars()
+            self.__cars.print_cars()
         elif choice == '2':
             pass
         elif choice == '3':
@@ -144,41 +155,7 @@ class StaffUI():
             self.main_menu()
         else:
             print("\nVitlaust val, vinsamlegast veldu aftur!")
-            self.print_car_menu()
-
-    def list_of_cars(self):
-        #ath þarf að færa open í repo
-        with open("./data/cars.txt", "r") as car_string:
-                print("\n{:>4}{:>15}{:>8}{:>9}{:>7}{:>10}{:>6}{:>9}".format("Tegund", "Árgerð", "Númer", "Keyrsla", "Litur", "Eldsneyti", "Staða", "Flokkur"))
-                print("-"*73)
-                for line in car_string:
-                    car_list = line.split(",")
-                    car_model = car_list[0]
-                    car_year = car_list[1]
-                    car_plate = car_list[2]
-                    car_miles = car_list[3]
-                    car_color = car_list[4]
-                    car_fuel_type = car_list[5]
-                    car_catagory = car_list[6]
-                    car_status = car_list[7]
-
-                    if car_catagory == '1':
-                        car_catagory = "Smábíll"
-                    elif car_catagory == '2':
-                        car_catagory = "Fólksbíll"
-                    elif car_catagory == '3':
-                        car_catagory = "Jeppi"
-                    else:
-                        car_catagory = "Húsbíll"
-
-                    if car_status:
-                        car_status = "Laus"
-                    else:
-                        car_status = "Tekinn"
-
-                    print("{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}".format(car_model.capitalize(), car_year, car_plate, car_miles, car_color.capitalize(), car_fuel_type, car_status, car_catagory))
-                   
-                          
+            self.print_car_menu()                          
         
     def print_price_list(self):
         insurance = "Aukatrygging 30.000 kr."
