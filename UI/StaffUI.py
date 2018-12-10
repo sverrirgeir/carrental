@@ -88,7 +88,9 @@ class StaffUI():
             price = lst[3]
             price = "{:,}".format(int(price))
             type_of_car = lst[4]
-            print("\n\t{:<10}\t{:^10}\t{:^10}\t{:^10}\t{:^10}".format(passport,day1,day2,price,type_of_car)
+            print("\n\t{:<10}\t{:^10}\t{:^10}\t{:^10}\t{:^10}".format(passport,day1,day2,price,type_of_car))
+
+    
 
     def print_clients_menu(self):
         choice1 = "1. Fletta upp Viðskiptavin"

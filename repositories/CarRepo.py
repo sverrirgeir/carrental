@@ -154,7 +154,7 @@ class CarRepo:
             for i in range(len(list_of_lists)):
                 if list_of_lists[2] == car_plate:
                     list_of_lists.remove(list_of_lists[i])
-            with open("./data/customer.txt", "w") as customerfile:
+            with open("./data/cars.txt", "w") as customerfile:
                 for lst in list_of_lists:
                     car_model= lst[0]
                     car_year = lst[1]
