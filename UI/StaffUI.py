@@ -13,6 +13,7 @@ class StaffUI():
         self.__ordercar = OrderCar()
         
         
+        
     def main_menu(self):
         """Prints out the main menu and returns a input sentence asking for a choice"""
         choice1 = "1. Pantanir"
@@ -131,7 +132,7 @@ class StaffUI():
         passport = input("\n\tVegabréfsnúmer: ").upper()
         customer, passport, kredit = self.__customer.find_customer(passport)
         if customer == 0:
-            print("\n\tEngin viðskiptavinur er skráður á þetta númer!")
+            print("\n\tEngin viðskiptavinur er skráður á þetta númer!!")
             self.print_clients_menu()
             return
         if customer == 1:
@@ -170,16 +171,6 @@ class StaffUI():
 
         choice = input("\n\tValmöguleiki: ")
 
-
-    def search_car(self):
-        #Prentar út valmyndi fyrir leit af bílum
-        choice1 = "1. Afskrá bíl"
-        choice2 = "2. Setja á lista yfir lausar bifreiðar"
-        choice3 = "3. Skrá í útleigu"
-        choice4 = "4. Til baka"
-        print("\n\t{:<30}\n\t{:<10}\n\t{:<10}\n\t{:<10}".format(choice1, choice2, choice3, choice4))
-        choice = input("\n\tValmöguleiki: ")
-
         if choice == '1':
             self.__cars.print_cars()
             self.print_car_menu()
@@ -195,7 +186,38 @@ class StaffUI():
             self.main_menu()
         else:
             print("\nVitlaust val, vinsamlegast veldu aftur!")
-            self.print_car_menu()                          
+            self.print_car_menu()    
+
+
+
+    def search_car(self):
+        #Prentar út valmyndi fyrir leit af bílum
+        choice1 = "1. Afskrá bíl"
+        choice2 = "2. Setja á lista yfir lausar bifreiðar"
+        choice3 = "3. Skrá í útleigu"
+        choice4 = "4. Til baka"
+
+        line = "-"*84
+        car_plate = input("\n\tNúmer bifreiðar: ").upper()
+        car_model, car_year, car_plate, car_miles, car_color, car_fuel_type, car_status, car_catagory= self.__cars.find_cars(car_plate)
+       
+        if car_model == 0:
+            print("\n\tEnginn bíll er skráður með þetta númer!")
+            self.print_car_menu()
+            return
+        if car_model == 1:
+            print("\n\tEkki rétt skráð inn! \n\tBílnúmer á að vera 5 letur á lengd")
+            self.print_car_menu()
+            return
+        print("")
+        print("\n\t{:>4}{:>15}{:>8}{:>9}{:>7}{:>10}{:>6}{:>9}".format("Tegund", "Árgerð", "Númer", "Keyrsla", "Litur", "Eldsneyti", "Staða", "Flokkur"))
+        print("" + line)
+        print("\t{:<10}\t{:^}\t{:^}\t{:^}\t{:^}\t{:^}\t{:^}\t{:^}".format(car_model.capitalize(), car_year, car_plate, car_miles, car_color.capitalize(), car_fuel_type, car_status, car_catagory))
+        choice = input("\n\tValmöguleiki: ")
+
+
+
+                      
         
     def print_price_list(self):
         insurance = "Aukatrygging 30.000 kr."

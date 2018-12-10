@@ -15,3 +15,16 @@ class CarService:
         return self.__car.print_available_cars()
     
     
+    def find_cars(self, car_plate):
+        """finnur virkt bílnúmer og skilar inn í CarRepo"""
+        if self.valid_number(car_plate):
+            return self.__car.find_car(car_plate)
+        else:
+            return 1,1,1,1,1,1,1,1
+
+    def valid_number(self, car_plate):
+        """Athugar hvort bílnúmer sé gilt"""
+        if len(car_plate) == 5:
+            return True
+        else:
+            return False

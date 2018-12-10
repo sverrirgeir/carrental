@@ -6,7 +6,7 @@ toyota yaris,2017,FAG97,17000,gray,Petrol,1,False
 hyundai i10,2017,ERA95,20000,black,Petrol,1,True 
 hyundai i10,2018,KTM99,15000,gray,Petrol,1,True 
 hyundai i10,2018,OOO00,130000,blue,Petrol,1,True 
-hyundai i10,2017,GTK97,18000,green,Petrol,1,True 
+hyundai i10,2017,,18000,green,Petrol,1,True GTK97
 hyundai i10,2016,ASD12,270000,yellow,Petrol,1,False 
 vw passat,2017,FGB16,14000,white,Diesel,2,True 
 vw passat,2018,SUB63,12000,gray,Diesel,2,True 
