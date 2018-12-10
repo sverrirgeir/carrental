@@ -131,7 +131,7 @@ class StaffUI():
         passport = input("\n\tVegabréfsnúmer: ").upper()
         customer, passport, kredit = self.__customer.find_customer(passport)
         if customer == 0:
-            print("\n\tEngin viðskiptavinur er skráður á þetta númer!!")
+            print("\n\tEngin viðskiptavinur er skráður á þetta númer!")
             self.print_clients_menu()
             return
         if customer == 1:
