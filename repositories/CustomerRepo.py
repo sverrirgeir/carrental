@@ -12,7 +12,7 @@ class CustomerRepo:
             for line in customerfile:
                 line_list = line.strip().split(",")
                 list_of_lists.append(line_list)
-            for i in range(len(list_of_lists)-1):
+            for i in range(len(list_of_lists)):
                 if list_of_lists[i][1] == passport:
                     not_found = 1
                     name = list_of_lists[i][0]
@@ -31,4 +31,35 @@ class CustomerRepo:
             customerfile.write(customer_string)
             customerfile.write("\n")
             return 3
+
+    def print_customer_list(self):
+        with open("./data/customer.txt", "r") as customerfile:
+            print("\n{:<28}{:^28}{:^28}".format("Nafn", "Vegabréfsnúmer", "Kreditkortanúmer"))
+            print("-"*78)
+            for line in customerfile:
+                line_split = line.split(",")
+                name = line_split[0]
+                passport = line_split[1]
+                kredit = line_split[2]
+                print("{:<28}{:^28}{:^28}".format(name, passport, kredit))
+            return 
+    
+    def delete_customer(self, passport):
+        with open("./data/customer.txt", "r") as customerfile:
+            list_of_lists = []
+            for line in customerfile:
+                line_list = line.strip().split(",")
+                list_of_lists.append(line_list)
+            for i in range(len(list_of_lists)):
+                if list_of_lists[i][1] == passport:
+                    list_of_lists.remove(list_of_lists[i])
+        with open("./data/customer.txt", "w") as customerfile:
+            for lst in list_of_lists:
+                name = lst[0]
+                passport = lst[1]
+                kredit = lst[2]
+                customerfile.write("{},{},{}".format(name, passport, kredit))
+                customerfile.write("\n")
+            return
+            
                                              

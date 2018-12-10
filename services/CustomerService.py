@@ -42,4 +42,11 @@ class CustomerService:
                 return 1
         else:
             return 2
+    
+    def print_customer_list(self):
+        return self.__customer.print_customer_list()
+
+    def delete_customer(self, passport):
+        """takes in a validated passport number"""
+        return self.__customer.delete_customer(passport)
             
