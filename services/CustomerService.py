@@ -20,14 +20,22 @@ class CustomerService:
 
     def valid_kredit_number(self, kredit):
         """checks if the kredit card number is valid"""
-        if len(kredit) == 16:
-            return True
-        else:
+        try:
+            int(kredit)
+        except ValueError:
             return False
+        if len(kredit) != 16:
+            return False
+        else: 
+            return True
+
     
     def add_customer(self, new_customer):
+        #fyrst kannað hvort kreditkortanúmerið sé rétt slegið inn
         if self.valid_kredit_number(new_customer.get_kredit()):
+            #kannað hvort vegabréfsnúmer sé rétt
             if self.valid_number(new_customer.get_passport()):
+                #haldið áfram í write_new_customer í customerepo og viðskiptavin bætt í textaskrá
                 self.__customer.write_new_customer(new_customer)
                 return 3
             else:

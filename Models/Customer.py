@@ -1,7 +1,7 @@
 class Customer:
 
-    def __init__(self, first_name, last_name, passport, kredit, middle_name = ""):
-        self.fullname = first_name + " " + middle_name + " " + last_name
+    def __init__(self, first_name, last_name, passport, kredit):
+        self.fullname = first_name + " " + last_name
         self.passport = passport
         self.kredit = kredit
 
