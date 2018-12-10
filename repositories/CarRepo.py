@@ -145,6 +145,25 @@ class CarRepo:
             if not_found == 0:
                 return 0,0,0,0,0,0,0,0       
 
-
-
-    
+    def delete_cars(self, car_plate):
+        with open("./data/cars.txt", "r") as car_string:
+            list_of_lists = []
+            for line in car_string:
+                line_list = line.strip().split(",")
+                list_of_lists.append(line_list)
+            for i in range(len(list_of_lists)):
+                if list_of_lists[2] == car_plate:
+                    list_of_lists.remove(list_of_lists[i])
+            with open("./data/customer.txt", "w") as customerfile:
+                for lst in list_of_lists:
+                    car_model= lst[0]
+                    car_year = lst[1]
+                    car_plate = lst[2]
+                    car_miles = lst[3]
+                    car_color = lst[4]
+                    car_fuel_type = lst[5]
+                    car_status = lst[6]
+                    car_catagory = lst[7]
+                    customerfile.write("{},{},{},{},{},{},{},{}".format(car_model, car_year, car_plate, car_miles, car_color, car_fuel_type, car_status, car_catagory))
+                    customerfile.write("\n")
+                return

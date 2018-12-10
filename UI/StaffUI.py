@@ -225,13 +225,8 @@ class StaffUI():
 
 
     def search_car(self):
-        #Prentar út valmyndi fyrir leit af bílum
-        choice1 = "1. Afskrá bíl"
-        choice2 = "2. Setja á lista yfir lausar bifreiðar"
-        choice3 = "3. Skrá í útleigu"
-        choice4 = "4. Til baka"
 
-        line = "-"*84
+        line ="-"*72
         car_plate = input("\n\tNúmer bifreiðar: ").upper()
         car_model, car_year, car_plate, car_miles, car_color, car_fuel_type, car_status, car_catagory= self.__cars.find_cars(car_plate)
        
@@ -245,13 +240,27 @@ class StaffUI():
             return
         print("")
         print("\n\t{:>4}{:>15}{:>8}{:>9}{:>7}{:>10}{:>6}{:>9}".format("Tegund", "Árgerð", "Númer", "Keyrsla", "Litur", "Eldsneyti", "Staða", "Flokkur"))
-        print("" + line)
+        print("\t" + line)
         print("\t{:<10}\t{:^}\t{:^}\t{:^}\t{:^}\t{:^}\t{:^}\t{:^}".format(car_model.capitalize(), car_year, car_plate, car_miles, car_color.capitalize(), car_fuel_type, car_status, car_catagory))
+
+        #Prentar út valmyndi fyrir leit af bílum
+        choice1 = "1. Afskrá bíl"
+        choice2 = "2. Setja á lista yfir lausar bifreiðar"
+        choice3 = "3. Skrá í útleigu"
+        choice4 = "4. Til baka"
+
+        print("\n\t{:<30}\n\t{:<10}\n\t{:<10}\n\t{:<10}".format(choice1, choice2, choice3, choice4))
         choice = input("\n\tValmöguleiki: ")
-
-
-
-                      
+        if choice == "1":
+            self.__cars.delete_cars(car_plate)
+            print("\n\tBíl hefur verið eytt úr kerfinu!")
+            self.print_car_menu()
+        elif choice == "2":
+            pass
+        elif choice == "3":
+            pass
+        elif choice == "4":
+            self.main_menu()                 
         
     def print_price_list(self):
         insurance = "Aukatrygging 30.000 kr."
