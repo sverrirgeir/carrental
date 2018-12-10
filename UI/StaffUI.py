@@ -67,7 +67,7 @@ class StaffUI():
         elif choice == '2':
             pass
         elif choice == '3':
-            pass
+            self.__ordercar.print_list_of_orders()
         elif choice == '4':
             self.main_menu()
         else:
