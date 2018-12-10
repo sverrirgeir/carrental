@@ -1,21 +1,14 @@
-
-passport = "A3056433"
-
-with open("./data/customer.txt", "r") as customerfile:
-            list_of_lists = []
-            not_found = 0
-            for line in customerfile:
-                line_list = line.strip().split(",")
-                list_of_lists.append(line_list)
-            for i in range(len(list_of_lists)):
-                if list_of_lists[i][1] == passport:
-                    not_found = 1
-                    name = list_of_lists[i][0]
-                    passport = list_of_lists[i][1]
-                    kredit = list_of_lists[i][2]
-                    print(name, passport, kredit)
-                else:
-                    not_found = 0
-            if not_found == 0:
-                print("Not found")
-
+def prRed(skk): print("\033[91m {}\033[00m" .format(skk)) 
+def prGreen(skk): print("\033[92m {}\033[00m" .format(skk)) 
+def prYellow(skk): print("\033[93m {}\033[00m" .format(skk)) 
+def prLightPurple(skk): print("\033[94m {}\033[00m" .format(skk)) 
+def prPurple(skk): print("\033[95m {}\033[00m" .format(skk)) 
+def prCyan(skk): print("\033[96m {}\033[00m" .format(skk)) 
+def prLightGray(skk): print("\033[97m {}\033[00m" .format(skk)) 
+def prBlack(skk): print("\033[98m {}\033[00m" .format(skk)) 
+  
+prCyan("Hello World, ") 
+prYellow("It's") 
+prGreen("Geeks") 
+prRed("For") 
+prGreen("Geeks") 
