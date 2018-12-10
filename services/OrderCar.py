@@ -56,14 +56,17 @@ class OrderCar:
 
   def print_list_of_orders(self):
     return self.__write_order.print_orders()
-    
 
+  def search_for_orders(self, passport):
+    """tekur inn vegabréfsnr og villutjekkar áður en hann sendir það í repo"""
+    if self.validate_passport(passport):
+      return self.__write_order.search_for_orders(passport)
 
-    #def store_data(self, passport, fullprice, date1, date2)
-
-
-    #þurfum að gera þetta fall á morgun sem geymir gögn
-    #def store_order_data(self):
+  def validate_passport(self, passport):
+    if len(passport) == 8:
+      return True
+    else:
+      return False
 
 
 

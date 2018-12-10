@@ -51,7 +51,7 @@ class StaffUI():
             self.main_menu()
 
     def print_order_menu(self):
-        
+        """Prentar út valmöguleika fyrir pantanir og biður um val og leiðir notenda á rétta staði"""
         choice1 = "1. Skrá nýja pöntun"
         choice2 = "2. Leita af pöntun"
         choice3 = "3. Pöntunarlisti"
@@ -65,7 +65,8 @@ class StaffUI():
         if choice == '1':
             self.print_order_car_menu()
         elif choice == '2':
-            pass
+            passport = input("\n\tVegabréfsnúmer: ")
+            self.search_for_order(passport)
         elif choice == '3':
             self.__ordercar.print_list_of_orders()
         elif choice == '4':
@@ -74,28 +75,51 @@ class StaffUI():
             print("Vitlaust val, vinsamlegast veldu aftur")
             self.print_order_menu()
     
+    def search_for_order(self, passport):
+        list_of_orders = self.__ordercar.search_for_orders(passport)
+        
+        print("\n\t{:<10}\t{:^10}\t{:^10}\t{:^10}\t{:^10}".format("Vegabréfa N.","Afhendingard.","Skilad.","Verð","Flokkur"))
+        print(" "*8 + "-"*72)
+        
+        for lst in list_of_orders:
+            passport = lst[0]
+            day1 = lst[1]
+            day2 = lst[2]
+            price = lst[3]
+            price = "{:,}".format(int(price))
+            type_of_car = lst[4]
+            print("\n\t{:<10}\t{:^10}\t{:^10}\t{:^10}\t{:^10}".format(passport,day1,day2,price,type_of_car)
+
     def print_clients_menu(self):
         choice1 = "1. Fletta upp Viðskiptavin"
         choice2 = "2. Skrá nýjan viðskiptavin"
         choice3 = "3. Listi af Viðskiptavinum"
         choice4 = "4. Til baka"
-  
+
         print("\n\t{:^10}".format("Viðskiptavinir"))
         print("\n\t{:<30}\n\t{:<10}\n\t{:<10}\n\t{:<10}".format(choice1, choice2, choice3,choice4))
         choice = input("\n\tValmöguleiki: ")
 
         if choice == '1':
+            #sendir notenda í viðeigandi fall
             self.search_customer()
+
         elif choice == "2":
+            #sendir notenda í viðeigandi fall
             self.add_new_customer()
+
         elif choice == '3':
+            #sendir notenda í viðeigandi fall
             self.__customer.print_customer_list()
+
+            #valmöguleiki til þess að fara til baka eftir að listi hefur verið prentaður
             print("\n\t1. Til baka")
             choice = input("\n\tValmöguleiki: ")
             if choice == "1":
                 self.print_clients_menu()
             else:
                 self.print_clients_menu()
+
         elif choice == '4':
             self.main_menu()
         else:
@@ -300,3 +324,5 @@ class StaffUI():
         else:
             print("\nVitlaust val, vinsamlegast veldu aftur!")
             self.print_order_car_menu()
+
+    

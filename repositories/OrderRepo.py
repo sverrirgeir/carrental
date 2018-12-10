@@ -33,5 +33,21 @@ class OrderRepo:
                 else:
                     tegund = "Húsbíll"
                 print("\n\t{:<10}\t{:^10}\t{:^10}\t{:^10}\t{:^10}".format(passport, pickupdate, returndate, price, tegund))
-
             return
+    
+    def search_for_orders(self, passport):
+        with open("./data/orders.txt", "r") as orders:
+            list_of_lists = []
+            order_list = []
+            not_found = 0
+            for line in orders:
+                line_list = line.strip().split(",")
+                list_of_lists.append(line_list)
+            for i in range(len(list_of_lists)):
+                if list_of_lists[i][0] == passport:
+                    order_list.append(list_of_lists[i])
+                    not_found = 1
+            if not_found == 1:
+                return order_list
+            elif not_found == 0:
+                return []
