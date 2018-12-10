@@ -89,7 +89,7 @@ class StaffUI():
             price = "{:,}".format(int(price))
             type_of_car = lst[4]
             print("\n\t{:<10}\t{:^10}\t{:^10}\t{:^10}\t{:^10}".format(passport,day1,day2,price,type_of_car))
-
+        return self.print_order_menu()
     
 
     def print_clients_menu(self):
@@ -181,7 +181,7 @@ class StaffUI():
         choice = input("\n\tValmöguleiki: ")
 
         if choice == '1':
-            pass
+            self.search_for_order(passport)
         elif choice == '2':
             pass
         elif choice == '3':
