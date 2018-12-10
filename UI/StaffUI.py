@@ -88,7 +88,13 @@ class StaffUI():
         elif choice == "2":
             self.add_new_customer()
         elif choice == '3':
-            pass
+            self.__customer.print_customer_list()
+            print("\n\t1. Til baka")
+            choice = input("\n\tValmöguleiki: ")
+            if choice == "1":
+                self.print_clients_menu()
+            else:
+                self.print_clients_menu()
         elif choice == '4':
             self.main_menu()
         else:
@@ -152,9 +158,13 @@ class StaffUI():
         elif choice == '2':
             pass
         elif choice == '3':
-            pass
+            #fer inn í fall sem yfirskrifar textafile með nýjum textafile án viðskiptavinarins
+            self.__customer.delete_customer(passport)
+            print("\n\tViðskiptavin hefur verið eytt úr kerfinu!")
+            self.print_clients_menu()
         elif choice == '4':
             self.print_clients_menu()
+
 
 
 
