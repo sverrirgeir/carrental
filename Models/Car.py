@@ -13,3 +13,5 @@ class Car:
     def __str__(self):
         return "{} {} {} {} {} {} {} {}".format(self.model, self.year, self.plate, self.miles, self.color, self.fuel_type, self.catagory, self.status)
 
+
+
