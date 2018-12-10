@@ -103,3 +103,10 @@ class CarRepo:
                         print("{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}".format(car_model.capitalize(), car_year, car_plate, car_miles, car_color.capitalize(), car_fuel_type, car_status, car_catagory))
                     elif car_status == "False":
                         car_status = "Tekinn"
+
+
+    def find_car(self,car_plate):
+        with open("./data/cars.txt", "r") as car_string:
+            list_of_list = []
+            
+    

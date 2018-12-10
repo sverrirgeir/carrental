@@ -170,6 +170,16 @@ class StaffUI():
 
         choice = input("\n\tValmöguleiki: ")
 
+
+    def search_car(self):
+        #Prentar út valmyndi fyrir leit af bílum
+        choice1 = "1. Afskrá bíl"
+        choice2 = "2. Setja á lista yfir lausar bifreiðar"
+        choice3 = "3. Skrá í útleigu"
+        choice4 = "4. Til baka"
+        print("\n\t{:<30}\n\t{:<10}\n\t{:<10}\n\t{:<10}".format(choice1, choice2, choice3, choice4))
+        choice = input("\n\tValmöguleiki: ")
+
         if choice == '1':
             self.__cars.print_cars()
             self.print_car_menu()
@@ -180,7 +190,7 @@ class StaffUI():
             self.__cars.print_available()
             self.print_car_menu()
         elif choice == '4':
-            pass
+            self.search_car()
         elif choice == '5':
             self.main_menu()
         else:
