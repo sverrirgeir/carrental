@@ -170,7 +170,8 @@ class StaffUI():
             self.__cars.print_cars()
             self.print_car_menu()
         elif choice == '2':
-            pass
+            self.__cars.print_available_cars()
+            self.print_car_menu()
         elif choice == '3':
             pass
         elif choice == '4':
