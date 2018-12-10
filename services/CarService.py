@@ -6,4 +6,6 @@ class CarService:
         self.__car = CarRepo()
 
     def print_cars(self):
-        return self.__car.list_of_cars()
+       return self.__car.print_all_cars()
+    
+    
