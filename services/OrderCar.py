@@ -52,6 +52,10 @@ class OrderCar:
   
   def get_car_order(self, order):
     return self.__write_order.write_car_order(order)
+  
+
+  def print_list_of_orders(self):
+    return self.__write_order.print_orders()
     
 
 
