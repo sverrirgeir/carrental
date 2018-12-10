@@ -12,7 +12,7 @@ class CustomerRepo:
             for line in customerfile:
                 line_list = line.strip().split(",")
                 list_of_lists.append(line_list)
-            for i in range(len(list_of_lists)):
+            for i in range(len(list_of_lists)-1):
                 if list_of_lists[i][1] == passport:
                     not_found = 1
                     name = list_of_lists[i][0]
