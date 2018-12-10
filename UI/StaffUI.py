@@ -228,7 +228,9 @@ class StaffUI():
         print("\n\t{:<30}\n\t{:<10}\n\t{:<10}\n\t{:<10}".format(choice1, choice2, choice3, choice4))
         choice = input("\n\tValmöguleiki: ")
         if choice == "1":
-            pass
+            self.__cars.delete_cars(car_plate)
+            print("\n\tBíl hefur verið eytt úr kerfinu!")
+            self.print_car_menu()
         elif choice == "2":
             pass
         elif choice == "3":

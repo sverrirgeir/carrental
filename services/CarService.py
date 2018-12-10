@@ -28,3 +28,9 @@ class CarService:
             return True
         else:
             return False
+
+
+    def delete_cars(self, car_plate):
+        """tekur inn rétt bílnúmer"""
+        return self.__car.delete_cars(car_plate)
+            
