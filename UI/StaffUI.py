@@ -5,6 +5,7 @@ from services.OrderCar import OrderCar
 from Models.Order import Order
 from Models.Customer import Customer
 
+
 class StaffUI():
     def __init__(self):
         self.__cars = CarService()
@@ -95,20 +96,23 @@ class StaffUI():
             self.print_clients_menu()
     
     def add_new_customer(self):
-        first_name = input("\tFornafn: ")
-        middle_name = input("\tmillinafn(ef á við annars ekkert): ")
-        last_name = input("\tEftirnafm: ")
-        passport = input("\tVegabréfsnúmer: ").upper()
-        kredit = input("\tKreditkortanúmer(engin bandstrik): ")
-        new_customer = Customer(first_name, last_name, passport, kredit, middle_name)
+        #Input from the user about the new customer
+        first_name = input("\tFornafn(og millinafn): ").strip()
+        last_name = input("\tEftirnafn: ").strip()
+        passport = input("\tVegabréfsnúmer: ").upper().strip()
+        kredit = input("\tKreditkortanúmer(engin bandstrik): ").strip()
+        #upplýsingar sendar í models klasann customer
+        new_customer = Customer(first_name, last_name, passport, kredit)
+        #kallað í add_customer fallið í customerservice
         customer = self.__customer.add_customer(new_customer)
+        #hér er kannað hvað fallið skilar, og þá er farið yfir hvort allt var rétt innslegið
         if customer == 1:
-            print("\n\tEkki rétt Vegabréfsnúmer\n")
-            self.add_new_customer()
+            print("\n\tEkki rétt Vegabréfsnúmer! \n\treyndu aftur\n")
+            self.print_clients_menu()
             return
         elif customer == 2:
-            print("\n\tEkki rétt kreditkortanúmer\n")
-            self.add_new_customer()
+            print("\n\tEkki rétt kreditkortanúmer! \n\treyndu aftur\n")
+            self.print_clients_menu()
             return
         elif customer == 3:
             print("\n\tViðskiptavinur hefur verið skráður!\n")
@@ -221,12 +225,11 @@ class StaffUI():
 
     def print_order_car_menu(self):
         """Prentar út pöntunarskjá fyrir pöntun"""
-        choice1 = "1. Núverandi Viðskiptavinir"
-        choice2 = "2. Nýr Viðskiptavinur"
-        choice3 = "3. Til baka"
+        choice1 = "1. skrá pöntun"
+        choice2 = "2. Til baka"
 
         print("\n\t{:^10}".format("Pantanir"))
-        print("\n\t{:<30}\n\t{:<10}\n\t{:<10}".format(choice1, choice2, choice3))
+        print("\n\t{:<30}\n\t{:<10}\n".format(choice1, choice2))
 
         choice = input("\n\tValmöguleiki: ")
         
@@ -236,8 +239,8 @@ class StaffUI():
             customer, passport, kredit = self.__customer.find_customer(passport)
 
             if customer == 0:
-                print("\n\tEngin viðskiptavinur er skráður á þetta númer!!")
-                self.print_order_car_menu()
+                print("\n\tEngin viðskiptavinur er skráður á þetta númer!\n")
+                self.add_new_customer()
                 return
             if customer == 1:
                 print("\n\tEkki rétt skráð inn! \n\tVegabréfsnúmer á að vera 8 letur á lengd")
@@ -247,10 +250,10 @@ class StaffUI():
             print("\n\t\tHeildarverð: {:,}".format(fullprice))
             new_order = Order(passport, today, someday, fullprice, carchoice)
             self.__ordercar.get_car_order(new_order)
+            print("\n\tPöntun hefur verið skráð!")
+            self.main_menu()
 
         elif choice == "2":
-            pass
-        elif choice == "3":
             self.print_order_menu()
         else:
             print("\nVitlaust val, vinsamlegast veldu aftur!")

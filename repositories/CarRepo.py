@@ -5,6 +5,7 @@ class CarRepo:
     def __init__(self):
         self.__cars = []
 
+
     def print_all_cars(self):
         with open("./data/cars.txt", "r") as car_string:
                 print("\n{:>4}{:>15}{:>8}{:>9}{:>7}{:>10}{:>6}{:>9}".format("Tegund", "Árgerð", "Númer", "Keyrsla", "Litur", "Eldsneyti", "Staða", "Flokkur"))
