@@ -22,8 +22,8 @@ toyota lc150,2017,FGB57,12000,red,Diesel,3,True
 toyota lc150,2018,BAL19,7000,gray,Diesel,3,True
 toyota lc150,2017,SAK78,8000,white,Diesel,3,True
 toyota lc150,2018,LAG19,15000,blue,Diesel,3,False
-fiat hobby,2017,SAl73,30000,white,Diesel,4,True
-fiat hobby,2018,BAl73,150000,white,Diesel,4,True
+fiat hobby,2017,BAL76,30000,white,Diesel,4,True
+fiat hobby,2018,LOL15,150000,white,Diesel,4,True
 fiat hobby,2017,KAL57,20000,white,Diesel,4,True
 fiat hobby,2018,DAS75,12000,white,Diesel,4,True
 fiat hobby,2017,SAD73,20000,white,Diesel,4,False
