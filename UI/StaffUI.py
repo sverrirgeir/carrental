@@ -45,7 +45,7 @@ class StaffUI():
             self.print_order_car_menu()
         
         elif choice == "6":
-            pass
+            self.return_car()
             
         elif choice == '7':
             print("\tLoka forriti...")
@@ -54,6 +54,15 @@ class StaffUI():
         else:
             print("\nVitlaust val, vinsamlegast veldu aftur!")
             self.main_menu()
+
+    def return_car(self):
+        self.__cars.print_taken()
+        car_plate = input("\n\tBílnúmer bíls sem skila á: ").upper()
+        result = self.__cars.return_car(car_plate)
+        if result == 0:
+            print("\n\tBíll er ekki á skrá, vinsamlegast reyndu aftur")
+            return self.return_car()
+        return self.main_menu()
 
     def print_order_menu(self):
         """Prentar út valmöguleika fyrir pantanir og biður um val og leiðir notenda á rétta staði"""
