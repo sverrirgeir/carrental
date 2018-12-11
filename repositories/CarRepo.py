@@ -174,4 +174,5 @@ class CarRepo:
         with open("./data/cars.txt", "a") as carfile:
             carfile.write(car_str)
             carfile.write("\n")
-            return 8  
+            return 2
+          
