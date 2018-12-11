@@ -233,9 +233,16 @@ class StaffUI():
         choice2 = "2. Bílar í Útleigu"
         choice3 = "3. Lausir Bílar"
         choice4 = "4. Fletta upp Bíl"
+<<<<<<< HEAD
         choice5 = "5. Til baka"
         print("\n\t{:^10}".format("Bílar"))
         print("\n\t{:<30}\n\t{:<10}\n\t{:<10}\n\t{:<10}\n\t{:<10}".format(choice1, choice2, choice3, choice4, choice5,))
+=======
+        choice5 = "5. Skrá nýjan bíl"
+        choice6 = "6. Til baka"
+        print("\n\t{:^10}".format("Bílaleiga ehf"))
+        print("\n\t{:<30}\n\t{:<10}\n\t{:<10}\n\t{:<10}\n\t{:<10}\n\t{:<10}".format(choice1, choice2, choice3, choice4, choice5, choice6))
+>>>>>>> 75d00828f5433d5f60cb23c297b1e9b12fb7ef57
 
         choice = input("\n\tValmöguleiki: ")
 
@@ -251,6 +258,8 @@ class StaffUI():
         elif choice == '4':
             self.search_car()
         elif choice == '5':
+            self.__cars.add_car()          
+        elif choice == '6':
             self.main_menu()
         else:
             print("\nVitlaust val, vinsamlegast veldu aftur!")

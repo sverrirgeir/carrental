@@ -46,5 +46,11 @@ class CarService:
     def add_car(self,new_car):
         if self.valid_plate(new_car.get_plate()):
             self.__car.write_new_car(new_car)
+            return 2
+        else:
+            return 1
+    
+
+    
 
             
