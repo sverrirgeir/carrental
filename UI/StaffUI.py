@@ -69,8 +69,9 @@ class StaffUI():
         if choice == '1':
             self.print_order_car_menu()
         elif choice == '2':
-            passport = input("\n\tVegabréfsnúmer: ")
-            self.search_for_order(passport)
+            passport = input("\n\tVegabréfsnúmer: ").upper()
+            nr_list = self.search_for_order(passport)
+            self.customer_order_menu(nr_list)
         elif choice == '3':
             self.__ordercar.print_list_of_orders()
         elif choice == '4':
@@ -82,18 +83,20 @@ class StaffUI():
     def search_for_order(self, passport):
         list_of_orders = self.__ordercar.search_for_orders(passport)
         
-        print("\n\t{:<10}\t{:^10}\t{:^10}\t{:^10}\t{:^10}".format("Vegabréfa N.","Afhendingard.","Skilad.","Verð","Flokkur"))
-        print(" "*8 + "-"*72)
-        
+        print("\n\t{:<10}\t{:^10}\t{:^10}\t{:^10}\t{:^10}\t{:^10}".format("nr.","Vegabréfa N.","Afhendingard.","Skilad.","Verð","Flokkur"))
+        print(" "*8 + "-"*88)
+        nr_list = []
         for lst in list_of_orders:
-            passport = lst[0]
-            day1 = lst[1]
-            day2 = lst[2]
-            price = lst[3]
+            nr = lst[0]
+            nr_list.append(nr)
+            passport = lst[1]
+            day1 = lst[2]
+            day2 = lst[3]
+            price = lst[4]
             price = "{:,}".format(int(price))
-            type_of_car = lst[4]
-            print("\n\t{:<10}\t{:^10}\t{:^10}\t{:^10}\t{:^10}".format(passport,day1,day2,price,type_of_car))
-        return self.print_order_menu()
+            type_of_car = lst[5]
+            print("\n\t{:<10}\t{:^10}\t{:^10}\t{:^10}\t{:^10}\t{:^10}".format(nr, passport,day1,day2,price,type_of_car))
+        return nr_list
     
 
     def print_clients_menu(self):
@@ -185,9 +188,12 @@ class StaffUI():
         choice = input("\n\tValmöguleiki: ")
 
         if choice == '1':
-            self.search_for_order(passport)
+            nr_list = self.search_for_order(passport)
+            self.customer_order_menu(nr_list)
         elif choice == '2':
-            pass
+            #Þurfum að skoða þetta betur
+            self.__customer.delete_customer(passport)
+            self.add_new_customer()
         elif choice == '3':
             #fer inn í fall sem yfirskrifar textafile með nýjum textafile án viðskiptavinarins
             self.__customer.delete_customer(passport)
@@ -195,8 +201,35 @@ class StaffUI():
             self.print_clients_menu()
         elif choice == '4':
             self.print_clients_menu()
+    
+    def customer_order_menu(self, nr_list):
+        choice1 = "1. Breyta pöntun"
+        choice2 = "2. Eyða pöntun"
+        choice3 = "3. Prenta pöntunarstaðfestingu"
+        choice4 = "4. Til baka"
+
+        print("\n\t{:^10}".format("Pöntun"))
+        print("\n\t{:<30}\n\t{:<10}\n\t{:<10}\n\t{:<10}".format(choice1, choice2, choice3, choice4))
+        choice = input("\n\tValmöguleiki: ")
+
+        if choice == "1":
+            pass
+        elif choice == "2":
+            number = int(input("\n\tHvaða pöntun viltu eyða?: "))
+            self.__ordercar.delete_order(number)
+            print("\n\tPöntun hefur verið eytt!")
+            self.main_menu()
+        elif choice == "3":
+            self.print_order_confirmation()
+        elif choice == "4":
+            self.print_order_menu()
+        else:
+            print("\nVitlaust val, vinsamlegast veldu aftur!")
+            self.customer_order_menu(nr_list)
 
 
+    def print_order_confirmation(self):
+        print("Sent í prentara...")
 
 
     def print_car_menu(self):
@@ -205,9 +238,10 @@ class StaffUI():
         choice2 = "2. Bílar í Útleigu"
         choice3 = "3. Lausir Bílar"
         choice4 = "4. Fletta upp Bíl"
-        choice5 = "5. Til baka"
+        choice5 = "5. Skrá nýjan bíl"
+        choice6 = "6. Til baka"
         print("\n\t{:^10}".format("Bílaleiga ehf"))
-        print("\n\t{:<30}\n\t{:<10}\n\t{:<10}\n\t{:<10}\n\t{:<10}".format(choice1, choice2, choice3, choice4, choice5,))
+        print("\n\t{:<30}\n\t{:<10}\n\t{:<10}\n\t{:<10}\n\t{:<10}\n\t{:<10}".format(choice1, choice2, choice3, choice4, choice5, choice6))
 
         choice = input("\n\tValmöguleiki: ")
 
@@ -223,6 +257,8 @@ class StaffUI():
         elif choice == '4':
             self.search_car()
         elif choice == '5':
+            self.__cars.add_car()          
+        elif choice == '6':
             self.main_menu()
         else:
             print("\nVitlaust val, vinsamlegast veldu aftur!")
