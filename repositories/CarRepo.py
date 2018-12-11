@@ -145,6 +145,9 @@ class CarRepo:
             if not_found == 0:
                 return 0,0,0,0,0,0,0,0       
 
+
+
+    ''' það vantar að klára að útfæra þannig að hægt sé að eyða út neðsta bílnum'''
     def delete_cars(self, car_plate):
         with open("./data/cars.txt", "r") as car_string:
             list_of_lists = []
@@ -152,7 +155,8 @@ class CarRepo:
                 line_list = line.strip().split(",")
                 list_of_lists.append(line_list)
             for i in range(len(list_of_lists)):
-                if list_of_lists[2] == car_plate:
+                test = list_of_lists[i][2]
+                if test == car_plate:
                     list_of_lists.remove(list_of_lists[i])
             with open("./data/cars.txt", "w") as car_string:
                 for lst in list_of_lists:
@@ -174,5 +178,9 @@ class CarRepo:
         with open("./data/cars.txt", "a") as carfile:
             carfile.write(car_str)
             carfile.write("\n")
+<<<<<<< HEAD
             return 2
           
+=======
+            return 8  
+>>>>>>> 672748ae9be0e8c352076475ff5c1a98afcccd92

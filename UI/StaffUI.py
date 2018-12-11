@@ -24,7 +24,7 @@ class StaffUI():
         choice6 = "6. Skila bíl"
         choice7 = "7. Hætta"
         print("\n\t{:^10}".format("Bílaleiga ehf"))
-        print("\n\t{:<30}\n\t{:<10}\n\t{:<10}\n\t{:<10}\n\t{:<10}\n\t{:<10}\n\t{:<10}".format(choice1, choice2, choice3, choice4, choice5, choice6, choice6, choice7))
+        print("\n\t{:<30}\n\t{:<10}\n\t{:<10}\n\t{:<10}\n\t{:<10}\n\t{:<10}\n\t{:<10}".format(choice1, choice2, choice3, choice4, choice5, choice6, choice7))
         
         choice = input("\n\tValmöguleiki: ")
 
