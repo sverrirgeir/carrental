@@ -167,3 +167,11 @@ class CarRepo:
                     car_string.write("{},{},{},{},{},{},{},{}".format(car_model, car_year, car_plate, car_miles, car_color, car_fuel_type, car_status, car_catagory))
                     car_string.write("\n")
                 return
+    
+    def write_new_car(self, new_car):
+        '''skrifar nýjan bíl inn í textaskránna cars.txt'''
+        car_str = new_car.get_write()
+        with open("./data/cars.txt", "a") as carfile:
+            carfile.write(car_str)
+            carfile.write("\n")
+            return 8  

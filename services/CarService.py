@@ -33,4 +33,18 @@ class CarService:
     def delete_cars(self, car_plate):
         """tekur inn rétt bílnúmer"""
         return self.__car.delete_cars(car_plate)
+
+    
+    def valid_plate(self):
+        self.plate = plate
+        if len(plate) == 5:
+            return True
+        else:
+            return False
+    
+    
+    def add_car(self,new_car):
+        if self.valid_plate(new_car.get_plate()):
+            self.__car.write_new_car(new_car)
+
             
