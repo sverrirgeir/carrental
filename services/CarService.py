@@ -35,8 +35,7 @@ class CarService:
         return self.__car.delete_cars(car_plate)
 
     
-    def valid_plate(self):
-        self.plate = plate
+    def valid_plate(self, plate):
         if len(plate) == 5:
             return True
         else:

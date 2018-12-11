@@ -4,6 +4,7 @@ from services.CustomerService import CustomerService
 from services.OrderCar import OrderCar
 from Models.Order import Order
 from Models.Customer import Customer
+from Models.Car import Car
 
 
 class StaffUI():
@@ -224,7 +225,7 @@ class StaffUI():
         elif choice == '4':
             self.search_car()
         elif choice == '5':
-            self.__cars.add_car()          
+            self.add_new_car()          
         elif choice == '6':
             self.main_menu()
         else:
@@ -344,3 +345,22 @@ class StaffUI():
             self.print_order_car_menu()
 
     
+
+    def add_new_car(self):
+        model = input("\ttegund bíls: ").strip().capitalize()
+        year = input("\tÁrgerð(YYYY): ").strip()
+        plate = input("\tBílnúmer: ").strip().upper()
+        miles = input("\tKeyrsla bíls (í km): ").strip()
+        color = input("\tLitur bíls: ").strip().capitalize()
+        fuel_type = input("\tEldsneytis tegund(Bensín eða Dísel): ").strip()
+        print("\n\t1. Smábíll\n\t2. Fólksbíll\n\t3. Jeppi\n\t4. Húsbíll")
+        category = input("\tflokkur: ").strip()
+        status = True
+        new_car = Car(model, year, plate, miles, color, fuel_type, category, status) 
+        decision = self.__cars.add_car(new_car)
+        if decision == 2:
+            print("\n\tBíl hefur verið bætt á skrá")
+            self.print_car_menu()
+        elif decision == 1:
+            print("\n\tVitlaust skráð inn bílnúmer")
+            self.add_new_car()
