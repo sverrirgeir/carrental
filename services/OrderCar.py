@@ -68,6 +68,9 @@ class OrderCar:
     else:
       return False
 
+  def delete_order(self, number):
+    return self.__write_order.delete_order(number)
+
 
 
 

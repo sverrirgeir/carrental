@@ -215,7 +215,10 @@ class StaffUI():
         if choice == "1":
             pass
         elif choice == "2":
-            pass
+            number = int(input("\n\tHvaða pöntun viltu eyða?: "))
+            self.__ordercar.delete_order(number)
+            print("\n\tPöntun hefur verið eytt!")
+            self.main_menu()
         elif choice == "3":
             self.print_order_confirmation()
         elif choice == "4":
