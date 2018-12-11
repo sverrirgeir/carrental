@@ -172,7 +172,9 @@ class CarRepo:
         with open("./data/cars.txt", "a") as carfile:
             carfile.write(car_str)
             carfile.write("\n")
-            return 2
+            return 2  
+
+
 
     def return_car(self, car_plate):
         with open("./data/cars.txt", "r") as car_string:
@@ -202,3 +204,4 @@ class CarRepo:
                     else:
                         return 2     
             return not_found
+

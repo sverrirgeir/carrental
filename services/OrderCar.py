@@ -71,6 +71,9 @@ class OrderCar:
   def delete_order(self, number):
     return self.__write_order.delete_order(number)
 
+  def get_order(self, number):
+    return self.__write_order.get_order(number)
+
 
 
 
