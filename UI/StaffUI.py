@@ -21,9 +21,10 @@ class StaffUI():
         choice3 = "3. Bílar"
         choice4 = "4. Verðlisti"
         choice5 = "5. Panta bíl"
-        choice6 = "6. Hætta"
+        choice6 = "6. Skila bíl"
+        choice7 = "7. Hætta"
         print("\n\t{:^10}".format("Bílaleiga ehf"))
-        print("\n\t{:<30}\n\t{:<10}\n\t{:<10}\n\t{:<10}\n\t{:<10}\n\t{:<10}".format(choice1, choice2, choice3, choice4, choice5, choice6))
+        print("\n\t{:<30}\n\t{:<10}\n\t{:<10}\n\t{:<10}\n\t{:<10}\n\t{:<10}\n\t{:<10}".format(choice1, choice2, choice3, choice4, choice5, choice6, choice6, choice7))
         
         choice = input("\n\tValmöguleiki: ")
 
@@ -41,8 +42,11 @@ class StaffUI():
 
         elif choice == '5':
             self.print_order_car_menu()
+        
+        elif choice == "6":
+            pass
             
-        elif choice == '6':
+        elif choice == '7':
             print("\tLoka forriti...")
             return
 
