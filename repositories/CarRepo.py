@@ -178,4 +178,8 @@ class CarRepo:
         with open("./data/cars.txt", "a") as carfile:
             carfile.write(car_str)
             carfile.write("\n")
+<<<<<<< HEAD
             return 2  
+=======
+            return 2
+>>>>>>> 021a83fd1c63fc2a499f08a5c58ef29f30672e51

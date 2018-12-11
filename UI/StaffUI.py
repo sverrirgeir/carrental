@@ -214,7 +214,10 @@ class StaffUI():
         choice = input("\n\tValmöguleiki: ")
 
         if choice == "1":
-            pass
+            number = int(input("\n\tHvaða pöntun viltu breyta?"))
+            self.__ordercar.delete_order(number)
+            print("\n\tskráðu pöntun með nýjum upplýsingum!")
+            self.print_order_car_menu()
         elif choice == "2":
             number = int(input("\n\tHvaða pöntun viltu eyða?: "))
             self.__ordercar.delete_order(number)
