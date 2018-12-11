@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 toyota yaris,2017,DAB71,15000,blue,Petrol,1,True
 toyota yaris,2017,AUS91,13500,white,Petrol,1,True
 toyota yaris,2018,SAS15,7000,gray,Petrol,1,True
@@ -24,10 +23,6 @@ toyota lc150,2017,SAK78,8000,white,Diesel,3,True
 toyota lc150,2018,LAG19,15000,blue,Diesel,3,False
 fiat hobby,2017,BAL76,30000,white,Diesel,4,True
 fiat hobby,2017,KAL57,20000,white,Diesel,4,True
-<<<<<<< HEAD
-Vw golf,2017,UKX19,90000,svartur,Bensín,1,True
-=======
-=======
 toyota yaris,2017,DAB71,15000,blár,Bensín,1,True
 toyota yaris,2017,AUS91,13500,hvítur,Bensín,1,True
 toyota yaris,2018,SAS15,7000,grár,Bensín,1,True
@@ -54,5 +49,3 @@ toyota lc150,2017,SAK78,8000,hvítur,Diesel,3,True
 toyota lc150,2018,LAG19,15000,blár,Diesel,3,False
 fiat hobby,2017,BAL76,30000,hvítur,Diesel,4,True
 fiat hobby,2017,KAL57,20000,hvítur,Diesel,4,True
->>>>>>> e4f4c306e49afc26ce86df71094b0cafccf0ab90
->>>>>>> 61ed36741af2699894103a7e7f0132541bf32987

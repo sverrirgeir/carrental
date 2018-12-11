@@ -230,7 +230,35 @@ class StaffUI():
 
 
     def print_order_confirmation(self):
-        print("Sent í prentara...")
+        '''Prentar út upplýsingar um pöntun út frá pöntunarnúmeri'''
+        number = int(input("\n\tPöntunarnúmer: "))
+        order_list = self.__ordercar.get_order(number)
+        passport = order_list[0]
+        day1 = order_list[1]
+        day2 = order_list[2]
+        price = order_list[3]
+        car_type = order_list[4]
+        customer, passport, kredit = self.__customer.find_customer(passport)
+
+        print("\n{:^64}".format("Pöntunarstaðfesting"))
+        print("\n================================================================")
+        print("\n\t{:<10}\t{:^10}\t{:^10}".format("Nafn","Vegabr.Nr.","Kredit Nr."))
+        print("\n----------------------------------------------------------------")
+        print("\n\t{:<10}\t{:^10}\t{:^10}".format(customer,passport,kredit))
+        print("\n----------------------------------------------------------------")
+        print("\n\t{:<10}\t{:^10}\t{:^10}\t{:^10}".format("Frá","Til","Verð","Flokkur"))
+        print("\n----------------------------------------------------------------")
+        print("\n\t{:<10}\t{:^10}\t{:^10}\t{:^10}".format(day1,day2,price,car_type))
+        print("\n================================================================")
+        print("\n\t{:<30}".format("1. Til baka"))
+        choice = input("\n\tValmöguleiki: ")
+
+        if choice == "1":
+            self.print_clients_menu()
+        else:
+            print("\nVitlaust val, vinsamlegast veldu aftur!")
+            self.print_order_confirmation()
+
 
 
     def print_car_menu(self):

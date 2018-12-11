@@ -70,3 +70,12 @@ class OrderRepo:
                 orderfile.write("{},{},{},{},{}".format(passport, day1, day2, price, car_type))
                 orderfile.write("\n")
             return
+
+    def get_order(self, number):
+        with open("./data/orders.txt", "r") as orders:
+            list_of_lists = []
+            for line in orders:
+                line_list = line.strip().split(",")
+                list_of_lists.append(line_list)
+            return_list = list_of_lists[number]
+        return return_list
