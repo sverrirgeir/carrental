@@ -147,7 +147,7 @@ class CarRepo:
 
 
 
-    ''' það vantar að klára að útfæra '''
+    ''' það vantar að klára að útfæra þannig að hægt sé að eyða út neðsta bílnum'''
     def delete_cars(self, car_plate):
         with open("./data/cars.txt", "r") as car_string:
             list_of_lists = []
