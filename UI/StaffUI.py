@@ -75,6 +75,7 @@ class StaffUI():
             self.customer_order_menu(nr_list)
         elif choice == '3':
             self.__ordercar.print_list_of_orders()
+            self.print_order_menu()
         elif choice == '4':
             self.main_menu()
         else:
@@ -214,7 +215,10 @@ class StaffUI():
         choice = input("\n\tValmöguleiki: ")
 
         if choice == "1":
-            pass
+            number = int(input("\n\tHvaða pöntun viltu breyta?"))
+            self.__ordercar.delete_order(number)
+            print("\n\tskráðu pöntun með nýjum upplýsingum!")
+            self.print_order_car_menu()
         elif choice == "2":
             number = int(input("\n\tHvaða pöntun viltu eyða?: "))
             self.__ordercar.delete_order(number)
@@ -380,6 +384,8 @@ class StaffUI():
     
 
     def add_new_car(self):
+        ''' búa til user interface þar sem notandinn getur skráð inn nýjan bíl '''
+        ''' ef bílnúmer er skráð inn vitlaust þarf að láta notandann vita '''
         model = input("\ttegund bíls: ").strip().capitalize()
         year = input("\tÁrgerð(YYYY): ").strip()
         plate = input("\tBílnúmer: ").strip().upper()
