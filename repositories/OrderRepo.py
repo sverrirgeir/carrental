@@ -52,3 +52,21 @@ class OrderRepo:
                 return order_list
             elif not_found == 0:
                 return []
+
+    def delete_order(self, order_number):
+        with open("./data/orders.txt", "r") as orders:
+            list_of_lists = []
+            for line in orders:
+                line_list = line.strip().split(",")
+                list_of_lists.append(line_list)
+            list_of_lists.remove(list_of_lists[order_number])
+        with open("./data/orders.txt", "w") as orderfile:
+            for lst in list_of_lists:
+                passport= lst[0]
+                day1 = lst[1]
+                day2 = lst[2]
+                price = lst[3]
+                car_type = lst[4]
+                orderfile.write("{},{},{},{},{}".format(passport, day1, day2, price, car_type))
+                orderfile.write("\n")
+            return
