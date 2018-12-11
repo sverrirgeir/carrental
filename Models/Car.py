@@ -13,5 +13,13 @@ class Car:
     def __str__(self):
         return "{} {} {} {} {} {} {} {}".format(self.model, self.year, self.plate, self.miles, self.color, self.fuel_type, self.catagory, self.status)
 
+    def get_plate(self):
+        return self.plate
+
+    def get_write(self):
+        return "{},{},{},{},{},{},{},{}".format(self.model, self.year, self.plate, self.miles, self.color, self.fuel_type, self.catagory, self.status)
+        
+
+
 
 
