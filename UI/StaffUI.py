@@ -24,7 +24,7 @@ class StaffUI():
         choice6 = "6. Skila bíl"
         choice7 = "7. Hætta"
         print("\n\t{:^10}".format("Bílaleiga ehf"))
-        print("\n\t{:<30}\n\t{:<10}\n\t{:<10}\n\t{:<10}\n\t{:<10}\n\t{:<10}\n\t{:<10}".format(choice1, choice2, choice3, choice4, choice5, choice6, choice6, choice7))
+        print("\n\t{:<30}\n\t{:<10}\n\t{:<10}\n\t{:<10}\n\t{:<10}\n\t{:<10}\n\t{:<10}".format(choice1, choice2, choice3, choice4, choice5, choice6, choice7))
         
         choice = input("\n\tValmöguleiki: ")
 
@@ -82,17 +82,18 @@ class StaffUI():
     def search_for_order(self, passport):
         list_of_orders = self.__ordercar.search_for_orders(passport)
         
-        print("\n\t{:<10}\t{:^10}\t{:^10}\t{:^10}\t{:^10}".format("Vegabréfa N.","Afhendingard.","Skilad.","Verð","Flokkur"))
-        print(" "*8 + "-"*72)
+        print("\n\t{:<10}\t{:^10}\t{:^10}\t{:^10}\t{:^10}\t{:^10}".format("nr.","Vegabréfa N.","Afhendingard.","Skilad.","Verð","Flokkur"))
+        print(" "*8 + "-"*88)
         
         for lst in list_of_orders:
-            passport = lst[0]
-            day1 = lst[1]
-            day2 = lst[2]
-            price = lst[3]
+            nr = lst[0]
+            passport = lst[1]
+            day1 = lst[2]
+            day2 = lst[3]
+            price = lst[4]
             price = "{:,}".format(int(price))
-            type_of_car = lst[4]
-            print("\n\t{:<10}\t{:^10}\t{:^10}\t{:^10}\t{:^10}".format(passport,day1,day2,price,type_of_car))
+            type_of_car = lst[5]
+            print("\n\t{:<10}\t{:^10}\t{:^10}\t{:^10}\t{:^10}\t{:^10}".format(nr, passport,day1,day2,price,type_of_car))
         return self.print_order_menu()
     
 
@@ -187,7 +188,9 @@ class StaffUI():
         if choice == '1':
             self.search_for_order(passport)
         elif choice == '2':
-            pass
+            #Þurfum að skoða þetta betur
+            self.__customer.delete_customer(passport)
+            self.add_new_customer()
         elif choice == '3':
             #fer inn í fall sem yfirskrifar textafile með nýjum textafile án viðskiptavinarins
             self.__customer.delete_customer(passport)

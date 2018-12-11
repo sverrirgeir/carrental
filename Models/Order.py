@@ -5,6 +5,7 @@ class Order:
         self.return_day = day2
         self.amount = amount
         self.type = carchoice
+        
 
     def __str__ (self):
         return "{} {} {} {}".format( self.passport, self.pick_up_day, self.return_day, self.amount)
