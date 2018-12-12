@@ -12,14 +12,19 @@ class OrderRepo:
     
     def print_orders(self):
         with open("./data/orders.txt", "r") as ordersf:
-            print("\n\t{:<10}\t{:^10}\t{:^10}\t{:^10}\t{:^10}".format("Vegabréfa N.","Afhendingard.","Skilad.","Verð","Flokkur"))
-            print(" "*8 + "-"*72)
+            print("\n\t{:<10}\t{:^10}\t{:^10}\t{:^10}\t{:^10}\t{:^10}\t{:^10}".format("Vegabréfa N.","Afhendingard.","Skilad.","Verð","Trygging","Fullt Verð","Flokkur"))
+            print(" "*8 + "-"*104)
             for line in ordersf:
                 linesplit = line.split(",")
                 passport = linesplit[0]
                 pickupdate = linesplit[1]
                 returndate = linesplit[2]
                 price = linesplit[3]
+                extraprice = linesplit[5]
+                fullprice = int(price) + int(extraprice)
+                extraprice = int(extraprice)
+                extraprice = "{:,}".format(extraprice)
+                extraprice = str(extraprice) + " kr"
                 price = int(price)
                 price = "{:,}".format(price)
                 price = str(price) + " kr"
@@ -32,7 +37,7 @@ class OrderRepo:
                     tegund = "Jeppi"
                 else:
                     tegund = "Húsbíll"
-                print("\n\t{:<10}\t{:^10}\t{:^10}\t{:^10}\t{:^10}".format(passport, pickupdate, returndate, price, tegund))
+                print("\n\t{:<10}\t{:^10}\t{:^10}\t{:^10}\t{:^10}\t{:^10}\t{:^10}".format(passport, pickupdate, returndate, price, extraprice, fullprice, tegund))
             return
     
     def search_for_orders(self, passport):
