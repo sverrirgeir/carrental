@@ -28,6 +28,7 @@ class OrderCar:
     today,someday = self.date_time_return()
     diff = someday - today  
     days = diff.days
+    days = days + 1
     print("\n\tVeldu tegund: \n\n\t\t1. Smábíll \n\t\t2. Fólksbíll \n\t\t3. jeppi \n\t\t4. Húsbíll " )
     carchoice = int(input("\n\t\tVal: "))
     price = 0
