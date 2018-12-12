@@ -1,5 +1,12 @@
+P�ntunarsta�festing
 
-                      Pöntunarstaðfesting                       
-	================================================================
-	Nafn					Vegabr.Nr.					Kredit Nr.
-	----------------------------------------------------------------
+Nafn: John Cena
+Vegabr�fsn�mer: A1234567
+Kreditkortan�mer: 2222000033334444
+
+Heildarver�: 40000
+
+Fr�: 2018-12-15
+Til: 2018-12-18
+
+T�pa: Sm�b�ll

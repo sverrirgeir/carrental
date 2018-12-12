@@ -1,6 +1,7 @@
 from Models.Customer import Customer
 
 
+
 class CustomerRepo:
     def __init__(self):
         self.__customer = ""
@@ -64,7 +65,25 @@ class CustomerRepo:
 
     def write_to_file(self, customer, passport, kredit, day1, day2, price, car_type):
         with open("./data/order_confirmation.txt", "w") as f:
-            f.write("\n{:^64}".format("Pöntunarstaðfesting"))
-            f.write("\n\t================================================================")
-            f.write("\n\t{}\t\t\t\t\t{}\t\t\t\t\t{}".format("Nafn","Vegabr.Nr.","Kredit Nr."))
-            f.write("\n\t----------------------------------------------------------------")                               
+            if car_type == "1":
+                car_type = "Smábíll"
+            elif car_type == "2":
+                car_type = "Fólksbíll"
+            elif car_type == "3":
+                car_type = "Jeppi"
+            elif car_type == "4":
+                car_type = "Húsbíll"
+            
+            
+            f.write("Pöntunarstaðfesting\n")
+            f.write("\n")
+            f.write("Nafn: {}\n".format(customer))
+            f.write("Vegabréfsnúmer: {}\n".format(passport))
+            f.write("Kreditkortanúmer: {}\n".format(kredit))
+            f.write("\n")
+            f.write("Heildarverð: {}\n".format(price))  
+            f.write("\n")
+            f.write("Frá: {}\n".format(day1))
+            f.write("Til: {}\n".format(day2))
+            f.write("\n")
+            f.write("Týpa: {}\n".format(car_type))               
