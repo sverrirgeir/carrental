@@ -1,12 +1,12 @@
-Pï¿½ntunarstaï¿½festing
+Pöntunarstaðfesting
 
 Nafn: John Cena
-Vegabrï¿½fsnï¿½mer: A1234567
-Kreditkortanï¿½mer: 2222000033334444
+Vegabréfsnúmer: A1234567
+Kreditkortanúmer: 2222000033334444
 
-Heildarverï¿½: 40000
+Heildarverð: 20000
 
-Frï¿½: 2018-12-15
-Til: 2018-12-18
+Frá: 2018-12-22
+Til: 2018-12-23
 
-Tï¿½pa: Smï¿½bï¿½ll
+Týpa: Smábíll
