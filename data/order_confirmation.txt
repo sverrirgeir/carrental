@@ -1,12 +1,12 @@
 Pöntunarstaðfesting
 
-Nafn: John Cena
-Vegabréfsnúmer: A1234567
-Kreditkortanúmer: 2222000033334444
+Nafn: Kristofer Eyleifsson
+Vegabréfsnúmer: A1919191
+Kreditkortanúmer: 0000000000000000
 
 Heildarverð: 20000
 
-Frá: 2018-12-22
-Til: 2018-12-23
+Frá: 2018-12-23
+Til: 2018-12-24
 
 Týpa: Smábíll

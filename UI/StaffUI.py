@@ -5,12 +5,8 @@ from services.OrderCar import OrderCar
 from Models.Order import Order
 from Models.Customer import Customer
 from Models.Car import Car
-<<<<<<< HEAD
-from win32com.client import Dispatch
-
-=======
+#from win32com.client import Dispatch
 from repositories.PrintRepo import PrintRepo
->>>>>>> d36069ac1841eb4619d3e677cbec9a31ff2e7249
 
 
 class StaffUI():
@@ -18,7 +14,7 @@ class StaffUI():
         self.__cars = CarService()
         self.__customer = CustomerService()
         self.__ordercar = OrderCar()
-        
+        self.__printrepo = PrintRepo()
         
         
     def main_menu(self):
@@ -65,7 +61,7 @@ class StaffUI():
         
 
         else:
-            print("\nVitlaust val, vinsamlegast veldu aftur!")
+            print("\n\tVitlaust val, vinsamlegast veldu aftur!")
             self.main_menu()
 
     def return_car(self):
@@ -103,7 +99,11 @@ class StaffUI():
         elif choice == '2':
             passport = input("\n\tVegabréfsnúmer: ").upper()
             nr_list = self.search_for_order(passport)
-            self.customer_order_menu(nr_list)
+            if nr_list == []:
+                print("\tEngin pöntun fannst á þessu vegabréfsnúmeri!")
+                self.print_order_menu()
+            else:
+                self.customer_order_menu(nr_list)
         elif choice == '3':
             self.__ordercar.print_list_of_orders()
             self.print_order_menu()
@@ -116,7 +116,7 @@ class StaffUI():
     def search_for_order(self, passport):
         list_of_orders = self.__ordercar.search_for_orders(passport)
         
-        print("\n\t{:<10}\t{:^10}\t{:^10}\t{:^10}\t{:^10}\t{:^10}".format("nr.","Vegabréfa N.","Afhendingard.","Skilad.","Verð","Flokkur"))
+        print("\n\t{:<10}\t{:^10}\t{:^10}\t{:^10}\t{:^10}\t{:^10}".format("nr.","Vegabréfa N.","Afhendingard.","Skilad.","Heildarverð","Flokkur"))
         print(" "*8 + "-"*88)
         nr_list = []
         for lst in list_of_orders:
@@ -126,9 +126,11 @@ class StaffUI():
             day1 = lst[2]
             day2 = lst[3]
             price = lst[4]
-            price = "{:,}".format(int(price))
             type_of_car = lst[5]
-            print("\n\t{:<10}\t{:^10}\t{:^10}\t{:^10}\t{:^10}\t{:^10}".format(nr, passport,day1,day2,price,type_of_car))
+            insurance = lst[6]
+            fullprice = int(price) + int(insurance)
+            fullprice = "{:,}".format(fullprice)
+            print("\n\t{:<10}\t{:^10}\t{:^10}\t{:^10}\t{:^10}\t{:^10}".format(nr, passport,day1,day2,fullprice,type_of_car))
         return nr_list
     
 
@@ -165,7 +167,7 @@ class StaffUI():
         elif choice == '4':
             self.main_menu()
         else:
-            print("\nVitlaust val, vinsamlegast veldu aftur!")
+            print("\n\tVitlaust val, vinsamlegast veldu aftur!")
             self.print_clients_menu()
     
     def add_new_customer(self):
@@ -226,6 +228,7 @@ class StaffUI():
         elif choice == '2':
             #Þurfum að skoða þetta betur
             self.__customer.delete_customer(passport)
+            print("\n\tVinsamlegast skráðu inn nýjar upplýsingar!")
             self.add_new_customer()
         elif choice == '3':
             #fer inn í fall sem yfirskrifar textafile með nýjum textafile án viðskiptavinarins
@@ -241,12 +244,11 @@ class StaffUI():
         choice3 = "3. Prenta pöntunarstaðfestingu"
         choice4 = "4. Til baka"
 
-        print("\n\t{:^10}".format("Pöntun"))
         print("\n\t{:<30}\n\t{:<10}\n\t{:<10}\n\t{:<10}".format(choice1, choice2, choice3, choice4))
         choice = input("\n\tValmöguleiki: ")
 
         if choice == "1":
-            number = int(input("\n\tHvaða pöntun viltu breyta?"))
+            number = int(input("\n\tHvaða pöntun viltu breyta?: "))
             self.__ordercar.delete_order(number)
             print("\n\tskráðu pöntun með nýjum upplýsingum!")
             self.print_order_car_menu()
@@ -260,7 +262,7 @@ class StaffUI():
         elif choice == "4":
             self.print_order_menu()
         else:
-            print("\nVitlaust val, vinsamlegast veldu aftur!")
+            print("\n\tVitlaust val, vinsamlegast veldu aftur!")
             self.customer_order_menu(nr_list)
 
 
@@ -276,31 +278,32 @@ class StaffUI():
         day2 = order_list[2]
         price = order_list[3]
         car_type = order_list[4]
+        insurance = order_list[5]
+        full_price = int(insurance)+ int(price)
+        full_price = "{:,}".format(full_price)
+
         customer, passport, kredit = self.__customer.find_customer(passport)
 
         self.__customer.write_to_file(customer, passport, kredit, day1, day2, price, car_type)
-<<<<<<< HEAD
-        self.print_doc("./data/order_confirmation.txt")
+        #self.print_doc("./data/order_confirmation.txt")
         
-=======
->>>>>>> d36069ac1841eb4619d3e677cbec9a31ff2e7249
         print("\n{:^64}".format("Pöntunarstaðfesting"))
-        print("\n================================================================")
-        print("\n\t{:<10}\t{:^10}\t{:^10}".format("Nafn","Vegabr.Nr.","Kredit Nr."))
-        print("\n----------------------------------------------------------------")
-        print("\n\t{:<10}\t{:^10}\t{:^10}".format(customer,passport,kredit))
-        print("\n----------------------------------------------------------------")
+        print("\n======================================================================")
+        print("\n\t{:<10}\t\t{:^10}\t\t{:^10}".format("Nafn","Vegabr.Nr.","Kredit Nr."))
+        print("\n----------------------------------------------------------------------")
+        print("\n\t{:<10}\t{:^10}\t\t{:^10}".format(customer,passport,kredit))
+        print("\n----------------------------------------------------------------------")
         print("\n\t{:<10}\t{:^10}\t{:^10}\t{:^10}".format("Frá","Til","Verð","Flokkur"))
-        print("\n----------------------------------------------------------------")
-        print("\n\t{:<10}\t{:^10}\t{:^10}\t{:^10}".format(day1,day2,price,car_type))
-        print("\n================================================================")
+        print("\n----------------------------------------------------------------------")
+        print("\n\t{:<10}\t{:^10}\t{:^10}\t{:^10}".format(day1,day2,full_price,car_type))
+        print("\n======================================================================")
         print("\n\t{:<30}".format("1. Til baka"))
         choice = input("\n\tValmöguleiki: ")
 
         if choice == "1":
-            self.print_clients_menu()
+            self.main_menu()
         else:
-            print("\nVitlaust val, vinsamlegast veldu aftur!")
+            print("\n\tVitlaust val, vinsamlegast veldu aftur!")
             self.print_order_confirmation()
 
 
@@ -334,7 +337,7 @@ class StaffUI():
         elif choice == '6':
             self.main_menu()
         else:
-            print("\nVitlaust val, vinsamlegast veldu aftur!")
+            print("\n\tVitlaust val, vinsamlegast veldu aftur!")
             self.print_car_menu()    
 
 
@@ -413,50 +416,44 @@ class StaffUI():
 
             self.main_menu()
         else:
-            print("\nVitlaust val, vinsamlegast veldu aftur!")
+            print("\n\tVitlaust val, vinsamlegast veldu aftur!")
             self.print_price_list()
 
     def print_order_car_menu(self):
         """Prentar út pöntunarskjá fyrir pöntun"""
-        choice1 = "1. skrá pöntun"
-        choice2 = "2. Til baka"
+    
+        passport = input("\n\tVegabréfsnúmer: ").upper()
+        #sækir find customer fallið og skila gildum sem notuð eru til að geyma gögn
+        customer, passport, kredit = self.__customer.find_customer(passport)
 
-        print("\n\t{:^10}".format("Pantanir"))
-        print("\n\t{:<30}\n\t{:<10}\n".format(choice1, choice2))
-
-        choice = input("\n\tValmöguleiki: ")
-        
-        if choice == "1":
-            passport = input("\n\tVegabréfsnúmer: ").upper()
-            #sækir find customer fallið og skila gildum sem notuð eru til að geyma gögn
-            customer, passport, kredit = self.__customer.find_customer(passport)
-
-            if customer == 0:
-                print("\n\tEngin viðskiptavinur er skráður á þetta númer!\n")
+        if customer == 0:
+            print("\n\tEngin viðskiptavinur er skráður á þetta númer!\n")
+            print("\t1. Nýskrá viðskiptavin")
+            print("\t2. Slá inn nýtt vegabréfsnúmer")
+            choice = input("\n\tValmöguleiki: ")
+            if choice == "1":
                 self.add_new_customer()
-                return
-            if customer == 1:
-                print("\n\tEkki rétt skráð inn! \n\tVegabréfsnúmer á að vera 8 letur á lengd")
-                self.print_order_car_menu()
-                return
-            fullprice,today,someday,carchoice,extraprice = self.__ordercar.order_price()
-            print("\n\t\tHeildarverð: {:,}".format(fullprice + extraprice))
-            new_order = Order(passport, today, someday, fullprice, carchoice, extraprice)
-            fullprice = int(fullprice)
-            self.__printrepo.send_email(customer,today,someday)
-            if fullprice < 10000:
-                print("Dagsetning skrifuð vitlaus inn: ")
+            elif choice == "2":
                 self.print_order_car_menu()
             else:
-                self.__ordercar.get_car_order(new_order)
-                print("\n\tPöntun hefur verið skráð!")
-                self.main_menu()
-
-        elif choice == "2":
-            self.print_order_menu()
-        else:
-            print("\nVitlaust val, vinsamlegast veldu aftur!")
+                self.print_order_car_menu()
+            
+        if customer == 1:
+            print("\n\tEkki rétt skráð inn! \n\tVegabréfsnúmer á að vera 8 letur á lengd")
             self.print_order_car_menu()
+            return
+        fullprice,today,someday,carchoice,extraprice = self.__ordercar.order_price()
+        print("\n\t\tHeildarverð: {:,}".format(fullprice + extraprice))
+        new_order = Order(passport, today, someday, fullprice, carchoice, extraprice)
+        fullprice = int(fullprice)
+        self.__printrepo.send_email(customer,today,someday)
+        if fullprice < 10000:
+            print("Dagsetning skrifuð vitlaus inn: ")
+            self.print_order_car_menu()
+        else:
+            self.__ordercar.get_car_order(new_order)
+            print("\n\tPöntun hefur verið skráð!")
+            self.main_menu()
 
     
 
@@ -481,14 +478,14 @@ class StaffUI():
             print("\n\tVitlaust skráð inn bílnúmer")
             self.add_new_car()
     
-    def print_doc(self, filename):
-        myWord = Dispatch('Word.Application')
-        myWord.Visible = 1
+    #def print_doc(self, filename):
+        #myWord = Dispatch('Word.Application')
+        #myWord.Visible = 1
 
-        myDoc = myWord.Documents.Add()
-        myRange = myDoc.Range(0,1)
-        with open(filename, "r") as printf:
-            for line in printf:
-                myRange.InsertAfter(line)
+        #myDoc = myWord.Documents.Add()
+        #myRange = myDoc.Range(0,1)
+        #with open(filename, "r") as printf:
+            #for line in printf:
+                #myRange.InsertAfter(line)
 
-        myDoc.PrintOut()
+        #myDoc.PrintOut()
