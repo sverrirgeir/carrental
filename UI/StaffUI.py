@@ -258,11 +258,8 @@ class StaffUI():
         car_type = order_list[4]
         customer, passport, kredit = self.__customer.find_customer(passport)
 
-<<<<<<< HEAD
-=======
         self.__customer.write_to_file(customer, passport, kredit, day1, day2, price, car_type)
 
->>>>>>> b405f9f331a128173e5c36d65cd842db272bb166
         print("\n{:^64}".format("Pöntunarstaðfesting"))
         print("\n================================================================")
         print("\n\t{:<10}\t{:^10}\t{:^10}".format("Nafn","Vegabr.Nr.","Kredit Nr."))
@@ -351,8 +348,10 @@ class StaffUI():
             self.print_car_menu()
         elif choice == "2":
             self.__cars.return_car(car_plate)
+            self.print_car_menu            
         elif choice == "3":
-            pass
+            self.__cars.rent_car(car_plate)
+            self.print_car_menu
         elif choice == "4":
             self.main_menu()                 
         

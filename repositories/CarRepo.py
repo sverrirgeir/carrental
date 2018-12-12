@@ -214,3 +214,34 @@ class CarRepo:
                         return 2     
             return not_found
 
+    def rent_car(self, car_plate):
+        with open("./data/cars.txt", "r") as car_string:
+            list_of_lists = []
+            not_found = 0
+            for line in car_string:
+                line_list = line.strip().split(",")
+                list_of_lists.append(line_list)
+            for i in range(len(list_of_lists)):
+                if list_of_lists[i][2] == car_plate:
+                    not_found = 3
+                    if list_of_lists[i][7] == "True":
+                        list_of_lists[i][7] = "False"
+                        with open("./data/cars.txt", "w") as car_string:
+                            for lst in list_of_lists:
+                                car_model= lst[0]
+                                car_year = lst[1]
+                                car_plate = lst[2]
+                                car_miles = lst[3]
+                                car_color = lst[4]
+                                car_fuel_type = lst[5]
+                                car_status = lst[7]
+                                car_catagory = lst[6]
+                                car_string.write("{},{},{},{},{},{},{},{}".format(car_model, car_year, car_plate, car_miles, car_color, car_fuel_type, car_catagory, car_status))
+                                car_string.write("\n")
+                        return 1
+                    else:
+                        return 2     
+            return not_found
+
+            
+
