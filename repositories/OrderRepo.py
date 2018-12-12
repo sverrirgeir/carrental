@@ -22,6 +22,9 @@ class OrderRepo:
                 price = linesplit[3]
                 extraprice = linesplit[5]
                 fullprice = int(price) + int(extraprice)
+                fullprice = int(fullprice)
+                fullprice = "{:,}".format(fullprice)
+                fullprice = str(fullprice) + " kr"
                 extraprice = int(extraprice)
                 extraprice = "{:,}".format(extraprice)
                 extraprice = str(extraprice) + " kr"
