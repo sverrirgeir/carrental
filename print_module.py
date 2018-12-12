@@ -1,18 +1,8 @@
-from win32com.client import Dispatch
-MYDIR = './data/cars.txt'
+import win32ui
 
-def simple():
-    myWord = Dispatch('Word.Application')
-    myWord.Visible = 1 # comment out for production
-
-    myDoc = myWord.Documents.Add()
-    myRange = myDoc.Range(0,0)
-    with open('./data/cars.txt', "r") as printf:
+myDoc = ""
+with open("./data/order_confirmation.txt", "r") as printf:
         for line in printf:
-            myRange.InsertBefore(line)
+                mydoc = mydoc + line
 
-    #uncomment these for a full script
-    #myDoc.SaveAs(MYDIR + '\\python01.doc')
-    myDoc.PrintOut()
-    #myDoc.Close()
-simple()
+myDoc.PrintOut()        
