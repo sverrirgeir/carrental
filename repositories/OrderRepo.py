@@ -77,5 +77,9 @@ class OrderRepo:
             for line in orders:
                 line_list = line.strip().split(",")
                 list_of_lists.append(line_list)
+            if number < 0:
+                return []
+            elif number > len(list_of_lists):
+                return []
             return_list = list_of_lists[number]
         return return_list

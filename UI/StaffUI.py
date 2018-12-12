@@ -245,6 +245,9 @@ class StaffUI():
         '''Prentar út upplýsingar um pöntun út frá pöntunarnúmeri'''
         number = int(input("\n\tPöntunarnúmer: "))
         order_list = self.__ordercar.get_order(number)
+        if order_list == []:
+            print("\n\tPöntun ekki á lista!")
+            self.print_order_confirmation()
         passport = order_list[0]
         day1 = order_list[1]
         day2 = order_list[2]

@@ -7,7 +7,7 @@ hyundai i10,2017,ERA95,20000,svartur,Bensín,1,True
 hyundai i10,2018,KTM99,15000,grár,Bensín,1,True
 hyundai i10,2018,OOO00,130000,blár,Bensín,1,True
 hyundai i10,2017,GTK97,18000,grænn,Bensín,1,True
-hyundai i10,2016,ASD12,270000,gulur,Bensín,1,False
+hyundai i10,2016,ASD12,270000,gulur,Bensín,1,True
 vw passat,2017,FGB16,14000,hvítur,Diesel,2,True
 vw passat,2018,SUB63,12000,grár,Diesel,2,True
 kia optima,2017,VAK18,10000,hvítur,Diesel,2,True
