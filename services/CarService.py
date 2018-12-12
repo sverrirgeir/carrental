@@ -36,6 +36,8 @@ class CarService:
 
     
     def valid_plate(self, plate):
+        ''' athuga hvort að númerplatan sé gild ''' 
+        ''' númeraplata er 5 stafir að lengd - 3 bókstafir/ 2 tölustafir '''
         if len(plate) == 5:
             return True
         else:
@@ -43,6 +45,8 @@ class CarService:
     
     
     def add_car(self,new_car):
+        '''Ef númerplatan er gild þá er bílnum bætt við'''
+        '''Ef ekki þá fær notandinn villu skilaboð'''
         if self.valid_plate(new_car.get_plate()):
             self.__car.write_new_car(new_car)
             return 2
