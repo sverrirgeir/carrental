@@ -246,6 +246,9 @@ class StaffUI():
         '''Prentar út upplýsingar um pöntun út frá pöntunarnúmeri'''
         number = int(input("\n\tPöntunarnúmer: "))
         order_list = self.__ordercar.get_order(number)
+        if order_list == []:
+            print("\n\tPöntun ekki á lista!")
+            self.print_order_confirmation()
         passport = order_list[0]
         day1 = order_list[1]
         day2 = order_list[2]
@@ -253,6 +256,11 @@ class StaffUI():
         car_type = order_list[4]
         customer, passport, kredit = self.__customer.find_customer(passport)
 
+<<<<<<< HEAD
+        self.__customer.write_to_file(customer, passport, kredit, day1, day2, price, car_type)
+=======
+
+>>>>>>> af041813c5414f4ee256e8c76c19adaf2074e073
         print("\n{:^64}".format("Pöntunarstaðfesting"))
         print("\n================================================================")
         print("\n\t{:<10}\t{:^10}\t{:^10}".format("Nafn","Vegabr.Nr.","Kredit Nr."))
@@ -377,6 +385,7 @@ class StaffUI():
         if choice == "1":
             pass
         elif choice == "2":
+
             self.main_menu()
         else:
             print("\nVitlaust val, vinsamlegast veldu aftur!")
