@@ -43,7 +43,6 @@ class OrderCar:
     else:
       print("Ekkert valið")  
       self.order_price()
-    print("Verð: " + str(price))
     insurance = input("\tAukatryggingu?(y/n): ")
     ''' hér breyti ég inputinu í lower til að engin misskilningur verði á'''
     extraprice = 0
@@ -76,7 +75,7 @@ class OrderCar:
   def get_order(self, number):
     return self.__write_order.get_order(number)
 
-
+  
 
 
 

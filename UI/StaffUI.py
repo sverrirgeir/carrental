@@ -246,6 +246,9 @@ class StaffUI():
         '''Prentar út upplýsingar um pöntun út frá pöntunarnúmeri'''
         number = int(input("\n\tPöntunarnúmer: "))
         order_list = self.__ordercar.get_order(number)
+        if order_list == []:
+            print("\n\tPöntun ekki á lista!")
+            self.print_order_confirmation()
         passport = order_list[0]
         day1 = order_list[1]
         day2 = order_list[2]
@@ -253,7 +256,11 @@ class StaffUI():
         car_type = order_list[4]
         customer, passport, kredit = self.__customer.find_customer(passport)
 
+<<<<<<< HEAD
+        self.__customer.write_to_file(customer, passport, kredit, day1, day2, price, car_type)
+=======
 
+>>>>>>> af041813c5414f4ee256e8c76c19adaf2074e073
         print("\n{:^64}".format("Pöntunarstaðfesting"))
         print("\n================================================================")
         print("\n\t{:<10}\t{:^10}\t{:^10}".format("Nafn","Vegabr.Nr.","Kredit Nr."))
@@ -410,9 +417,14 @@ class StaffUI():
             fullprice,today,someday,carchoice,extraprice = self.__ordercar.order_price()
             print("\n\t\tHeildarverð: {:,}".format(fullprice + extraprice))
             new_order = Order(passport, today, someday, fullprice, carchoice, extraprice)
-            self.__ordercar.get_car_order(new_order)
-            print("\n\tPöntun hefur verið skráð!")
-            self.main_menu()
+            fullprice = int(fullprice)
+            if fullprice < 10000:
+                print("Dagsetning skrifuð vitlaus inn: ")
+                self.print_order_car_menu()
+            else:
+                self.__ordercar.get_car_order(new_order)
+                print("\n\tPöntun hefur verið skráð!")
+                self.main_menu()
 
         elif choice == "2":
             self.print_order_menu()

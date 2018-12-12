@@ -49,4 +49,8 @@ class CustomerService:
     def delete_customer(self, passport):
         """takes in a validated passport number"""
         return self.__customer.delete_customer(passport)
+
+    def write_to_file(self, customer, passport, kredit, day1, day2, price, car_type):
+        return self.__customer.write_to_file(customer, passport, kredit, day1, day2, price, car_type)
+
             
