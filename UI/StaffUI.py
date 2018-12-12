@@ -1,5 +1,4 @@
 from services.CarService import CarService
-from services.Order import Order
 from services.CustomerService import CustomerService
 from services.OrderCar import OrderCar
 from Models.Order import Order
@@ -66,20 +65,24 @@ class StaffUI():
 
     def return_car(self):
         self.__cars.print_taken()
-        car_plate = input("\n\tBílnúmer bíls sem skila á: ").upper()
+        car_plate = input("\n\tBílnúmer bíls sem skila á('q' til að hætta við): ").upper()
+        if car_plate == "Q":
+            return self.main_menu()
         result = self.__cars.return_car(car_plate)
         if result == 0:
             print("\n\tBíll er ekki á skrá, vinsamlegast reyndu aftur")
-            return self.return_car()
+            self.return_car()
         return self.main_menu()
 
     def rent_car(self):
         self.__cars.print_available()
-        car_plate = input("\n\tBílnúmer bíls sem leigja á: ").upper()
+        car_plate = input("\n\tBílnúmer bíls sem leigja á('q' til að hætta við): ").upper()
+        if car_plate == "Q":
+            return self.main_menu()
         result = self.__cars.rent_car(car_plate)
         if result == 0:
             print("\n\tBíll er ekki á skrá, vinsamlegast reyndu aftur")
-            return self.return_car()
+            self.rent_car()
         return self.main_menu()
 
     def print_order_menu(self):
@@ -172,7 +175,7 @@ class StaffUI():
     
     def add_new_customer(self):
         #Input from the user about the new customer
-        first_name = input("\tFornafn(og millinafn): ").strip()
+        first_name = input("\n\tFornafn(og millinafn): ").strip()
         last_name = input("\tEftirnafn: ").strip()
         passport = input("\tVegabréfsnúmer: ").upper().strip()
         kredit = input("\tKreditkortanúmer(engin bandstrik): ").strip()
@@ -228,7 +231,7 @@ class StaffUI():
         elif choice == '2':
             #Þurfum að skoða þetta betur
             self.__customer.delete_customer(passport)
-            print("\n\tVinsamlegast skráðu inn nýjar upplýsingar!")
+            print("\n\tVinsamlegast skráðu inn nýjar upplýsingar!\n")
             self.add_new_customer()
         elif choice == '3':
             #fer inn í fall sem yfirskrifar textafile með nýjum textafile án viðskiptavinarins
@@ -395,7 +398,7 @@ class StaffUI():
         over100 = "Athugið dagverð miðast við 100 ekna km á dag að meðaltali yfir \n leigutíma. Gjald fyrir akstur umfram 100 km miðast við 1% \n af dagverði fyrir hvern kílómetra umfram 100km."
         print("\n{:^64}".format("Verðlisti"))
         print("\n================================================================")
-        print("\n\t{:<10}\t{:^10}\t{:^10}".format("Flokkur","Verð","Trygging"))
+        print("\n\t{:<10}\t{:^10}\t{:^10}".format("Flokkur","Daggjald","Trygging"))
         print("\n----------------------------------------------------------------")
         print("\n\t{:<10}\t{:^10}\t{:^10}".format(choice1,price1,insurance))
         print("\n----------------------------------------------------------------")
@@ -407,13 +410,10 @@ class StaffUI():
         print("\n----------------------------------------------------------------")
         print("\n{}".format(over100))
         print("\n================================================================")
-        print("\n\t{:<30}\n\t{:<10}".format("1. Prenta út Verðlista","2. Til baka"))
+        print("\n\t{:<30}".format("1. Til baka"))
         choice = input("\n\tValmöguleiki: ")
 
         if choice == "1":
-            pass
-        elif choice == "2":
-
             self.main_menu()
         else:
             print("\n\tVitlaust val, vinsamlegast veldu aftur!")
@@ -440,27 +440,30 @@ class StaffUI():
             
         if customer == 1:
             print("\n\tEkki rétt skráð inn! \n\tVegabréfsnúmer á að vera 8 letur á lengd")
-            self.print_order_car_menu()
+            self.print_order_menu()
             return
         fullprice,today,someday,carchoice,extraprice = self.__ordercar.order_price()
+        if today == 0:
+            self.print_order_car_menu()
         print("\n\t\tHeildarverð: {:,}".format(fullprice + extraprice))
         new_order = Order(passport, today, someday, fullprice, carchoice, extraprice)
         fullprice = int(fullprice)
-        self.__printrepo.send_email(customer,today,someday)
         if fullprice < 10000:
             print("Dagsetning skrifuð vitlaus inn: ")
             self.print_order_car_menu()
         else:
             self.__ordercar.get_car_order(new_order)
             print("\n\tPöntun hefur verið skráð!")
-            self.main_menu()
+
+        self.__printrepo.send_email(customer,today,someday)
+        self.main_menu()
 
     
 
     def add_new_car(self):
         ''' búa til user interface þar sem notandinn getur skráð inn nýjan bíl '''
         ''' ef bílnúmer er skráð inn vitlaust þarf að láta notandann vita '''
-        model = input("\ttegund bíls: ").strip().capitalize()
+        model = input("\n\ttegund bíls: ").strip().capitalize()
         year = input("\tÁrgerð(YYYY): ").strip()
         plate = input("\tBílnúmer: ").strip().upper()
         miles = input("\tKeyrsla bíls (í km): ").strip()
@@ -476,7 +479,7 @@ class StaffUI():
             self.print_car_menu()
         elif decision == 1:
             print("\n\tVitlaust skráð inn bílnúmer")
-            self.add_new_car()
+            self.print_car_menu()
     
     #def print_doc(self, filename):
         #myWord = Dispatch('Word.Application')

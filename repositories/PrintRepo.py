@@ -1,11 +1,11 @@
 import smtplib
 
 class PrintRepo():    
-    def send_email(self, strengur, inday, outday):
+    def send_email(self, name, inday, outday):
             our_email = 'bilaleigaehf@gmail.com'
             password = 'Verklegt1'
             send_to_email = input("\n\tEmail: ")
-            message = strengur + " Pontun Stadfest " + str(inday) + " " + str(outday)
+            message = name + "\n" + " \nPontun Stadfest " + "\nFra: " + str(inday) + " Til: " + str(outday)
             server = smtplib.SMTP('smtp.gmail.com', 587)
             server.starttls()
             server.login(our_email, password)
