@@ -348,10 +348,10 @@ class StaffUI():
             self.print_car_menu()
         elif choice == "2":
             self.__cars.return_car(car_plate)
-            self.print_car_menu            
+            self.print_car_menu()            
         elif choice == "3":
             self.__cars.rent_car(car_plate)
-            self.print_car_menu
+            self.print_car_menu()
         elif choice == "4":
             self.main_menu()                 
         
