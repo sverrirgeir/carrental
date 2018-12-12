@@ -256,7 +256,11 @@ class StaffUI():
         car_type = order_list[4]
         customer, passport, kredit = self.__customer.find_customer(passport)
 
+<<<<<<< HEAD
         self.__customer.write_to_file(customer, passport, kredit, day1, day2, price, car_type)
+=======
+
+>>>>>>> af041813c5414f4ee256e8c76c19adaf2074e073
         print("\n{:^64}".format("Pöntunarstaðfesting"))
         print("\n================================================================")
         print("\n\t{:<10}\t{:^10}\t{:^10}".format("Nafn","Vegabr.Nr.","Kredit Nr."))
@@ -381,6 +385,7 @@ class StaffUI():
         if choice == "1":
             pass
         elif choice == "2":
+
             self.main_menu()
         else:
             print("\nVitlaust val, vinsamlegast veldu aftur!")
@@ -409,9 +414,9 @@ class StaffUI():
                 print("\n\tEkki rétt skráð inn! \n\tVegabréfsnúmer á að vera 8 letur á lengd")
                 self.print_order_car_menu()
                 return
-            fullprice,today,someday,carchoice = self.__ordercar.order_price()
-            print("\n\t\tHeildarverð: {:,}".format(fullprice))
-            new_order = Order(passport, today, someday, fullprice, carchoice)
+            fullprice,today,someday,carchoice,extraprice = self.__ordercar.order_price()
+            print("\n\t\tHeildarverð: {:,}".format(fullprice + extraprice))
+            new_order = Order(passport, today, someday, fullprice, carchoice, extraprice)
             self.__ordercar.get_car_order(new_order)
             print("\n\tPöntun hefur verið skráð!")
             self.main_menu()
