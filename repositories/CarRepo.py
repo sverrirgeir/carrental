@@ -7,6 +7,9 @@ class CarRepo:
 
 
     def print_all_cars(self):
+        ''' Fallið opnar textaskránna cars.txt og prentar út alla bíla sem bílaleigan á
+        þar sem tegund, árgerð, bílnúmer, keyrsla í kílómetrum, litur, eldsneytistegund,
+        staða og flokkur bíls koma fram'''
         with open("./data/cars.txt", "r") as car_string:
                 print("\n{:>4}{:>15}{:>8}{:>9}{:>7}{:>10}{:>6}{:>9}".format("Tegund", "Árgerð", "Númer", "Keyrsla", "Litur", "Eldsneyti", "Staða", "Flokkur"))
                 print("-"*73)
@@ -39,6 +42,8 @@ class CarRepo:
 
 
     def print_taken_cars(self):
+        '''Fallið les in textaskránna cars.txt og prentar út alla þá bíla sem eru í útleigu
+        ásamt header sem segir til um Tegund, árgerð, númer o.s.frv. '''
         with open("./data/cars.txt", "r") as car_string:
                 print("\n{:>4}{:>15}{:>8}{:>9}{:>7}{:>10}{:>6}{:>9}".format("Tegund", "Árgerð", "Númer", "Keyrsla", "Litur", "Eldsneyti", "Staða", "Flokkur"))
                 print("-"*73)
@@ -69,6 +74,7 @@ class CarRepo:
                         print("{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}".format(car_model.capitalize(), car_year, car_plate, car_miles, car_color.capitalize(), car_fuel_type, car_status, car_catagory))
 
     def print_available_cars(self):
+        ''' Fallið prentar út alla þá bíla sem eru lausir til útleigu'''
         with open("./data/cars.txt", "r") as car_string:
                 print("\n{:>4}{:>15}{:>8}{:>9}{:>7}{:>10}{:>6}{:>9}".format("Tegund", "Árgerð", "Númer", "Keyrsla", "Litur", "Eldsneyti", "Staða", "Flokkur"))
                 print("-"*73)
@@ -100,6 +106,7 @@ class CarRepo:
 
 
     def find_car(self, car_plate):
+        ''' Fallið gerir notanda kleift að leita að bíl sem er skráður í cars.txt'''
         with open("./data/cars.txt", "r") as car_string:
             list_of_list = []
             not_found = 0
