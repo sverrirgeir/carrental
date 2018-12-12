@@ -5,6 +5,7 @@ from services.OrderCar import OrderCar
 from Models.Order import Order
 from Models.Customer import Customer
 from Models.Car import Car
+from repositories.PrintRepo import PrintRepo
 
 
 class StaffUI():
@@ -12,6 +13,7 @@ class StaffUI():
         self.__cars = CarService()
         self.__customer = CustomerService()
         self.__ordercar = OrderCar()
+        self.__printrepo = PrintRepo()
         
         
         
@@ -256,11 +258,8 @@ class StaffUI():
         car_type = order_list[4]
         customer, passport, kredit = self.__customer.find_customer(passport)
 
-<<<<<<< HEAD
         self.__customer.write_to_file(customer, passport, kredit, day1, day2, price, car_type)
-=======
 
->>>>>>> af041813c5414f4ee256e8c76c19adaf2074e073
         print("\n{:^64}".format("Pöntunarstaðfesting"))
         print("\n================================================================")
         print("\n\t{:<10}\t{:^10}\t{:^10}".format("Nafn","Vegabr.Nr.","Kredit Nr."))
@@ -418,6 +417,7 @@ class StaffUI():
             print("\n\t\tHeildarverð: {:,}".format(fullprice + extraprice))
             new_order = Order(passport, today, someday, fullprice, carchoice, extraprice)
             fullprice = int(fullprice)
+            self.__printrepo.send_email(customer,today,someday)
             if fullprice < 10000:
                 print("Dagsetning skrifuð vitlaus inn: ")
                 self.print_order_car_menu()
@@ -454,3 +454,5 @@ class StaffUI():
         elif decision == 1:
             print("\n\tVitlaust skráð inn bílnúmer")
             self.add_new_car()
+
+
