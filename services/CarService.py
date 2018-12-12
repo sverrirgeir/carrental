@@ -61,6 +61,13 @@ class CarService:
             print("\n\tBíll er núþegar á skrá yfir lausar bifreiðar")
         return result
 
-    
+    def rent_car(self, car_plate):
+        result = self.__car.rent_car(car_plate)
+        if result == 1:
+            print("\n\tBíll hefur verið skráður í leigu")
+        elif result == 2:
+            print("\n\tBíll er núþegar á skrá yfir leigðar bifreiðar")
+        return result
+
 
             

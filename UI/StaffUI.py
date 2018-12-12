@@ -347,9 +347,11 @@ class StaffUI():
             print("\n\tBíl hefur verið eytt úr kerfinu!")
             self.print_car_menu()
         elif choice == "2":
-            pass
+            self.__cars.return_car(car_plate)
+            self.print_car_menu()            
         elif choice == "3":
-            pass
+            self.__cars.rent_car(car_plate)
+            self.print_car_menu()
         elif choice == "4":
             self.main_menu()                 
         
