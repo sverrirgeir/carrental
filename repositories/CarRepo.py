@@ -141,7 +141,9 @@ class CarRepo:
 
 
 
-    ''' það vantar að klára að útfæra þannig að hægt sé að eyða út neðsta bílnum'''
+
+    ''' Þett fall tekur inn númeraplötu og finnur bílinn sem á að eyða
+    og tekur listann yfir upplýsingar um bílinn og breytir í tóman lista'''
     def delete_cars(self, car_plate):
         with open("./data/cars.txt", "r") as car_string:
             list_of_lists = []
