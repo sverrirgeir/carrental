@@ -256,11 +256,6 @@ class StaffUI():
         car_type = order_list[4]
         customer, passport, kredit = self.__customer.find_customer(passport)
 
-<<<<<<< HEAD
-        self.__customer.write_to_file(customer, passport, kredit, day1, day2, price, car_type)
-=======
-
->>>>>>> af041813c5414f4ee256e8c76c19adaf2074e073
         print("\n{:^64}".format("Pöntunarstaðfesting"))
         print("\n================================================================")
         print("\n\t{:<10}\t{:^10}\t{:^10}".format("Nafn","Vegabr.Nr.","Kredit Nr."))
@@ -348,7 +343,7 @@ class StaffUI():
             print("\n\tBíl hefur verið eytt úr kerfinu!")
             self.print_car_menu()
         elif choice == "2":
-            pass
+            self.__cars.return_car(car_plate)
         elif choice == "3":
             pass
         elif choice == "4":
