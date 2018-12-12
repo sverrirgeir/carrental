@@ -408,9 +408,14 @@ class StaffUI():
             fullprice,today,someday,carchoice,extraprice = self.__ordercar.order_price()
             print("\n\t\tHeildarverð: {:,}".format(fullprice + extraprice))
             new_order = Order(passport, today, someday, fullprice, carchoice, extraprice)
-            self.__ordercar.get_car_order(new_order)
-            print("\n\tPöntun hefur verið skráð!")
-            self.main_menu()
+            fullprice = int(fullprice)
+            if fullprice < 10000:
+                print("Dagsetning skrifuð vitlaus inn: ")
+                self.print_order_car_menu()
+            else:
+                self.__ordercar.get_car_order(new_order)
+                print("\n\tPöntun hefur verið skráð!")
+                self.main_menu()
 
         elif choice == "2":
             self.print_order_menu()
