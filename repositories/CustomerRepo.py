@@ -61,5 +61,10 @@ class CustomerRepo:
                 customerfile.write("{},{},{}".format(name, passport, kredit))
                 customerfile.write("\n")
             return
-            
-                                             
+
+    def write_to_file(self, customer, passport, kredit, day1, day2, price, car_type):
+        with open("./data/order_confirmation.txt", "w") as f:
+            f.write("\n{:^64}".format("Pöntunarstaðfesting"))
+            f.write("\n\t================================================================")
+            f.write("\n\t{}\t\t\t\t\t{}\t\t\t\t\t{}".format("Nafn","Vegabr.Nr.","Kredit Nr."))
+            f.write("\n\t----------------------------------------------------------------")                               
