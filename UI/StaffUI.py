@@ -25,9 +25,11 @@ class StaffUI():
         choice4 = "4. Verðlisti"
         choice5 = "5. Panta bíl"
         choice6 = "6. Skila bíl"
-        choice7 = "7. Hætta"
+        choice7 = "7. Skrá út bíl"
+        choice8 = "8. Hætta"
+
         print("\n\t{:^10}".format("Bílaleiga ehf"))
-        print("\n\t{:<30}\n\t{:<10}\n\t{:<10}\n\t{:<10}\n\t{:<10}\n\t{:<10}\n\t{:<10}".format(choice1, choice2, choice3, choice4, choice5, choice6, choice7))
+        print("\n\t{:<30}\n\t{:<10}\n\t{:<10}\n\t{:<10}\n\t{:<10}\n\t{:<10}\n\t{:<10}\n\t{:<10}".format(choice1, choice2, choice3, choice4, choice5, choice6, choice7, choice8))
         
         choice = input("\n\tValmöguleiki: ")
 
@@ -47,11 +49,16 @@ class StaffUI():
             self.print_order_car_menu()
         
         elif choice == "6":
-            self.return_car()
-            
+            self.return_car()  
+
         elif choice == '7':
+            self.rent_car()
+
+        elif choice == '8':
             print("\tLoka forriti...")
             return
+        
+        
 
         else:
             print("\nVitlaust val, vinsamlegast veldu aftur!")
@@ -61,6 +68,15 @@ class StaffUI():
         self.__cars.print_taken()
         car_plate = input("\n\tBílnúmer bíls sem skila á: ").upper()
         result = self.__cars.return_car(car_plate)
+        if result == 0:
+            print("\n\tBíll er ekki á skrá, vinsamlegast reyndu aftur")
+            return self.return_car()
+        return self.main_menu()
+
+    def rent_car(self):
+        self.__cars.print_available()
+        car_plate = input("\n\tBílnúmer bíls sem leigja á: ").upper()
+        result = self.__cars.rent_car(car_plate)
         if result == 0:
             print("\n\tBíll er ekki á skrá, vinsamlegast reyndu aftur")
             return self.return_car()
