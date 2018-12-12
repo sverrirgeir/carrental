@@ -407,9 +407,9 @@ class StaffUI():
                 print("\n\tEkki rétt skráð inn! \n\tVegabréfsnúmer á að vera 8 letur á lengd")
                 self.print_order_car_menu()
                 return
-            fullprice,today,someday,carchoice = self.__ordercar.order_price()
-            print("\n\t\tHeildarverð: {:,}".format(fullprice))
-            new_order = Order(passport, today, someday, fullprice, carchoice)
+            fullprice,today,someday,carchoice,extraprice = self.__ordercar.order_price()
+            print("\n\t\tHeildarverð: {:,}".format(fullprice + extraprice))
+            new_order = Order(passport, today, someday, fullprice, carchoice, extraprice)
             self.__ordercar.get_car_order(new_order)
             print("\n\tPöntun hefur verið skráð!")
             self.main_menu()
