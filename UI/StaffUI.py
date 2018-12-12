@@ -5,8 +5,12 @@ from services.OrderCar import OrderCar
 from Models.Order import Order
 from Models.Customer import Customer
 from Models.Car import Car
+<<<<<<< HEAD
 from win32com.client import Dispatch
 
+=======
+from repositories.PrintRepo import PrintRepo
+>>>>>>> 1cdbc4616908f46187b3e0fbff814c30f1b84b1b
 
 
 class StaffUI():
@@ -14,6 +18,7 @@ class StaffUI():
         self.__cars = CarService()
         self.__customer = CustomerService()
         self.__ordercar = OrderCar()
+        self.__printrepo = PrintRepo()
         
         
         
@@ -259,8 +264,12 @@ class StaffUI():
         customer, passport, kredit = self.__customer.find_customer(passport)
 
         self.__customer.write_to_file(customer, passport, kredit, day1, day2, price, car_type)
+<<<<<<< HEAD
         self.print_doc("./data/order_confirmation.txt")
         
+=======
+
+>>>>>>> 1cdbc4616908f46187b3e0fbff814c30f1b84b1b
         print("\n{:^64}".format("Pöntunarstaðfesting"))
         print("\n================================================================")
         print("\n\t{:<10}\t{:^10}\t{:^10}".format("Nafn","Vegabr.Nr.","Kredit Nr."))
@@ -348,9 +357,11 @@ class StaffUI():
             print("\n\tBíl hefur verið eytt úr kerfinu!")
             self.print_car_menu()
         elif choice == "2":
-            pass
+            self.__cars.return_car(car_plate)
+            self.print_car_menu()            
         elif choice == "3":
-            pass
+            self.__cars.rent_car(car_plate)
+            self.print_car_menu()
         elif choice == "4":
             self.main_menu()                 
         
@@ -418,6 +429,7 @@ class StaffUI():
             print("\n\t\tHeildarverð: {:,}".format(fullprice + extraprice))
             new_order = Order(passport, today, someday, fullprice, carchoice, extraprice)
             fullprice = int(fullprice)
+            self.__printrepo.send_email(customer,today,someday)
             if fullprice < 10000:
                 print("Dagsetning skrifuð vitlaus inn: ")
                 self.print_order_car_menu()
