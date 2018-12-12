@@ -28,6 +28,7 @@ class OrderCar:
     today,someday = self.date_time_return()
     diff = someday - today  
     days = diff.days
+    days = days + 1
     print("\n\tVeldu tegund: \n\n\t\t1. Smábíll \n\t\t2. Fólksbíll \n\t\t3. jeppi \n\t\t4. Húsbíll " )
     carchoice = int(input("\n\t\tVal: "))
     price = 0
@@ -42,13 +43,14 @@ class OrderCar:
     else:
       print("Ekkert valið")  
       self.order_price()
+    print("Verð: " + str(price))
     insurance = input("\tAukatryggingu?(y/n): ")
     ''' hér breyti ég inputinu í lower til að engin misskilningur verði á'''
+    extraprice = 0
+  
     if insurance.lower() == "y":
-      fullprice = price + 30000
-    else:
-      fullprice = price
-    return fullprice,today,someday,carchoice
+      extraprice = 30000
+    return price,today,someday,carchoice,extraprice
   
   def get_car_order(self, order):
     return self.__write_order.write_car_order(order)

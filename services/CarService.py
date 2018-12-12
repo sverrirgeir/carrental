@@ -55,7 +55,6 @@ class CarService:
 
     def return_car(self, car_plate):
         result = self.__car.return_car(car_plate)
-
         if result == 1:
             print("\n\tBíll hefur verið skráður sem laus")
         elif result == 2:
