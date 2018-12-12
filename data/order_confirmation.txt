@@ -1,4 +1,12 @@
+Pï¿½ntunarstaï¿½festing
 
-                      Pöntunarstaðfesting                       
-================================================================
-	Nafn					Vegabr.Nr.					Kredit Nr.
+Nafn: John Cena
+Vegabrï¿½fsnï¿½mer: A1234567
+Kreditkortanï¿½mer: 2222000033334444
+
+Heildarverï¿½: 40000
+
+Frï¿½: 2018-12-15
+Til: 2018-12-18
+
+Tï¿½pa: Smï¿½bï¿½ll

@@ -5,7 +5,12 @@ from services.OrderCar import OrderCar
 from Models.Order import Order
 from Models.Customer import Customer
 from Models.Car import Car
+<<<<<<< HEAD
+from win32com.client import Dispatch
+
+=======
 from repositories.PrintRepo import PrintRepo
+>>>>>>> 1cdbc4616908f46187b3e0fbff814c30f1b84b1b
 
 
 class StaffUI():
@@ -275,7 +280,12 @@ class StaffUI():
         customer, passport, kredit = self.__customer.find_customer(passport)
 
         self.__customer.write_to_file(customer, passport, kredit, day1, day2, price, car_type)
+<<<<<<< HEAD
+        self.print_doc("./data/order_confirmation.txt")
+        
+=======
 
+>>>>>>> 1cdbc4616908f46187b3e0fbff814c30f1b84b1b
         print("\n{:^64}".format("Pöntunarstaðfesting"))
         print("\n================================================================")
         print("\n\t{:<10}\t{:^10}\t{:^10}".format("Nafn","Vegabr.Nr.","Kredit Nr."))
@@ -472,5 +482,15 @@ class StaffUI():
         elif decision == 1:
             print("\n\tVitlaust skráð inn bílnúmer")
             self.add_new_car()
+    
+    def print_doc(self, filename):
+        myWord = Dispatch('Word.Application')
+        myWord.Visible = 1
 
+        myDoc = myWord.Documents.Add()
+        myRange = myDoc.Range(0,1)
+        with open(filename, "r") as printf:
+            for line in printf:
+                myRange.InsertAfter(line)
 
+        myDoc.PrintOut()
