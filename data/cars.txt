@@ -2,7 +2,7 @@ toyota yaris,2017,DAB71,15000,blár,Bensín,1,True
 toyota yaris,2017,AUS91,13500,hvítur,Bensín,1,True
 toyota yaris,2018,SAS15,7000,grár,Bensín,1,True
 toyota yaris,2018,BAK56,10000,svartur,Bensín,1,True
-toyota yaris,2017,FAG97,17000,grár,Bensín,1,False
+toyota yaris,2017,FAG97,17000,grár,Bensín,1,True
 hyundai i10,2017,ERA95,20000,svartur,Bensín,1,True
 hyundai i10,2018,KTM99,15000,grár,Bensín,1,True
 hyundai i10,2018,OOO00,130000,blár,Bensín,1,True

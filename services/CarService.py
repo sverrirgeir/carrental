@@ -48,7 +48,15 @@ class CarService:
             return 2
         else:
             return 1
-    
+
+    def return_car(self, car_plate):
+        result = self.__car.return_car(car_plate)
+
+        if result == 1:
+            print("\n\tBíll hefur verið skráður sem laus")
+        elif result == 2:
+            print("\n\tBíll er núþegar á skrá yfir lausar bifreiðar")
+        return result
 
     
 
