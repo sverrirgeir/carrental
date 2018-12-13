@@ -4,10 +4,6 @@ from services.OrderCar import OrderCar
 from Models.Order import Order
 from Models.Customer import Customer
 from Models.Car import Car
-<<<<<<< HEAD
-=======
-#from win32com.client import Dispatch
->>>>>>> c3371830b8f2e1c5b2979853dafc388950cebc8f
 from repositories.PrintRepo import PrintRepo
 import os
 
@@ -292,11 +288,6 @@ class StaffUI():
         customer, passport, kredit = self.__customer.find_customer(passport)
 
         self.__customer.write_to_file(customer, passport, kredit, day1, day2, price, car_type)
-<<<<<<< HEAD
-=======
-        #self.print_doc("./data/order_confirmation.txt")
-        
->>>>>>> c3371830b8f2e1c5b2979853dafc388950cebc8f
         print("\n{:^64}".format("Pöntunarstaðfesting"))
         print("\n======================================================================")
         print("\n\t{:<10}\t\t{:^10}\t\t{:^10}".format("Nafn","Vegabr.Nr.","Kredit Nr."))
