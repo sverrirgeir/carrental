@@ -5,12 +5,14 @@ class OrderRepo:
         pass
 
     def write_car_order(self, order):
+        ''' fallið skrifar inn í orders.txt '''
         order_string = order.get_write()
         with open("./data/orders.txt", "a") as orderfile:
             orderfile.write(order_string)
             orderfile.write("\n")
     
     def print_orders(self):
+        ''' fallið prentar út þær pantanir sem eru í orders.txt '''
         with open("./data/orders.txt", "r") as ordersf:
             print("\n\t{:<10}\t{:^10}\t{:^10}\t{:^10}\t{:^10}\t{:^10}\t{:^10}".format("Vegabréfa N.","Afhendingard.","Skilad.","Verð","Trygging","Fullt Verð","Flokkur"))
             print(" "*8 + "-"*104)
@@ -44,6 +46,8 @@ class OrderRepo:
             return
     
     def search_for_orders(self, passport):
+        ''' Fallið gerir notanda kleift að leita að ákveðinni pöntunn,
+        sé pöntuninn ekki á skrá þá fær notandinn villuskilaboð'''
         with open("./data/orders.txt", "r") as orders:
             list_of_lists = []
             order_list = []
@@ -62,6 +66,7 @@ class OrderRepo:
                 return []
 
     def delete_order(self, order_number):
+        ''' Fallið eyðir núverandi pöntun úr orders.txt '''
         with open("./data/orders.txt", "r") as orders:
             list_of_lists = []
             for line in orders:
@@ -80,6 +85,7 @@ class OrderRepo:
             return
 
     def get_order(self, number):
+        ''' Fallið les textaskrána orders.txt og finnur ákveðna pöntun út frá pöntunarnúmeri '''
         with open("./data/orders.txt", "r") as orders:
             list_of_lists = []
             for line in orders:

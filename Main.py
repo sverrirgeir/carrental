@@ -5,4 +5,3 @@ def main():
     ui.main_menu()
 
 main()
-6
