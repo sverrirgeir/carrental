@@ -72,7 +72,9 @@ class OrderRepo:
             for line in orders:
                 line_list = line.strip().split(",")
                 list_of_lists.append(line_list)
-            list_of_lists.remove(list_of_lists[order_number])
+                
+        list_of_lists.remove(list_of_lists[order_number])
+
         with open("./data/orders.txt", "w") as orderfile:
             for lst in list_of_lists:
                 passport= lst[0]
