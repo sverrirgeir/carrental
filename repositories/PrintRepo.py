@@ -6,7 +6,7 @@ class PrintRepo():
         our_email = 'bilaleigaehf@gmail.com'
         password = 'Verklegt1'
         send_to_email = input("\n\tEmail: ")
-        message = name + "\n" + " \nPontun Stadfest " + "\nFra: " + str(inday) + " Til: " + str(outday)
+        message = "Takk fyrir!" + "\n" + " \nPontun Stadfest " + "\nFra: " + str(inday) + " Til: " + str(outday)
         server = smtplib.SMTP('smtp.gmail.com', 587)
         server.starttls()
         server.login(our_email, password)

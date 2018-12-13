@@ -314,11 +314,6 @@ class StaffUI():
         full_price = "{:,}".format(full_price)
         #sækir upplýsingar um viðskiptavin
         customer, passport, kredit = self.__customer.find_customer(passport)
-<<<<<<< HEAD
-
-=======
-        #skrifar inn á textaskrá pöntunarstaðfestinguna og átti að prenta hana út en vantar module í það
->>>>>>> 81d2d240af68c51011892c4303bf0c2409fd1033
         self.__customer.write_to_file(customer, passport, kredit, day1, day2, price, car_type)
 
         print("\n{:^64}".format("Pöntunarstaðfesting"))
