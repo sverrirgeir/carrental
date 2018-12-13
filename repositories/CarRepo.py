@@ -148,8 +148,7 @@ class CarRepo:
 
 
     def delete_cars(self, car_plate): 
-    ''' tekur inn númeraplötu og finnur bílinn sem á að eyða 
-    og eyðir honum úr textaskránni cars.txt'''
+        ''' tekur inn númeraplötu og finnur bílinn sem á að eyða og eyðir honum úr textaskránni cars.txt'''
         with open("./data/cars.txt", "r") as car_string:
             list_of_lists = []
             for line in car_string:
