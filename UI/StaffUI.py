@@ -278,23 +278,33 @@ class StaffUI():
 
         if choice == "1":
             #biður um pöntun sem notandi breyta og eyðir henni og biður notenda um uppfærðar uppls.
-            number = int(input("\n\tHvaða pöntun viltu breyta?: "))
-            result = self.__ordercar.delete_order(number)
-            if result == 1:
-                print("\n\tPöntunarnúmer er ekki til")
-                return self.print_clients_menu()
+            number = input("\n\tHvaða pöntun viltu breyta?: ")
+            if number.isdigit():
+                number = int(number)
+                result = self.__ordercar.delete_order(number)
+                if result == 1:
+                    print("\n\tPöntunarnúmer er ekki til")
+                    return self.customer_order_menu(nr_list)
+            else:
+                print("\n\tVitlaust val, vinsamlegast veldu aftur!")
+                self.customer_order_menu(nr_list)
 
             print("\n\tskráðu pöntun með nýjum upplýsingum!")
             self.print_order_car_menu()
         elif choice == "2":
             #biður um pöntunarnúmer frá notenda og eyðir þeirri ákveðnu pöntun
-            number = int(input("\n\tHvaða pöntun viltu eyða?: "))
-            result = self.__ordercar.delete_order(number)
-            if result == 1:
-                print("\n\tPöntunarnúmer er ekki til")
-                return self.print_clients_menu()
-            print("\n\tPöntun hefur verið eytt!")
-            self.main_menu()
+            number = input("\n\tHvaða pöntun viltu eyða?: ")
+            if number.isdigit():
+                number = int(number)
+                result = self.__ordercar.delete_order(number)
+                if result == 1:
+                    print("\n\tPöntunarnúmer er ekki til")
+                    return self.customer_order_menu(nr_list)
+                print("\n\tPöntun hefur verið eytt!")
+                self.main_menu()
+            else:
+                print("\n\tVitlaust val, vinsamlegast veldu aftur!")
+                self.customer_order_menu(nr_list)
         elif choice == "3":
             #skrifar pöntunarstaðfestingu og prentar á skjáinn
             self.print_order_confirmation()

@@ -1,12 +1,12 @@
 Pöntunarstaðfesting
 
-Nafn: Hlin Osk Thorsteinsdottir
-Vegabréfsnúmer: A9765463
-Kreditkortanúmer: 3333444455556666
+Nafn: Donald J. Trump
+Vegabréfsnúmer: A9999999
+Kreditkortanúmer: 9999000022223333
 
-Heildarverð: 60000
+Heildarverð: 20000
 
-Frá: 2018-12-12
-Til: 2018-12-15
+Frá: 2018-12-22
+Til: 2018-12-23
 
-Týpa: Fólksbíll
+Týpa: Smábíll
