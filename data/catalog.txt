@@ -21,10 +21,4 @@
 
         Húsbílar        25.000 kr.      Aukatrygging 30.000 kr.
 
-----------------------------------------------------------------
-
-Athugið dagverð miðast við 100 ekna km á dag að meðaltali yfir
-leigutíma. Gjald fyrir akstur umfram 100 km miðast við 1%
-af dagverði fyrir hvern kílómetra umfram 100km.
-
 ================================================================
