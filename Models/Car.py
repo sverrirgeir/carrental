@@ -17,7 +17,7 @@ class Car:
         return self.plate
 
     def get_write(self):
-        return "{},{},{},{},{},{},{},{}".format(self.model, self.year, self.plate, self.miles, self.color, self.fuel_type, self.catagory, self.status)
+        return "{},{},{},{},{},{},{},{}".format(self.model, self.year, self.plate, self.miles, self.color, self.fuel_type, self.status, self.catagory)
         
 
 

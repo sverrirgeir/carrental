@@ -169,7 +169,7 @@ class CarRepo:
                     car_fuel_type = lst[5]
                     car_status = lst[6]
                     car_catagory = lst[7]
-                    car_string.write("{},{},{},{},{},{},{},{}".format(car_model, car_year, car_plate, car_miles, car_color, car_fuel_type, car_catagory, car_status))
+                    car_string.write("{},{},{},{},{},{},{},{}".format(car_model, car_year, car_plate, car_miles, car_color, car_fuel_type, car_status, car_catagory))
                     car_string.write("\n")
                 return
     
