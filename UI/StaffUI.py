@@ -72,6 +72,9 @@ class StaffUI():
         if result == 0:
             print("\n\tBíll er ekki á skrá, vinsamlegast reyndu aftur")
             self.return_car()
+        elif result == 3:
+            print("\n\tBílnúmer ekki rétt slegið inn")
+            self.return_car()
         return self.main_menu()
 
     def rent_car(self):
@@ -82,6 +85,9 @@ class StaffUI():
         result = self.__cars.rent_car(car_plate)
         if result == 0:
             print("\n\tBíll er ekki á skrá, vinsamlegast reyndu aftur")
+            self.rent_car()
+        elif result == 3:
+            print("\n\tBílnúmer ekki rétt slegið inn")
             self.rent_car()
         return self.main_menu()
 
