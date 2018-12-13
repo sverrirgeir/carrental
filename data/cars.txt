@@ -20,4 +20,3 @@ toyota lc150,2018,BAL19,7000,grár,Diesel,False,3
 toyota lc150,2017,SAK78,8000,hvítur,Diesel,False,3
 toyota lc150,2018,LAG19,15000,blár,Diesel,False,3
 Fiat panda,2018,SAS16,12000,Hvítur,Bensín,False,4
-Fiat hobby,2018,GAS35,12500,Hvítur,bensí,False,4
