@@ -279,13 +279,20 @@ class StaffUI():
         if choice == "1":
             #biður um pöntun sem notandi breyta og eyðir henni og biður notenda um uppfærðar uppls.
             number = int(input("\n\tHvaða pöntun viltu breyta?: "))
-            self.__ordercar.delete_order(number)
+            result = self.__ordercar.delete_order(number)
+            if result == 1:
+                print("\n\tPöntunarnúmer er ekki til")
+                return self.print_clients_menu()
+
             print("\n\tskráðu pöntun með nýjum upplýsingum!")
             self.print_order_car_menu()
         elif choice == "2":
             #biður um pöntunarnúmer frá notenda og eyðir þeirri ákveðnu pöntun
             number = int(input("\n\tHvaða pöntun viltu eyða?: "))
-            self.__ordercar.delete_order(number)
+            result = self.__ordercar.delete_order(number)
+            if result == 1:
+                print("\n\tPöntunarnúmer er ekki til")
+                return self.print_clients_menu()
             print("\n\tPöntun hefur verið eytt!")
             self.main_menu()
         elif choice == "3":

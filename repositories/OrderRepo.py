@@ -72,9 +72,12 @@ class OrderRepo:
             for line in orders:
                 line_list = line.strip().split(",")
                 list_of_lists.append(line_list)
-                
+        if order_number > len(list_of_lists):
+            return 1
+        elif order_number < 0:
+            return 1
         list_of_lists.remove(list_of_lists[order_number])
-
+        
         with open("./data/orders.txt", "w") as orderfile:
             for lst in list_of_lists:
                 passport= lst[0]
@@ -85,7 +88,7 @@ class OrderRepo:
                 insurance = lst[5]
                 orderfile.write("{},{},{},{},{},{}".format(passport, day1, day2, price, car_type,insurance))
                 orderfile.write("\n")
-            return
+            return 0
 
     def get_order(self, number):
         ''' Fallið les textaskrána orders.txt og finnur ákveðna pöntun út frá pöntunarnúmeri '''
