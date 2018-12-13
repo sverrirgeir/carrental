@@ -1,4 +1,12 @@
+Pöntunarstaðfesting
 
-                      Pöntunarstaðfesting                       
-================================================================
-	Nafn					Vegabr.Nr.					Kredit Nr.
+Nafn: Hlin Osk Thorsteinsdottir
+Vegabréfsnúmer: A9765463
+Kreditkortanúmer: 3333444455556666
+
+Heildarverð: 60000
+
+Frá: 2018-12-12
+Til: 2018-12-15
+
+Týpa: Fólksbíll

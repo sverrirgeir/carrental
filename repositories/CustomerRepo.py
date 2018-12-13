@@ -1,11 +1,15 @@
 from Models.Customer import Customer
 
 
+
 class CustomerRepo:
     def __init__(self):
         self.__customer = ""
     
     def find_customer(self, passport):
+        """Tekur inn vegabréfsnúmer og finnur númerið í textaskránni customer.txt
+        skilar síðan 3 breytum um viðeigandi viðskiptavin ef hann finnst ekki 
+        þá skilar hann viðeigandi breytum"""
         with open("./data/customer.txt", "r") as customerfile:
             list_of_lists = []
             not_found = 0
@@ -25,7 +29,7 @@ class CustomerRepo:
                 return 0, 0, 0 
 
     def write_new_customer(self, new_customer):
-        """Writes to customer.txt the data for a new customer"""
+        """tekur inn stak af klasanum customer og skrifar inn í customer.txt, skilar "3" ef það gékk"""
         customer_string = new_customer.get_write()
         with open("./data/customer.txt", "a") as customerfile:
             customerfile.write(customer_string)
@@ -33,6 +37,7 @@ class CustomerRepo:
             return 3
 
     def print_customer_list(self):
+        """Opnar Customer.txt og prentar út formattaðann lista af öllum viðskiptavinum"""
         with open("./data/customer.txt", "r") as customerfile:
             print("\n{:<28}{:^28}{:^28}".format("Nafn", "Vegabréfsnúmer", "Kreditkortanúmer"))
             print("-"*78)
@@ -45,6 +50,9 @@ class CustomerRepo:
             return 
     
     def delete_customer(self, passport):
+        """Tekur inn vegabréfsnúmer og tekur úr lista yfir viðskiptavini 
+            þann viðskiptavin sem er með vegabréfsnúmerið"""
+
         with open("./data/customer.txt", "r") as customerfile:
             list_of_lists = []
             for line in customerfile:
@@ -53,6 +61,7 @@ class CustomerRepo:
             for i in range(len(list_of_lists)):
                 if list_of_lists[i][1] == passport:
                     list_of_lists.remove(list_of_lists[i])
+                    break
         with open("./data/customer.txt", "w") as customerfile:
             for lst in list_of_lists:
                 name = lst[0]
@@ -63,8 +72,28 @@ class CustomerRepo:
             return
 
     def write_to_file(self, customer, passport, kredit, day1, day2, price, car_type):
+        """tekur inn upplýsingar um pöntun og kúnnan sem pantaði 
+            og býr til pöntunarstaðfestingu í order_confirmation.txt"""
+
         with open("./data/order_confirmation.txt", "w") as f:
-            f.write("\n{:^64}".format("Pöntunarstaðfesting"))
-            f.write("\n\t================================================================")
-            f.write("\n\t{}\t\t\t\t\t{}\t\t\t\t\t{}".format("Nafn","Vegabr.Nr.","Kredit Nr."))
-            f.write("\n\t----------------------------------------------------------------")                               
+            if car_type == "1":
+                car_type = "Smábíll"
+            elif car_type == "2":
+                car_type = "Fólksbíll"
+            elif car_type == "3":
+                car_type = "Jeppi"
+            elif car_type == "4":
+                car_type = "Húsbíll"
+            
+            f.write("Pöntunarstaðfesting\n")
+            f.write("\n")
+            f.write("Nafn: {}\n".format(customer))
+            f.write("Vegabréfsnúmer: {}\n".format(passport))
+            f.write("Kreditkortanúmer: {}\n".format(kredit))
+            f.write("\n")
+            f.write("Heildarverð: {}\n".format(price))  
+            f.write("\n")
+            f.write("Frá: {}\n".format(day1))
+            f.write("Til: {}\n".format(day2))
+            f.write("\n")
+            f.write("Týpa: {}\n".format(car_type))               

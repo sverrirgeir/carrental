@@ -7,9 +7,7 @@ class CarRepo:
 
 
     def print_all_cars(self):
-        ''' Fallið opnar textaskránna cars.txt og prentar út alla bíla sem bílaleigan á
-        þar sem tegund, árgerð, bílnúmer, keyrsla í kílómetrum, litur, eldsneytistegund,
-        staða og flokkur bíls koma fram'''
+        '''prentar út formataðann lista úr skránni cars.txt með viðeigandi upplýsingum'''
         with open("./data/cars.txt", "r") as car_string:
                 print("\n{:>4}{:>15}{:>8}{:>9}{:>7}{:>10}{:>6}{:>9}".format("Tegund", "Árgerð", "Númer", "Keyrsla", "Litur", "Eldsneyti", "Staða", "Flokkur"))
                 print("-"*73)
@@ -42,8 +40,7 @@ class CarRepo:
 
 
     def print_taken_cars(self):
-        '''Fallið les in textaskránna cars.txt og prentar út alla þá bíla sem eru í útleigu
-        ásamt header sem segir til um Tegund, árgerð, númer o.s.frv. '''
+        '''Fallið les in textaskránna cars.txt og prentar út alla þá bíla sem eru í útleig með viðeigandi upplýsingum '''
         with open("./data/cars.txt", "r") as car_string:
                 print("\n{:>4}{:>15}{:>8}{:>9}{:>7}{:>10}{:>6}{:>9}".format("Tegund", "Árgerð", "Númer", "Keyrsla", "Litur", "Eldsneyti", "Staða", "Flokkur"))
                 print("-"*73)
@@ -74,7 +71,7 @@ class CarRepo:
                         print("{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}".format(car_model.capitalize(), car_year, car_plate, car_miles, car_color.capitalize(), car_fuel_type, car_status, car_catagory))
 
     def print_available_cars(self):
-        ''' Fallið prentar út alla þá bíla sem eru lausir til útleigu'''
+        ''' Fallið prentar út alla þá bíla sem eru lausir til útleigu með viðeigandi upplýsingum'''
         with open("./data/cars.txt", "r") as car_string:
                 print("\n{:>4}{:>15}{:>8}{:>9}{:>7}{:>10}{:>6}{:>9}".format("Tegund", "Árgerð", "Númer", "Keyrsla", "Litur", "Eldsneyti", "Staða", "Flokkur"))
                 print("-"*73)
@@ -106,7 +103,7 @@ class CarRepo:
 
 
     def find_car(self, car_plate):
-        ''' Fallið gerir notanda kleift að leita að bíl sem er skráður í cars.txt'''
+        '''gerir notanda kleift að leita að bíl sem er skráður í cars.txt og skilar viðeigandi upplýsingum í töflu'''
         with open("./data/cars.txt", "r") as car_string:
             list_of_list = []
             not_found = 0
@@ -149,9 +146,9 @@ class CarRepo:
 
 
 
-    ''' Þett fall tekur inn númeraplötu og finnur bílinn sem á að eyða
-    og tekur listann yfir upplýsingar um bílinn og breytir í tóman lista'''
-    def delete_cars(self, car_plate):
+
+    def delete_cars(self, car_plate): 
+        ''' tekur inn númeraplötu og finnur bílinn sem á að eyða og eyðir honum úr textaskránni cars.txt'''
         with open("./data/cars.txt", "r") as car_string:
             list_of_lists = []
             for line in car_string:
@@ -176,7 +173,7 @@ class CarRepo:
                 return
     
     def write_new_car(self, new_car):
-        '''skrifar nýjan bíl inn í textaskránna cars.txt'''
+        '''tekur inn upplýsingar um nýjann bíl og skrifar upplýsingarnar inn í textaskránna cars.txt'''
         car_str = new_car.get_write()
         with open("./data/cars.txt", "a") as carfile:
             carfile.write(car_str)
@@ -186,6 +183,7 @@ class CarRepo:
 
 
     def return_car(self, car_plate):
+        '''tekur inn bílnúmer og breytir leigurstöðunni í úr False í True'''
         with open("./data/cars.txt", "r") as car_string:
             list_of_lists = []
             not_found = 0
@@ -213,4 +211,36 @@ class CarRepo:
                     else:
                         return 2     
             return not_found
+
+    def rent_car(self, car_plate):
+        '''tekur inn bílnúmer ákveðinnar birfreiðar og breytir leigustöðu úr True í False'''
+        with open("./data/cars.txt", "r") as car_string:
+            list_of_lists = []
+            not_found = 0
+            for line in car_string:
+                line_list = line.strip().split(",")
+                list_of_lists.append(line_list)
+            for i in range(len(list_of_lists)):
+                if list_of_lists[i][2] == car_plate:
+                    not_found = 3
+                    if list_of_lists[i][7] == "True":
+                        list_of_lists[i][7] = "False"
+                        with open("./data/cars.txt", "w") as car_string:
+                            for lst in list_of_lists:
+                                car_model= lst[0]
+                                car_year = lst[1]
+                                car_plate = lst[2]
+                                car_miles = lst[3]
+                                car_color = lst[4]
+                                car_fuel_type = lst[5]
+                                car_status = lst[7]
+                                car_catagory = lst[6]
+                                car_string.write("{},{},{},{},{},{},{},{}".format(car_model, car_year, car_plate, car_miles, car_color, car_fuel_type, car_catagory, car_status))
+                                car_string.write("\n")
+                        return 1
+                    else:
+                        return 2     
+            return not_found
+
+            
 
