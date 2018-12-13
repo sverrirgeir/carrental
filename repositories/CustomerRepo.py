@@ -7,6 +7,9 @@ class CustomerRepo:
         self.__customer = ""
     
     def find_customer(self, passport):
+        """Tekur inn vegabréfsnúmer og finnur númerið í textaskránni customer.txt
+        skilar síðan 3 breytum um viðeigandi viðskiptavin ef hann finnst ekki 
+        þá skilar hann viðeigandi breytum"""
         with open("./data/customer.txt", "r") as customerfile:
             list_of_lists = []
             not_found = 0
@@ -26,7 +29,7 @@ class CustomerRepo:
                 return 0, 0, 0 
 
     def write_new_customer(self, new_customer):
-        """Writes to customer.txt the data for a new customer"""
+        """tekur inn stak af klasanum customer og skrifar inn í customer.txt, skilar "3" ef það gékk"""
         customer_string = new_customer.get_write()
         with open("./data/customer.txt", "a") as customerfile:
             customerfile.write(customer_string)
@@ -34,6 +37,7 @@ class CustomerRepo:
             return 3
 
     def print_customer_list(self):
+        """Opnar Customer.txt og prentar út formattaðann lista af öllum viðskiptavinum"""
         with open("./data/customer.txt", "r") as customerfile:
             print("\n{:<28}{:^28}{:^28}".format("Nafn", "Vegabréfsnúmer", "Kreditkortanúmer"))
             print("-"*78)
@@ -46,6 +50,9 @@ class CustomerRepo:
             return 
     
     def delete_customer(self, passport):
+        """Tekur inn vegabréfsnúmer og tekur úr lista yfir viðskiptavini 
+            þann viðskiptavin sem er með vegabréfsnúmerið"""
+
         with open("./data/customer.txt", "r") as customerfile:
             list_of_lists = []
             for line in customerfile:
@@ -65,6 +72,9 @@ class CustomerRepo:
             return
 
     def write_to_file(self, customer, passport, kredit, day1, day2, price, car_type):
+        """tekur inn upplýsingar um pöntun og kúnnan sem pantaði 
+            og býr til pöntunarstaðfestingu í order_confirmation.txt"""
+
         with open("./data/order_confirmation.txt", "w") as f:
             if car_type == "1":
                 car_type = "Smábíll"
@@ -74,7 +84,6 @@ class CustomerRepo:
                 car_type = "Jeppi"
             elif car_type == "4":
                 car_type = "Húsbíll"
-            
             
             f.write("Pöntunarstaðfesting\n")
             f.write("\n")

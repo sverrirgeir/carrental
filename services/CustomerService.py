@@ -5,21 +5,22 @@ class CustomerService:
         self.__customer = CustomerRepo()
 
     def find_customer(self, passport):
-        """sends a valid passport number into customerrepo to find the customer"""
+        """Sendir vegabréfsnúmer í fallið find_customer í customerepo eftir að
+        vegabréfsnúmerið hefur verið athugað"""
         if self.valid_number(passport):
             return self.__customer.find_customer(passport)
         else:
             return 1, 1, 1
             
     def valid_number(self, passport):
-        """checks if the passport number is valid"""
+        """Athugar hvort vegabréfsnúmer sé rétt eða 8 stafir af lengd"""
         if len(passport) == 8:
             return True
         else:
             return False
 
     def valid_kredit_number(self, kredit):
-        """checks if the kredit card number is valid"""
+        """athugar hvort kreditkortanúmer sé í lagi eða 16 tölustafir"""
         try:
             int(kredit)
         except ValueError:
@@ -31,6 +32,8 @@ class CustomerService:
 
     
     def add_customer(self, new_customer):
+        """tekur tinn stak af customer klasanum og skilar honum eftir
+        að kreditkortanúmer og vegabréfsnúmer hefur verið "validatað" """
         #fyrst kannað hvort kreditkortanúmerið sé rétt slegið inn
         if self.valid_kredit_number(new_customer.get_kredit()):
             #kannað hvort vegabréfsnúmer sé rétt
@@ -44,13 +47,15 @@ class CustomerService:
             return 2
     
     def print_customer_list(self):
+        """Kallar í fallið print_customer_list"""
         return self.__customer.print_customer_list()
 
     def delete_customer(self, passport):
-        """takes in a validated passport number"""
+        """Tekur inn vegabréfsnúmer sem búið er að tjékka"""
         return self.__customer.delete_customer(passport)
 
     def write_to_file(self, customer, passport, kredit, day1, day2, price, car_type):
+        """tekur inn breytur um pöntun og kúnna og skilar þeim í customerrepo order_confirmation"""
         return self.__customer.write_to_file(customer, passport, kredit, day1, day2, price, car_type)
 
             
