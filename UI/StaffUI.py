@@ -17,7 +17,7 @@ class StaffUI():
         
         
     def main_menu(self):
-        """Prints out the main menu and returns a input sentence asking for a choice"""
+        """Prentar út "main menu" og biður um val, skilar notanda á réttann stað"""
         choice1 = "1. Pantanir"
         choice2 = "2. Viðskiptavinir"
         choice3 = "3. Bílar"
@@ -56,14 +56,13 @@ class StaffUI():
         elif choice == '8':
             print("\tLoka forriti...")
             return
-        
-        
-
         else:
             print("\n\tVitlaust val, vinsamlegast veldu aftur!")
             self.main_menu()
 
     def return_car(self):
+        """prentar út lista yfir upptekna bíla og biður um bílnúmer á bíl
+        sem skil á og skráir hann sem skilaðann"""
         self.__cars.print_taken()
         car_plate = input("\n\tBílnúmer bíls sem skila á('q' til að hætta við): ").upper()
         if car_plate == "Q":
@@ -78,6 +77,8 @@ class StaffUI():
         return self.main_menu()
 
     def rent_car(self):
+        """prentar út lista yfir lausa bíla og biður um bílnúmer á bíl
+        sem leigja á og skráir hann sem uppteknann"""
         self.__cars.print_available()
         car_plate = input("\n\tBílnúmer bíls sem leigja á('q' til að hætta við): ").upper()
         if car_plate == "Q":
@@ -106,6 +107,7 @@ class StaffUI():
         if choice == '1':
             self.print_order_car_menu()
         elif choice == '2':
+            #biður um input frá notenda um vegabréfsnúmer og skilar lista yfir allar pantanir á því númeri
             passport = input("\n\tVegabréfsnúmer: ").upper()
             nr_list = self.search_for_order(passport)
             if nr_list == []:
@@ -114,6 +116,7 @@ class StaffUI():
             else:
                 self.customer_order_menu(nr_list)
         elif choice == '3':
+            #prentar út lista yfir allar pantanir
             self.__ordercar.print_list_of_orders()
             self.print_order_menu()
         elif choice == '4':
@@ -123,8 +126,10 @@ class StaffUI():
             self.print_order_menu()
     
     def search_for_order(self, passport):
+        """Fall sem tekur inn vegabréfsnúmer og prentar töflu af öllum pöntunum á því númeri"""
+        #sækja lista af listum af þeim pöntunum sem eru á þessu númeri
         list_of_orders = self.__ordercar.search_for_orders(passport)
-        
+        #prenta út listann í format töflu formi
         print("\n\t{:<10}\t{:^10}\t{:^10}\t{:^10}\t{:^10}\t{:^10}".format("nr.","Vegabréfa N.","Afhendingard.","Skilad.","Heildarverð","Flokkur"))
         print(" "*8 + "-"*88)
         nr_list = []
@@ -144,6 +149,7 @@ class StaffUI():
     
 
     def print_clients_menu(self):
+        """fall sem prentar út valmöguleika í viðskiptavina menu og skilar notanda á rétta staði"""
         choice1 = "1. Fletta upp Viðskiptavin"
         choice2 = "2. Skrá nýjan viðskiptavin"
         choice3 = "3. Listi af Viðskiptavinum"
@@ -180,7 +186,9 @@ class StaffUI():
             self.print_clients_menu()
     
     def add_new_customer(self):
-        #Input from the user about the new customer
+        """fall sem tekur inn upplýsingar frá notanda um nýjann viðskiptavin
+        og sem síðan sendir upplýsingarnar áfram til að verða skráðar í textaskrána customer.txt"""
+        #Input frá notenda um kúnnan
         first_name = input("\n\tFornafn(og millinafn): ").strip()
         last_name = input("\tEftirnafn: ").strip()
         passport = input("\tVegabréfsnúmer: ").upper().strip()
@@ -205,14 +213,17 @@ class StaffUI():
 
 
     def search_customer(self):
-        #prentar út fundið viðskiptavin
+        """fall sem prentar út viðskiptavin út frá vegabréfsnúmeri og 
+        gefur notenda valmöguleiga um aðgerðir tengdar þeim viðskiptavin"""
         choice1 = "1. Skoða pantanir"
         choice2 = "2. Breyta upplýsingum"
         choice3 = "3. Afskrá viðskiptavin"
         choice4 = "4. Til baka"
         
         line = "-"*80
+        #beðið um vegabréfsnúmer frá notenda
         passport = input("\n\tVegabréfsnúmer: ").upper()
+        #fall sem skilar upplýsingum um þennan ákveðna notenda
         customer, passport, kredit = self.__customer.find_customer(passport)
         if customer == 0:
             print("\n\tEngin viðskiptavinur er skráður á þetta númer!!")
@@ -232,15 +243,20 @@ class StaffUI():
         choice = input("\n\tValmöguleiki: ")
 
         if choice == '1':
+            #finnur allar pantanir sem þessi ákveðni viðskiptavinur á og sendir í viðeigandi fall
             nr_list = self.search_for_order(passport)
             self.customer_order_menu(nr_list)
         elif choice == '2':
-            #Þurfum að skoða þetta betur
+            #Fall til að breyta uppls. um viðskiptavin, byrjar a því að eyða honum og biður svo notenda um
+            #að skrá nýjar upplýsingar um notenda
+
+            #eyðir notenda
             self.__customer.delete_customer(passport)
             print("\n\tVinsamlegast skráðu inn nýjar upplýsingar!\n")
+            #skráir hann upp á nýtt
             self.add_new_customer()
         elif choice == '3':
-            #fer inn í fall sem yfirskrifar textafile með nýjum textafile án viðskiptavinarins
+            #Sendir uppls. í fall sem eyðir viðskiptavin
             self.__customer.delete_customer(passport)
             print("\n\tViðskiptavin hefur verið eytt úr kerfinu!")
             self.print_clients_menu()
@@ -248,6 +264,7 @@ class StaffUI():
             self.print_clients_menu()
     
     def customer_order_menu(self, nr_list):
+        """fall sem prentar út valmöguleika fyrir pantanir ákveðins viðskiptavins"""
         choice1 = "1. Breyta pöntun"
         choice2 = "2. Eyða pöntun"
         choice3 = "3. Prenta pöntunarstaðfestingu"
@@ -257,16 +274,19 @@ class StaffUI():
         choice = input("\n\tValmöguleiki: ")
 
         if choice == "1":
+            #biður um pöntun sem notandi breyta og eyðir henni og biður notenda um uppfærðar uppls.
             number = int(input("\n\tHvaða pöntun viltu breyta?: "))
             self.__ordercar.delete_order(number)
             print("\n\tskráðu pöntun með nýjum upplýsingum!")
             self.print_order_car_menu()
         elif choice == "2":
+            #biður um pöntunarnúmer frá notenda og eyðir þeirri ákveðnu pöntun
             number = int(input("\n\tHvaða pöntun viltu eyða?: "))
             self.__ordercar.delete_order(number)
             print("\n\tPöntun hefur verið eytt!")
             self.main_menu()
         elif choice == "3":
+            #skrifar pöntunarstaðfestingu og prentar á skjáinn
             self.print_order_confirmation()
         elif choice == "4":
             self.print_order_menu()
@@ -277,7 +297,9 @@ class StaffUI():
 
     def print_order_confirmation(self):
         '''Prentar út upplýsingar um pöntun út frá pöntunarnúmeri'''
+        #biður um pöntunarnúmer sem notandi vill fá staðfestingu á
         number = int(input("\n\tPöntunarnúmer: "))
+        #sækir pöntunarlista notenda
         order_list = self.__ordercar.get_order(number)
         if order_list == []:
             print("\n\tPöntun ekki á lista!")
@@ -290,10 +312,11 @@ class StaffUI():
         insurance = order_list[5]
         full_price = int(insurance)+ int(price)
         full_price = "{:,}".format(full_price)
-
+        #sækir upplýsingar um viðskiptavin
         customer, passport, kredit = self.__customer.find_customer(passport)
-
+        #skrifar inn á textaskrá pöntunarstaðfestinguna og átti að prenta hana út en vantar module í það
         self.__customer.write_to_file(customer, passport, kredit, day1, day2, price, car_type)
+
         print("\n{:^64}".format("Pöntunarstaðfesting"))
         print("\n======================================================================")
         print("\n\t{:<10}\t\t{:^10}\t\t{:^10}".format("Nafn","Vegabr.Nr.","Kredit Nr."))
@@ -316,7 +339,7 @@ class StaffUI():
 
 
     def print_car_menu(self):
-        """Prints out the cars menu and returns a input sentence asking for a choice"""
+        """Prentar út valmynd fyrir bíla og biður um input frá notenda um hvað hann vill gera"""
         choice1 = "1. Listi yfir Bílaflota"
         choice2 = "2. Bílar í Útleigu"
         choice3 = "3. Lausir Bílar"
@@ -350,7 +373,7 @@ class StaffUI():
 
 
     def search_car(self):
-
+        """Leitar af ákveðinni bifreið út frá bílnúmeri og prentar upplýsingar á skjáinn"""
         line ="-"*72
         car_plate = input("\n\tNúmer bifreiðar: ").upper()
         car_model, car_year, car_plate, car_miles, car_color, car_fuel_type, car_status, car_catagory= self.__cars.find_cars(car_plate)
@@ -368,7 +391,7 @@ class StaffUI():
         print("\t" + line)
         print("\t{:<10}\t{:^}\t{:^}\t{:^}\t{:^}\t{:^}\t{:^}\t{:^}".format(car_model.capitalize(), car_year, car_plate, car_miles, car_color.capitalize(), car_fuel_type, car_status, car_catagory))
 
-        #Prentar út valmyndi fyrir leit af bílum
+        #Prentar út valmyndi fyrir þennan ákvðna bíl
         choice1 = "1. Afskrá bíl"
         choice2 = "2. Setja á lista yfir lausar bifreiðar"
         choice3 = "3. Skrá í útleigu"
@@ -390,6 +413,7 @@ class StaffUI():
             self.main_menu()                 
         
     def print_price_list(self):
+        """Fallið prentar út verðlista fyrir bílaleigubíla"""
         insurance = "Aukatrygging 30.000 kr."
         choice1 = "Smábílar"
         price1 = "10.000 kr."
@@ -486,6 +510,8 @@ class StaffUI():
             self.print_car_menu()
     
     #def print_doc(self, filename):
+        """fall sem prentar út í prentara textaskrá sem sett er inn"""
+        """ATH virkar en vantar module win32 í tölvuna svo við commentuðum þetta út"""
         #myWord = Dispatch('Word.Application')
         #myWord.Visible = 1
 
