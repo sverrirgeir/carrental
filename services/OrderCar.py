@@ -74,12 +74,12 @@ class OrderCar:
     return price,today,someday,carchoice,extraprice
   
   def get_car_order(self, order):
-    '''skrifa kalla a fallið til að geta skrifað í order pöntunina'''
+    '''Tekur tinn stak af klasanum Order og skilar í fallið write_car_order í carrepo'''
     return self.__write_order.write_car_order(order)
   
 
   def print_list_of_orders(self):
-    ''' kalla a fallid print orders til ad geta seð orders'''
+    '''kallar á fallið print_orders í carrepo'''
     return self.__write_order.print_orders()
 
   def search_for_orders(self, passport):
@@ -95,11 +95,11 @@ class OrderCar:
       return False
 
   def delete_order(self, number):
-    '''geta eytt út pöntunum af listanum með allar pantanir'''
+    '''kallar á fallið delete_order í carrepo með pöntunarnúmer'''
     return self.__write_order.delete_order(number)
 
   def get_order(self, number):
-    '''skrifar inn pantanir'''
+    '''kallar á fallið get_order í repo með pöntunarnúmeri'''
     return self.__write_order.get_order(number)
 
   
