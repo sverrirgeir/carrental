@@ -22,5 +22,3 @@ toyota lc150,2017,SAK78,8000,hvítur,Diesel,3,False
 toyota lc150,2018,LAG19,15000,blár,Diesel,3,False
 fiat hobby,2017,BAL76,30000,hvítur,Diesel,4,False
 Fiat hobby,2018,SAL25,15000,Svartur,Bensín,4,False
-Vw golf,2017,AKF54,20000,Svartur,Diesel,1,True
-Dacia duster,2018,BBD32,15000,Blár,Bensín,3,True
