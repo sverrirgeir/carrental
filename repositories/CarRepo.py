@@ -19,8 +19,8 @@ class CarRepo:
                     car_miles = car_list[3]
                     car_color = car_list[4]
                     car_fuel_type = car_list[5]
-                    car_catagory = car_list[6]
-                    car_status = car_list[7].strip()
+                    car_catagory = car_list[7].strip()
+                    car_status = car_list[6]
 
                     if car_status == "True":
                         car_status = "Laus"
@@ -52,8 +52,8 @@ class CarRepo:
                     car_miles = car_list[3]
                     car_color = car_list[4]
                     car_fuel_type = car_list[5]
-                    car_catagory = car_list[6]
-                    car_status = car_list[7].strip()
+                    car_catagory = car_list[7].strip()
+                    car_status = car_list[6]
 
                     if car_catagory == '1':
                         car_catagory = "Smábíll"
@@ -83,8 +83,8 @@ class CarRepo:
                     car_miles = car_list[3]
                     car_color = car_list[4]
                     car_fuel_type = car_list[5]
-                    car_catagory = car_list[6]
-                    car_status = car_list[7].strip()
+                    car_catagory = car_list[7].strip()
+                    car_status = car_list[6]
 
                     if car_catagory == '1':
                         car_catagory = "Smábíll"
