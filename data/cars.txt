@@ -13,11 +13,11 @@ vw passat,2018,SUB63,12000,grár,Diesel,True,2
 kia optima,2017,VAK18,10000,hvítur,Diesel,False,2
 kia optima,2018,SAK84,23000,svartur,Diesel,True,2
 kia optima,2018,BAL10,5000,grár,Diesel,True,2
-kia optima,2017,SAK61,11000,grænn,Diesel,True,2
+kia optima,2017,SAK61,11000,grænn,Diesel,False,2
 kia optima,2017,VAL32,20000,hvítur,Bensín,False,2
 kia optima,2018,LAG89,9000,blár,Diesel,False,2
 toyota lc150,2017,FGB57,12000,rauður,Diesel,False,3
 toyota lc150,2018,BAL19,7000,grár,Diesel,False,3
 toyota lc150,2017,SAK78,8000,hvítur,Diesel,False,3
 toyota lc150,2018,LAG19,15000,blár,Diesel,False,3
-Fiat panda,2018,SAS16,12000,Hvítur,Bensín,True,4
+Fiat panda,2018,SAS16,12000,Hvítur,Bensín,False,4

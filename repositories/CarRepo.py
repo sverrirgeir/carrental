@@ -194,8 +194,8 @@ class CarRepo:
             for i in range(len(list_of_lists)):
                 if list_of_lists[i][2] == car_plate:
                     not_found = 3
-                    if list_of_lists[i][7] == "False":
-                        list_of_lists[i][7] = "True"
+                    if list_of_lists[i][6] == "False":
+                        list_of_lists[i][6] = "True"
                         with open("./data/cars.txt", "w") as car_string:
                             for lst in list_of_lists:
                                 car_model= lst[0]
@@ -204,9 +204,9 @@ class CarRepo:
                                 car_miles = lst[3]
                                 car_color = lst[4]
                                 car_fuel_type = lst[5]
-                                car_status = lst[7]
-                                car_catagory = lst[6]
-                                car_string.write("{},{},{},{},{},{},{},{}".format(car_model, car_year, car_plate, car_miles, car_color, car_fuel_type, car_catagory, car_status))
+                                car_status = lst[6]
+                                car_catagory = lst[7]
+                                car_string.write("{},{},{},{},{},{},{},{}".format(car_model, car_year, car_plate, car_miles, car_color, car_fuel_type, car_status, car_catagory))
                                 car_string.write("\n")
                         return 1
                     else:
@@ -224,8 +224,8 @@ class CarRepo:
             for i in range(len(list_of_lists)):
                 if list_of_lists[i][2] == car_plate:
                     not_found = 3
-                    if list_of_lists[i][7] == "True":
-                        list_of_lists[i][7] = "False"
+                    if list_of_lists[i][6] == "True":
+                        list_of_lists[i][6] = "False"
                         with open("./data/cars.txt", "w") as car_string:
                             for lst in list_of_lists:
                                 car_model= lst[0]
@@ -234,9 +234,9 @@ class CarRepo:
                                 car_miles = lst[3]
                                 car_color = lst[4]
                                 car_fuel_type = lst[5]
-                                car_status = lst[7]
-                                car_catagory = lst[6]
-                                car_string.write("{},{},{},{},{},{},{},{}".format(car_model, car_year, car_plate, car_miles, car_color, car_fuel_type, car_catagory, car_status))
+                                car_status = lst[6]
+                                car_catagory = lst[7]
+                                car_string.write("{},{},{},{},{},{},{},{}".format(car_model, car_year, car_plate, car_miles, car_color, car_fuel_type, car_status, car_catagory))
                                 car_string.write("\n")
                         return 1
                     else:
