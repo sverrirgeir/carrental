@@ -119,8 +119,8 @@ class CarRepo:
                     car_miles = list_of_list[i][3]
                     car_color = list_of_list[i][4]
                     car_fuel_type = list_of_list[i][5]
-                    car_status = list_of_list[i][7]
-                    car_catagory = list_of_list[i][6]
+                    car_status = list_of_list[i][6]
+                    car_catagory = list_of_list[i][7]
 
                     if car_status == "True":
                         car_status = "Laus"
