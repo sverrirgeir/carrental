@@ -63,7 +63,7 @@ class OrderCar:
     elif carchoice == 4:
       price = days * 25000
     else:
-      print("Ekkert valið")  
+      print("\n\tVitlaust val, reyndu aftur!")  
       self.order_price()
     insurance = input("\n\tAukatryggingu?(y/n): ")
     extraprice = 0
@@ -86,6 +86,8 @@ class OrderCar:
     """tekur inn vegabréfsnr og villutjekkar áður en hann sendir það í repo"""
     if self.validate_passport(passport):
       return self.__write_order.search_for_orders(passport)
+    else:
+      return 0
 
   def validate_passport(self, passport):
     ''' villu check fyrir vegabréf'''

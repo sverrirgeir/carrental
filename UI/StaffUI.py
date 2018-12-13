@@ -129,6 +129,9 @@ class StaffUI():
         """Fall sem tekur inn vegabréfsnúmer og prentar töflu af öllum pöntunum á því númeri"""
         #sækja lista af listum af þeim pöntunum sem eru á þessu númeri
         list_of_orders = self.__ordercar.search_for_orders(passport)
+        if list_of_orders == 0:
+            print("\n\tEkki rétt Vegabréfsnúmer! \n\treyndu aftur\n")
+            return self.main_menu()
         #prenta út listann í format töflu formi
         print("\n\t{:<10}\t{:^10}\t{:^10}\t{:^10}\t{:^10}\t{:^10}".format("nr.","Vegabréfa N.","Afhendingard.","Skilad.","Heildarverð","Flokkur"))
         print(" "*8 + "-"*88)
@@ -476,7 +479,7 @@ class StaffUI():
         new_order = Order(passport, today, someday, fullprice, carchoice, extraprice)
         fullprice = int(fullprice)
         if fullprice < 10000:
-            print("Dagsetning skrifuð vitlaus inn: ")
+            print("\n\tDagsetning skrifuð vitlaus inn: ")
             self.print_order_car_menu()
         else:
             self.__ordercar.get_car_order(new_order)
