@@ -4,10 +4,7 @@ from services.OrderCar import OrderCar
 from Models.Order import Order
 from Models.Customer import Customer
 from Models.Car import Car
-<<<<<<< HEAD
-=======
 #from win32com.client import Dispatch
->>>>>>> c3371830b8f2e1c5b2979853dafc388950cebc8f
 from repositories.PrintRepo import PrintRepo
 
 
