@@ -1,12 +1,12 @@
-Pöntunarstağfesting
+PÃ¶ntunarstaÃ°festing
 
-Nafn: Donald J. Trump
-Vegabréfsnúmer: A9999999
-Kreditkortanúmer: 9999000022223333
+Nafn: Justin Timberlake
+VegabrÃ©fsnÃºmer: A1919191
+KreditkortanÃºmer: 1234123443214321
 
-Heildarverğ: 20000
+HeildarverÃ°: 140000
 
-Frá: 2018-12-22
-Til: 2018-12-23
+FrÃ¡: 2018-12-12
+Til: 2018-12-18
 
-Tıpa: Smábíll
+TÃ½pa: Jeppi

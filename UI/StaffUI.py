@@ -318,42 +318,49 @@ class StaffUI():
     def print_order_confirmation(self):
         '''Prentar út upplýsingar um pöntun út frá pöntunarnúmeri'''
         #biður um pöntunarnúmer sem notandi vill fá staðfestingu á
-        number = int(input("\n\tPöntunarnúmer: "))
-        #sækir pöntunarlista notenda
-        order_list = self.__ordercar.get_order(number)
-        if order_list == []:
-            print("\n\tPöntun ekki á lista!")
-            self.print_order_confirmation()
-        passport = order_list[0]
-        day1 = order_list[1]
-        day2 = order_list[2]
-        price = order_list[3]
-        car_type = order_list[4]
-        insurance = order_list[5]
-        full_price = int(insurance)+ int(price)
-        full_price = "{:,}".format(full_price)
-        #sækir upplýsingar um viðskiptavin
-        customer, passport, kredit = self.__customer.find_customer(passport)
-        self.__customer.write_to_file(customer, passport, kredit, day1, day2, price, car_type)
+        number = input("\n\tPöntunarnúmer: ")
+        if number.isdigit():
+            number = int(number)
+            #sækir pöntunarlista notenda
+            order_list = self.__ordercar.get_order(number)
+            if order_list == []:
+                print("\n\tPöntun ekki á lista!")
+                self.print_order_confirmation()
+            passport = order_list[0]
+            day1 = order_list[1]
+            day2 = order_list[2]
+            price = order_list[3]
+            car_type = order_list[4]
+            insurance = order_list[5]
+            full_price = int(insurance)+ int(price)
+            full_price = "{:,}".format(full_price)
+            #sækir upplýsingar um viðskiptavin
+            customer, passport, kredit = self.__customer.find_customer(passport)
+            self.__customer.write_to_file(customer, passport, kredit, day1, day2, price, car_type)
 
-        print("\n{:^64}".format("Pöntunarstaðfesting"))
-        print("\n======================================================================")
-        print("\n\t{:<10}\t\t{:^10}\t\t{:^10}".format("Nafn","Vegabr.Nr.","Kredit Nr."))
-        print("\n----------------------------------------------------------------------")
-        print("\n\t{:<10}\t{:^10}\t\t{:^10}".format(customer,passport,kredit))
-        print("\n----------------------------------------------------------------------")
-        print("\n\t{:<10}\t{:^10}\t{:^10}\t{:^10}".format("Frá","Til","Verð","Flokkur"))
-        print("\n----------------------------------------------------------------------")
-        print("\n\t{:<10}\t{:^10}\t{:^10}\t{:^10}".format(day1,day2,full_price,car_type))
-        print("\n======================================================================")
-        print("\n\t{:<30}".format("1. Til baka"))
-        choice = input("\n\tValmöguleiki: ")
+            print("\n{:^64}".format("Pöntunarstaðfesting"))
+            print("\n========================================================================")
+            print("\n\t{:<10}\t{:^10}\t{:^10}".format("Nafn","Vegabr.Nr.","Kredit Nr."))
+            print("\n------------------------------------------------------------------------")
+            print("\n\t{:<10}\t{:^10}\t{:^10}".format(customer,passport,kredit))
+            print("\n------------------------------------------------------------------------")
+            print("\n\t{:<10}\t{:^10}\t{:^10}\t{:^10}".format("Frá","Til","Verð","Flokkur"))
+            print("\n------------------------------------------------------------------------")
+            print("\n\t{:<10}\t{:^10}\t{:^10}\t{:^10}".format(day1,day2,full_price,car_type))
+            print("\n========================================================================")
+            print("\n\t{:<30}".format("1. Til baka"))
+            choice = input("\n\tValmöguleiki: ")
+        
 
-        if choice == "1":
-            self.main_menu()
+            if choice == "1":
+                self.main_menu()
+            else:
+                print("\n\tVitlaust val, vinsamlegast veldu aftur!")
+                self.main_menu()
         else:
             print("\n\tVitlaust val, vinsamlegast veldu aftur!")
             self.print_order_confirmation()
+
 
 
 
