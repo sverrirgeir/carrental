@@ -54,6 +54,7 @@ class CustomerRepo:
             for i in range(len(list_of_lists)):
                 if list_of_lists[i][1] == passport:
                     list_of_lists.remove(list_of_lists[i])
+                    break
         with open("./data/customer.txt", "w") as customerfile:
             for lst in list_of_lists:
                 name = lst[0]

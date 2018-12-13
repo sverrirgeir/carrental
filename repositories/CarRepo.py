@@ -161,6 +161,7 @@ class CarRepo:
                 test = list_of_lists[i][2]
                 if test == car_plate:
                     list_of_lists.remove(list_of_lists[i])
+                    break
             with open("./data/cars.txt", "w") as car_string:
                 for lst in list_of_lists:
                     car_model= lst[0]

@@ -14,12 +14,11 @@ kia optima,2017,VAK18,10000,hvítur,Diesel,2,True
 kia optima,2018,SAK84,23000,svartur,Diesel,2,True
 kia optima,2018,BAL10,5000,grár,Diesel,2,True
 kia optima,2017,SAK61,11000,grænn,Diesel,2,True
-kia optima,2018,NAK46,13000,grár,Bensín,2,True
-kia optima,2017,VAL32,20000,hvítur,Bensín,2,True
+kia optima,2017,VAL32,20000,hvítur,Bensín,2,False
 kia optima,2018,LAG89,9000,blár,Diesel,2,True
 toyota lc150,2017,FGB57,12000,rauður,Diesel,3,True
 toyota lc150,2018,BAL19,7000,grár,Diesel,3,True
 toyota lc150,2017,SAK78,8000,hvítur,Diesel,3,False
 toyota lc150,2018,LAG19,15000,blár,Diesel,3,False
 fiat hobby,2017,BAL76,30000,hvítur,Diesel,4,False
-fiat hobby,2017,KAL57,20000,hvítur,Diesel,4,False
+Fiat hobby,2018,SAL25,15000,Svartur,bens�n,4,True

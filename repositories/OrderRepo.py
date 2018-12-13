@@ -75,7 +75,8 @@ class OrderRepo:
                 day2 = lst[2]
                 price = lst[3]
                 car_type = lst[4]
-                orderfile.write("{},{},{},{},{}".format(passport, day1, day2, price, car_type))
+                insurance = lst[5]
+                orderfile.write("{},{},{},{},{},{}".format(passport, day1, day2, price, car_type,insurance))
                 orderfile.write("\n")
             return
 

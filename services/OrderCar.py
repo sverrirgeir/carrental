@@ -13,12 +13,30 @@ class OrderCar:
     day, month, year = input("\n\tAfhendingardagur(DD/MM/YYYY): ").split("/")
     day = int(day)
     month = int(month)
+    if 1 > day or day > 31:
+      print("\n\tDagur vitlaust skráður!")
+      return 0,0
+    elif 1 > month or month > 12:
+      print("\n\tMánuður vitlaust skráður!")
+      return 0,0
+    elif len(year) != 4:
+      print("\n\tÁr vitlaust skráð!")
+      return 0,0
     year = int(year)
     '''Hérna formata ég yfir í datetime formið til að geta borið saman föllin'''
     today = datetime.date(year, month, day)
     ret_day, ret_month, ret_year = input("\tSkiladagur(DD/MM/YYYY): ").split("/")
     ret_day = int(ret_day)
     ret_month = int(ret_month)
+    if 1 > ret_day or ret_day > 31:
+      print("\n\tDagur vitlaust skráður!")
+      return 0,0
+    elif 1 > ret_month or ret_month > 12:
+      print("\n\tMánuður vitlaust skráður!")
+      return 0,0
+    elif len(ret_year) != 4:
+      print("\n\tÁr vitlaust skráð!")
+      return 0,0
     ret_year = int(ret_year)
     '''Við tökum baða dagana núna og berum þá saman til að geta séð hver mismunur dagana er mikill til að reikna út verð'''
     someday = datetime.date(ret_year, ret_month, ret_day) 
@@ -26,6 +44,8 @@ class OrderCar:
 
   def order_price(self):
     today,someday = self.date_time_return()
+    if today == 0:
+      return 0,0,0,0,0
     diff = someday - today  
     days = diff.days
     days = days + 1
@@ -43,7 +63,7 @@ class OrderCar:
     else:
       print("Ekkert valið")  
       self.order_price()
-    insurance = input("\tAukatryggingu?(y/n): ")
+    insurance = input("\n\tAukatryggingu?(y/n): ")
     ''' hér breyti ég inputinu í lower til að engin misskilningur verði á'''
     extraprice = 0
   
